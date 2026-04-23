@@ -1,1 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legal Center — FastCore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700&family=Noto+Sans+SC:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      color: #102235;
+      background: linear-gradient(180deg, #eef9fd 0%, #f8fcfe 100%);
+      min-height: 100vh;
+    }
+    body[data-active-lang="ar"] { direction: rtl; font-family: 'Noto Sans Arabic', 'Inter', sans-serif; }
+    body[data-active-lang="zh"] { font-family: 'Noto Sans SC', 'Inter', sans-serif; }
+    body[data-active-lang="hi"] { font-family: 'Noto Sans Devanagari', 'Inter', sans-serif; }
+    body[data-active-lang="bn"] { font-family: 'Noto Sans Bengali', 'Inter', sans-serif; }
+    .top-bar {
+      background: linear-gradient(135deg, #0b1220 0%, #0891b2 100%);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 14px rgba(8, 145, 178, 0.22);
+      gap: 16px;
+    }
+    .top-bar a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .top-bar a:hover { opacity: 0.86; }
+    .lang-switcher { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+    .lang-btn {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: #ffffff;
+      padding: 6px 11px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .lang-btn:hover, .lang-btn.active {
+      background: rgba(255, 255, 255, 0.96);
+      color: #0b1220;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 24px 80px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 36px;
+      padding-top: 12px;
+    }
+    .badge {
+      display: inline-block;
+      background: #dff6fb;
+      color: #0f7490;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+    .header h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0b1220;
+      margin-bottom: 8px;
+      letter-spacing: -0.6px;
+    }
+    .header .updated {
+      font-size: 13px;
+      color: #5b7288;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .header .subtitle {
+      font-size: 15px;
+      color: #3d5468;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #d8e8ee;
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 32px rgba(11, 18, 32, 0.05);
+    }
+    .card h2 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f7490;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card h2 .num {
+      background: linear-gradient(135deg, #0891b2, #22d3ee);
+      color: #ffffff;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .card p {
+      font-size: 14px;
+      color: #334155;
+      margin-bottom: 10px;
+    }
+    .card ul {
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+    body[data-active-lang="ar"] .card ul {
+      padding-left: 0;
+      padding-right: 20px;
+    }
+    .card li {
+      font-size: 14px;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+    .highlight-box {
+      background: #ecfeff;
+      border: 1px solid rgba(8, 145, 178, 0.18);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-top: 12px;
+    }
+    .highlight-box p {
+      color: #0f5267;
+      font-size: 13px;
+      margin: 0;
+    }
+    .feature-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 200px;
+    }
+    .feature-card h2 {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .primary-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-width: 180px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0b1220 0%, #0891b2 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+    .primary-link:hover { opacity: 0.92; }
+    .footer {
+      text-align: center;
+      padding: 32px 0 8px;
+      border-top: 1px solid #d8e8ee;
+      margin-top: 8px;
+    }
+    .footer p {
+      color: #5b7288;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .footer a {
+      color: #0f7490;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+    @media (max-width: 700px) {
+      .container { padding: 24px 16px 56px; }
+      .header h1 { font-size: 26px; }
+      .card { padding: 22px 18px; }
+      .top-bar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 16px;
+      }
+      .top-bar a { justify-content: center; }
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body data-active-lang="en">
+  <div class="top-bar">
+    <a href="./index.html?lang=en">⚡ FastCore</a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button><button class="lang-btn" data-lang="zh" onclick="switchLang('zh')">中文</button><button class="lang-btn" data-lang="hi" onclick="switchLang('hi')">हिं</button><button class="lang-btn" data-lang="es" onclick="switchLang('es')">ES</button><button class="lang-btn" data-lang="ar" onclick="switchLang('ar')">عربي</button><button class="lang-btn" data-lang="fr" onclick="switchLang('fr')">FR</button><button class="lang-btn" data-lang="de" onclick="switchLang('de')">DE</button><button class="lang-btn" data-lang="bn" onclick="switchLang('bn')">বাংলা</button>
+    </div>
+  </div>
+  <div class="container">
+    
+    <div class="lang-content active" data-lang="en" dir="ltr">
+      <div class="header">
+        <span class="badge">FastCore Legal</span>
+        <h1>Legal Center</h1>
+        <p class="updated">Last updated: April 23, 2026</p>
+        <p class="subtitle">Privacy Policy and Terms of Service for FastCore.</p>
+      </div>
 
+      <div class="hero-grid">
+        <div class="card feature-card">
+          <h2>Privacy Policy</h2>
+          <p>Learn what information FastCore collects, how it is used, and how you can manage or delete it.</p>
+          <a class="primary-link" href="./privacy/index.html?lang=en">Open Privacy Policy</a>
+        </div>
+
+        <div class="card feature-card">
+          <h2>Terms of Service</h2>
+          <p>Read the health disclaimer, subscription terms, acceptable use rules, and account terms for FastCore.</p>
+          <a class="primary-link" href="./terms/index.html?lang=en">Open Terms of Service</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Need help?</h2>
+        <p>Questions about these documents or a data deletion request? Email devmile45@gmail.com.</p>
+      </div>
+
+      <div class="footer">
+        <p>© 2026 FastCore. All rights reserved.</p>
+      </div>
+    </div>
+  
+    <div class="lang-content" data-lang="zh" dir="ltr">
+      <div class="header">
+        <span class="badge">FastCore 法律文件</span>
+        <h1>法律中心</h1>
+        <p class="updated">最后更新：2026年4月23日</p>
+        <p class="subtitle">查看 FastCore 的隐私政策和服务条款。</p>
+      </div>
+
+      <div class="hero-grid">
+        <div class="card feature-card">
+          <h2>隐私政策</h2>
+          <p>了解 FastCore 收集哪些信息、如何使用这些信息，以及您如何管理或删除这些信息。</p>
+          <a class="primary-link" href="./privacy/index.html?lang=zh">打开隐私政策</a>
+        </div>
+
+        <div class="card feature-card">
+          <h2>服务条款</h2>
+          <p>阅读 FastCore 的健康免责声明、订阅条款、可接受使用规则和账户条款。</p>
+          <a class="primary-link" href="./terms/index.html?lang=zh">打开服务条款</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>需要帮助？</h2>
+        <p>如果您对这些文件或数据删除请求有疑问，请发送邮件至 devmile45@gmail.com。</p>
+      </div>
+
+      <div class="footer">
+        <p>© 2026 FastCore。保留所有权利。</p>
+      </div>
+    </div>
+  
+    <div class="lang-content" data-lang="hi" dir="ltr">
+      <div class="header">
+        <span class="badge">FastCore कानूनी केंद्र</span>
+        <h1>कानूनी केंद्र</h1>
+        <p class="updated">अंतिम अपडेट: 23 अप्रैल 2026</p>
+        <p class="subtitle">FastCore की गोपनीयता नीति और सेवा की शर्तें देखें।</p>
+      </div>
+
+      <div class="hero-grid">
+        <div class="card feature-card">
+          <h2>गोपनीयता नीति</h2>
+          <p>जानें कि FastCore कौन-सी जानकारी एकत्र करता है, उसका उपयोग कैसे करता है, और आप उसे कैसे प्रबंधित या हटाने का अनुरोध कर सकते हैं।</p>
+          <a class="primary-link" href="./privacy/index.html?lang=hi">गोपनीयता नीति खोलें</a>
+        </div>
+
+        <div class="card feature-card">
+          <h2>सेवा की शर्तें</h2>
+          <p>FastCore के स्वास्थ्य अस्वीकरण, सदस्यता शर्तें, स्वीकार्य उपयोग नियम और खाता शर्तें पढ़ें।</p>
+          <a class="primary-link" href="./terms/index.html?lang=hi">सेवा की शर्तें खोलें</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>मदद चाहिए?</h2>
+        <p>इन दस्तावेज़ों या डेटा हटाने के अनुरोध के बारे में प्रश्न हों तो devmile45@gmail.com पर ईमेल करें।</p>
+      </div>
+
+      <div class="footer">
+        <p>© 2026 FastCore. सर्वाधिकार सुरक्षित।</p>
+      </div>
+    </div>
+  
+    <div class="lang-content" data-lang="es" dir="ltr">
+      <div class="header">
+        <span class="badge">Legal de FastCore</span>
+        <h1>Centro Legal</h1>
+        <p class="updated">Última actualización: 23 de abril de 2026</p>
+        <p class="subtitle">Consulta la Política de Privacidad y los Términos de Servicio de FastCore.</p>
+      </div>
+
+      <div class="hero-grid">
+        <div class="card feature-card">
+          <h2>Política de Privacidad</h2>
+          <p>Conoce qué información recopila FastCore, cómo la usa y cómo puedes gestionarla o solicitar su eliminación.</p>
+          <a class="primary-link" href="./privacy/index.html?lang=es">Abrir Política de Privacidad</a>
+        </div>
+
+        <div class="card feature-card">
+          <h2>Términos de Servicio</h2>
+          <p>Lee el descargo médico, las condiciones de suscripción, las reglas de uso aceptable y las condiciones de cuenta de FastCore.</p>
+          <a class="primary-link" href="./terms/index.html?lang=es">Abrir Términos de Servicio</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>¿Necesitas ayuda?</h2>
+        <p>Si tienes preguntas sobre estos documentos o una solicitud de eliminación de datos, escribe a devmile45@gmail.com.</p>
+      </div>
+
+      <div class="footer">
+        <p>© 2026 FastCore. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  
+    <div class="lang-content" data-lang="ar" dir="rtl">
+      <div class="header">
+        <span class="badge">المركز القانوني لـ FastCore</span>
+        <h1>المركز القانوني</h1>
+        <p class="updated">آخر تحديث: 23 أبريل 2026</p>
+        <p class="subtitle">اطلع على سياسة الخصوصية وشروط الخدمة الخاصة بـ FastCore.</p>
+      </div>
+
+      <div class="hero-grid">
+        <div class="card feature-card">
+          <h2>سياسة الخصوصية</h2>
+          <p>تعرّف على المعلومات التي يجمعها FastCore وكيف يستخدمها وكيف يمكنك إدارتها أو طلب حذفها.</p>
+          <a class="primary-link" href="./privacy/index.html?lang=ar">فتح سياسة الخصوصية</a>
+        </div>
+
+        <div class="card feature-card">
+          <h2>شروط الخدمة</h2>
+          <p>اقرأ إخلاء المسؤولية الصحي وشروط الاشتراك وقواعد الاستخدام المقبول وشروط الحساب الخاصة بـ FastCore.</p>
+          <a class="primary-link" href="./terms/index.html?lang=ar">فتح شروط الخدمة</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>هل تحتاج إلى مساعدة؟</h2>
+        <p>إذا كانت لديك أسئلة حول هذه المستندات أو طلب حذف البيانات، فأرسل بريداً إلى devmile45@gmail.com.</p>
+      </div>
+
+      <div class="footer">
+        <p>© 2026 FastCore. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  
+    <div class="lang-content" data-lang="fr" dir="ltr">
+      <div class="header">
+        <span class="badge">Juridique FastCore</span>
+        <h1>Centre Juridique</h1>
+        <p class="updated">Dernière mise à jour : 23 avril 2026</p>
+        <p class="subtitle">Consultez la Politique de Confidentialité et les Conditions d&#39;Utilisation de FastCore.</p>
+      </div>
+
+      <div class="hero-grid">
+        <div class="card feature-card">
+          <h2>Politique de Confidentialité</h2>
+          <p>Découvrez quelles informations FastCore collecte, comment elles sont utilisées et comment vous pouvez les gérer ou demander leur suppression.</p>
+          <a class="primary-link" href="./privacy/index.html?lang=fr">Ouvrir la Politique de Confidentialité</a>
+        </div>
+
+        <div class="card feature-card">
+          <h2>Conditions d&#39;Utilisation</h2>
+          <p>Lisez la clause de non-responsabilité médicale, les conditions d&#39;abonnement, les règles d&#39;usage acceptable et les conditions de compte de FastCore.</p>
+          <a class="primary-link" href="./terms/index.html?lang=fr">Ouvrir les Conditions d&#39;Utilisation</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Besoin d&#39;aide ?</h2>
+        <p>Pour toute question sur ces documents ou une demande de suppression de données, écrivez à devmile45@gmail.com.</p>
+      </div>
+
+      <div class="footer">
+        <p>© 2026 FastCore. Tous droits réservés.</p>
+      </div>
+    </div>
+  
+    <div class="lang-content" data-lang="de" dir="ltr">
+      <div class="header">
+        <span class="badge">FastCore Rechtliches</span>
+        <h1>Rechtszentrum</h1>
+        <p class="updated">Zuletzt aktualisiert: 23. April 2026</p>
+        <p class="subtitle">Rufen Sie die Datenschutzrichtlinie und die Nutzungsbedingungen von FastCore auf.</p>
+      </div>
+
+      <div class="hero-grid">
+        <div class="card feature-card">
+          <h2>Datenschutzrichtlinie</h2>
+          <p>Erfahren Sie, welche Informationen FastCore erfasst, wie sie verwendet werden und wie Sie sie verwalten oder löschen lassen können.</p>
+          <a class="primary-link" href="./privacy/index.html?lang=de">Datenschutzrichtlinie öffnen</a>
+        </div>
+
+        <div class="card feature-card">
+          <h2>Nutzungsbedingungen</h2>
+          <p>Lesen Sie den Gesundheitshinweis, die Abonnementbedingungen, die Regeln zur zulässigen Nutzung und die Kontobedingungen von FastCore.</p>
+          <a class="primary-link" href="./terms/index.html?lang=de">Nutzungsbedingungen öffnen</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Brauchen Sie Hilfe?</h2>
+        <p>Fragen zu diesen Dokumenten oder zu einer Datenlöschungsanfrage senden Sie bitte an devmile45@gmail.com.</p>
+      </div>
+
+      <div class="footer">
+        <p>© 2026 FastCore. Alle Rechte vorbehalten.</p>
+      </div>
+    </div>
+  
+    <div class="lang-content" data-lang="bn" dir="ltr">
+      <div class="header">
+        <span class="badge">FastCore আইনগত কেন্দ্র</span>
+        <h1>আইনগত কেন্দ্র</h1>
+        <p class="updated">সর্বশেষ হালনাগাদ: ২৩ এপ্রিল ২০২৬</p>
+        <p class="subtitle">FastCore-এর গোপনীয়তা নীতি এবং সেবার শর্তাবলি দেখুন।</p>
+      </div>
+
+      <div class="hero-grid">
+        <div class="card feature-card">
+          <h2>গোপনীয়তা নীতি</h2>
+          <p>FastCore কোন তথ্য সংগ্রহ করে, কীভাবে ব্যবহার করে এবং আপনি কীভাবে তা পরিচালনা বা মুছে ফেলার অনুরোধ করতে পারেন তা জানুন।</p>
+          <a class="primary-link" href="./privacy/index.html?lang=bn">গোপনীয়তা নীতি খুলুন</a>
+        </div>
+
+        <div class="card feature-card">
+          <h2>সেবার শর্তাবলি</h2>
+          <p>FastCore-এর স্বাস্থ্য-সংক্রান্ত দায়স্বীকার, সাবস্ক্রিপশন শর্ত, গ্রহণযোগ্য ব্যবহার নীতি এবং অ্যাকাউন্ট শর্তাবলি পড়ুন।</p>
+          <a class="primary-link" href="./terms/index.html?lang=bn">সেবার শর্তাবলি খুলুন</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>সহায়তা দরকার?</h2>
+        <p>এই নথি বা ডেটা মুছে ফেলার অনুরোধ সম্পর্কে প্রশ্ন থাকলে devmile45@gmail.com-এ ইমেইল করুন।</p>
+      </div>
+
+      <div class="footer">
+        <p>© 2026 FastCore. সর্বস্বত্ব সংরক্ষিত।</p>
+      </div>
+    </div>
+  
+  </div>
+  <script>
+    const SUPPORTED_LANGS = ["en","zh","hi","es","ar","fr","de","bn"];
+    function getInitialLang() {
+      const params = new URLSearchParams(window.location.search);
+      const queryLang = params.get('lang');
+      const storedLang = localStorage.getItem('fastcore-legal-lang');
+      if (queryLang && SUPPORTED_LANGS.includes(queryLang)) return queryLang;
+      if (storedLang && SUPPORTED_LANGS.includes(storedLang)) return storedLang;
+      return 'en';
+    }
+    function applyLang(lang) {
+      const safeLang = SUPPORTED_LANGS.includes(lang) ? lang : 'en';
+      document.querySelectorAll('.lang-content').forEach((el) => {
+        el.classList.toggle('active', el.dataset.lang === safeLang);
+      });
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.lang === safeLang);
+      });
+      document.documentElement.lang = safeLang;
+      document.body.setAttribute('data-active-lang', safeLang);
+      const active = document.querySelector('.lang-content.active');
+      document.documentElement.dir = active ? (active.getAttribute('dir') || 'ltr') : 'ltr';
+      localStorage.setItem('fastcore-legal-lang', safeLang);
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', safeLang);
+      window.history.replaceState({}, '', url);
+    }
+    function switchLang(lang) {
+      applyLang(lang);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      applyLang(getInitialLang());
+    });
+  </script>
+</body>
+</html>
