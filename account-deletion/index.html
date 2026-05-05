@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account Deletion - FastCore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700&family=Noto+Sans+SC:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      color: #102235;
+      background: linear-gradient(180deg, #eef9fd 0%, #f8fcfe 100%);
+      min-height: 100vh;
+    }
+    body[data-active-lang="ar"] { direction: rtl; font-family: 'Noto Sans Arabic', 'Inter', sans-serif; }
+    body[data-active-lang="zh"] { font-family: 'Noto Sans SC', 'Inter', sans-serif; }
+    body[data-active-lang="hi"] { font-family: 'Noto Sans Devanagari', 'Inter', sans-serif; }
+    body[data-active-lang="bn"] { font-family: 'Noto Sans Bengali', 'Inter', sans-serif; }
+    .top-bar {
+      background: linear-gradient(135deg, #0b1220 0%, #0891b2 100%);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 14px rgba(8, 145, 178, 0.22);
+      gap: 16px;
+    }
+    .top-bar a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .top-bar a:hover { opacity: 0.86; }
+    .lang-switcher { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+    .lang-btn {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: #ffffff;
+      padding: 6px 11px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .lang-btn:hover, .lang-btn.active {
+      background: rgba(255, 255, 255, 0.96);
+      color: #0b1220;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 24px 80px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 36px;
+      padding-top: 12px;
+    }
+    .badge {
+      display: inline-block;
+      background: #dff6fb;
+      color: #0f7490;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+    .header h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0b1220;
+      margin-bottom: 8px;
+      letter-spacing: -0.6px;
+    }
+    .header .updated {
+      font-size: 13px;
+      color: #5b7288;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .header .subtitle {
+      font-size: 15px;
+      color: #3d5468;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #d8e8ee;
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 32px rgba(11, 18, 32, 0.05);
+    }
+    .card h2 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f7490;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card h2 .num {
+      background: linear-gradient(135deg, #0891b2, #22d3ee);
+      color: #ffffff;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .card p {
+      font-size: 14px;
+      color: #334155;
+      margin-bottom: 10px;
+    }
+    .card ul {
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+    body[data-active-lang="ar"] .card ul {
+      padding-left: 0;
+      padding-right: 20px;
+    }
+    .card li {
+      font-size: 14px;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+    .highlight-box {
+      background: #ecfeff;
+      border: 1px solid rgba(8, 145, 178, 0.18);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-top: 12px;
+    }
+    .highlight-box p {
+      color: #0f5267;
+      font-size: 13px;
+      margin: 0;
+    }
+    .primary-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-width: 220px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0b1220 0%, #0891b2 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+    .primary-link:hover { opacity: 0.92; }
+    .footer {
+      text-align: center;
+      padding: 32px 0 8px;
+      border-top: 1px solid #d8e8ee;
+      margin-top: 8px;
+    }
+    .footer p {
+      color: #5b7288;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .footer a {
+      color: #0f7490;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+    @media (max-width: 700px) {
+      .container { padding: 24px 16px 56px; }
+      .header h1 { font-size: 26px; }
+      .card { padding: 22px 18px; }
+      .top-bar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 16px;
+      }
+      .top-bar a { justify-content: center; }
+    }
+  </style>
+</head>
+<body data-active-lang="en">
+  <div class="top-bar">
+    <a href="../index.html?lang=en">⚡ FastCore</a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button><button class="lang-btn" data-lang="zh" onclick="switchLang('zh')">中文</button><button class="lang-btn" data-lang="hi" onclick="switchLang('hi')">हिं</button><button class="lang-btn" data-lang="es" onclick="switchLang('es')">ES</button><button class="lang-btn" data-lang="ar" onclick="switchLang('ar')">عربي</button><button class="lang-btn" data-lang="fr" onclick="switchLang('fr')">FR</button><button class="lang-btn" data-lang="de" onclick="switchLang('de')">DE</button><button class="lang-btn" data-lang="bn" onclick="switchLang('bn')">বাংলা</button>
+    </div>
+  </div>
+  <div class="container">
+
+    <div class="lang-content active" data-lang="en" dir="ltr">
+      <div class="header">
+        <span class="badge">Delete Account</span>
+        <h1>Account Deletion</h1>
+        <p class="updated">Last updated: May 5, 2026</p>
+        <p class="subtitle">How to request deletion of your FastCore account and associated data.</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">1</span>Overview</h2>
+        <p>FastCore: Intermittent Fasting allows account holders to request deletion of their app account and associated synced data.</p>
+        <p>This page is the web-based deletion resource for FastCore and Davis Kiprotich so users can request deletion even if they no longer have access to the app.</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">2</span>Delete Inside the App</h2>
+        <p>If you are still signed in, you can delete your account directly inside FastCore.</p>
+        <ul><li>Open FastCore.</li><li>Go to your profile screen.</li><li>Select <strong>Delete Account</strong>.</li><li>Type <strong>DELETE</strong> and confirm.</li></ul>
+        <div class="highlight-box"><p>In-app deletion is intended for signed-in users. Guest-mode data that exists only on your device can be removed by clearing app data or uninstalling the app.</p></div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">3</span>Delete Through This Web Page</h2>
+        <p>If you already uninstalled the app or cannot access it, you can request deletion by email.</p>
+        <ul><li>Email <strong>devmile45@gmail.com</strong>.</li><li>Use the subject line <strong>FastCore Account Deletion Request</strong>.</li><li>Send the request from the email address linked to your FastCore account whenever possible.</li><li>If you cannot send from that address, include the email linked to the account and enough detail for us to verify the request.</li></ul>
+        <a class="primary-link" href="mailto:devmile45@gmail.com?subject=FastCore%20Account%20Deletion%20Request">Email Deletion Request</a>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">4</span>What We Delete</h2>
+        <p>When we process a valid deletion request for a FastCore account, we delete the account and associated synced data from our active systems, subject to the limited retention notes below.</p>
+        <ul><li>Account and profile information such as email address, display name, profile data, and authentication records tied to FastCore.</li><li>Synced fasting sessions, weight entries, water or hydration records, and related wellness tracking records stored with the account.</li><li>Other synced preferences and account-linked app records that are no longer required to operate the deleted account.</li></ul>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">5</span>What May Be Retained</h2>
+        <p>Some information may need to be retained for limited periods for legitimate reasons.</p>
+        <ul><li>Security, fraud-prevention, abuse-prevention, dispute-resolution, or legal-compliance records.</li><li>Billing and subscription records retained by Google Play, the Apple App Store, or RevenueCat under their own policies.</li><li>Local-only data stored on your own device until you clear app data or uninstall the app.</li></ul>
+        <div class="highlight-box"><p>Deleting your FastCore account does not cancel subscriptions billed through Google Play or the App Store. Manage or cancel store subscriptions separately in the relevant store settings.</p></div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">6</span>Help and Timing</h2>
+        <p>We may need to verify a deletion request before processing it. If you need help with account or data deletion, contact <strong>devmile45@gmail.com</strong>.</p>
+        <p>Developer: <strong>Davis Kiprotich</strong></p>
+        <p>App: <strong>FastCore: Intermittent Fasting</strong></p>
+      </div>
+
+      <div class="footer">
+        <p>© 2026 FastCore. All rights reserved.</p>
+        <p><a href="../privacy/index.html?lang=en">Privacy Policy</a> | <a href="../terms/index.html?lang=en">Terms of Service</a></p>
+      </div>
+    </div>
+
+    <div class="lang-content" data-lang="zh" dir="ltr">
+      <div class="header">
+        <span class="badge">删除账户</span>
+        <h1>账户删除</h1>
+        <p class="updated">最后更新：2026年5月5日</p>
+        <p class="subtitle">如何请求删除您的 FastCore 账户及相关数据。</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">1</span>概述</h2>
+        <p>FastCore: Intermittent Fasting 允许账户持有人请求删除其应用账户以及相关的已同步数据。</p>
+        <p>本页面是 FastCore 和 Davis Kiprotich 提供的网页删除入口，即使您已无法访问应用，也可以通过这里发起删除请求。</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">2</span>在应用内删除</h2>
+        <p>如果您仍然处于登录状态，可以直接在 FastCore 内删除账户。</p>
+        <ul><li>打开 FastCore。</li><li>进入个人资料页面。</li><li>选择 <strong>Delete Account</strong>。</li><li>输入 <strong>DELETE</strong> 并确认。</li></ul>
+        <div class="highlight-box"><p>应用内删除适用于已登录用户。仅保存在您设备上的访客模式数据，可通过清除应用数据或卸载应用来移除。</p></div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">3</span>通过本网页删除</h2>
+        <p>如果您已经卸载应用或无法访问应用，可以通过电子邮件请求删除。</p>
+        <ul><li>发送邮件至 <strong>devmile45@gmail.com</strong>。</li><li>邮件主题请写为 <strong>FastCore Account Deletion Request</strong>。</li><li>尽量使用与 FastCore 账户绑定的邮箱发送请求。</li><li>如果无法使用该邮箱，请在邮件中提供账户绑定邮箱以及足够的信息以便我们核实请求。</li></ul>
+        <a class="primary-link" href="mailto:devmile45@gmail.com?subject=FastCore%20Account%20Deletion%20Request">发送删除请求邮件</a>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">4</span>我们会删除哪些数据</h2>
+        <p>在处理有效的 FastCore 账户删除请求时，我们会从现有系统中删除该账户及相关已同步数据，但以下保留说明中的有限情况除外。</p>
+        <ul><li>账户和资料信息，例如电子邮箱、显示名称、资料信息以及与 FastCore 相关的身份验证记录。</li><li>已同步的断食记录、体重记录、饮水或补水记录，以及与账户关联的健康追踪记录。</li><li>不再需要用于维护已删除账户的其他已同步偏好设置和账户关联应用记录。</li></ul>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">5</span>可能会保留的数据</h2>
+        <p>出于合法原因，部分信息可能需要保留一段有限时间。</p>
+        <ul><li>安全、欺诈防范、滥用防范、争议解决或法律合规所需的记录。</li><li>由 Google Play、Apple App Store 或 RevenueCat 按其自身政策保留的订阅和账单记录。</li><li>仍保存在您自己设备上的本地数据，直到您清除应用数据或卸载应用。</li></ul>
+        <div class="highlight-box"><p>删除 FastCore 账户不会取消通过 Google Play 或 App Store 计费的订阅。请在相应商店设置中单独管理或取消订阅。</p></div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">6</span>帮助与处理时间</h2>
+        <p>在处理删除请求之前，我们可能需要先验证请求。如需帮助，请联系 <strong>devmile45@gmail.com</strong>。</p>
+        <p>开发者：<strong>Davis Kiprotich</strong></p>
+        <p>应用：<strong>FastCore: Intermittent Fasting</strong></p>
+      </div>
+
+      <div class="footer">
+        <p>© 2026 FastCore。保留所有权利。</p>
+        <p><a href="../privacy/index.html?lang=zh">隐私政策</a> | <a href="../terms/index.html?lang=zh">服务条款</a></p>
+      </div>
+    </div>
+
+    <div class="lang-content" data-lang="hi" dir="ltr">
+      <div class="header">
+        <span class="badge">खाता हटाना</span>
+        <h1>खाता हटाना</h1>
+        <p class="updated">अंतिम अपडेट: 5 मई 2026</p>
+        <p class="subtitle">अपने FastCore खाते और संबंधित डेटा को हटाने का अनुरोध कैसे करें।</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">1</span>सारांश</h2>
+        <p>FastCore: Intermittent Fasting खाता धारकों को अपने ऐप खाते और उससे जुड़े सिंक किए गए डेटा को हटाने का अनुरोध करने की सुविधा देता है।</p>
+        <p>यह पेज FastCore और Davis Kiprotich के लिए वेब-आधारित डिलीशन संसाधन है, ताकि ऐप उपलब्ध न होने पर भी उपयोगकर्ता डिलीशन अनुरोध भेज सकें।</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">2</span>ऐप के अंदर हटाना</h2>
+        <p>यदि आप अभी भी साइन इन हैं, तो आप FastCore के अंदर सीधे अपना खाता हटा सकते हैं।</p>
+        <ul><li>FastCore खोलें।</li><li>अपनी प्रोफ़ाइल स्क्रीन पर जाएँ।</li><li><strong>Delete Account</strong> चुनें।</li><li><strong>DELETE</strong> टाइप करके पुष्टि करें।</li></ul>
+        <div class="highlight-box"><p>इन-ऐप डिलीशन साइन-इन उपयोगकर्ताओं के लिए है। केवल आपके डिवाइस पर मौजूद गेस्ट मोड डेटा को ऐप डेटा साफ़ करके या ऐप अनइंस्टॉल करके हटाया जा सकता है।</p></div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">3</span>इस वेब पेज से हटाना</h2>
+        <p>यदि आपने ऐप हटा दिया है या उसे एक्सेस नहीं कर पा रहे हैं, तो आप ईमेल द्वारा डिलीशन अनुरोध भेज सकते हैं।</p>
+        <ul><li><strong>devmile45@gmail.com</strong> पर ईमेल भेजें।</li><li>विषय पंक्ति में <strong>FastCore Account Deletion Request</strong> लिखें।</li><li>संभव हो तो वही ईमेल उपयोग करें जो आपके FastCore खाते से जुड़ा है।</li><li>यदि वह संभव न हो, तो खाते से जुड़ी ईमेल और सत्यापन के लिए पर्याप्त जानकारी लिखें।</li></ul>
+        <a class="primary-link" href="mailto:devmile45@gmail.com?subject=FastCore%20Account%20Deletion%20Request">डिलीशन अनुरोध ईमेल करें</a>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">4</span>हम क्या हटाते हैं</h2>
+        <p>मान्य FastCore डिलीशन अनुरोध पर, नीचे दिए गए सीमित अपवादों को छोड़कर, हम खाते और संबंधित सिंक किए गए डेटा को अपने सक्रिय सिस्टम से हटा देते हैं।</p>
+        <ul><li>खाता और प्रोफ़ाइल जानकारी जैसे ईमेल पता, डिस्प्ले नाम, प्रोफ़ाइल डेटा, और FastCore से जुड़े ऑथेंटिकेशन रिकॉर्ड।</li><li>सिंक किए गए उपवास सत्र, वजन प्रविष्टियाँ, पानी या हाइड्रेशन रिकॉर्ड, और खाते से जुड़े अन्य वेलनेस रिकॉर्ड।</li><li>अन्य सिंक प्राथमिकताएँ और खाता-लिंक्ड रिकॉर्ड जो हटाए गए खाते के संचालन के लिए अब आवश्यक नहीं हैं।</li></ul>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">5</span>क्या रखा जा सकता है</h2>
+        <p>कुछ जानकारी वैध कारणों से सीमित समय तक रखी जा सकती है।</p>
+        <ul><li>सुरक्षा, धोखाधड़ी-निवारण, दुरुपयोग-निवारण, विवाद समाधान, या कानूनी अनुपालन से जुड़े रिकॉर्ड।</li><li>Google Play, Apple App Store, या RevenueCat द्वारा उनकी अपनी नीतियों के तहत रखे गए बिलिंग और सब्सक्रिप्शन रिकॉर्ड।</li><li>आपके अपने डिवाइस पर स्थानीय रूप से बचा डेटा, जब तक आप ऐप डेटा साफ़ न करें या ऐप अनइंस्टॉल न करें।</li></ul>
+        <div class="highlight-box"><p>FastCore खाता हटाने से Google Play या App Store के माध्यम से चल रही सदस्यता स्वतः रद्द नहीं होती। उसे संबंधित स्टोर सेटिंग्स में अलग से प्रबंधित या रद्द करें।</p></div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">6</span>सहायता और समय</h2>
+        <p>डिलीशन अनुरोध पूरा करने से पहले हमें सत्यापन की आवश्यकता हो सकती है। सहायता के लिए <strong>devmile45@gmail.com</strong> पर संपर्क करें।</p>
+        <p>डेवलपर: <strong>Davis Kiprotich</strong></p>
+        <p>ऐप: <strong>FastCore: Intermittent Fasting</strong></p>
+      </div>
+
+      <div class="footer">
+        <p>© 2026 FastCore. सर्वाधिकार सुरक्षित।</p>
+        <p><a href="../privacy/index.html?lang=hi">गोपनीयता नीति</a> | <a href="../terms/index.html?lang=hi">सेवा की शर्तें</a></p>
+      </div>
+    </div>
+
+    <div class="lang-content" data-lang="es" dir="ltr">
+      <div class="header">
+        <span class="badge">Eliminar cuenta</span>
+        <h1>Eliminación de cuenta</h1>
+        <p class="updated">Última actualización: 5 de mayo de 2026</p>
+        <p class="subtitle">Cómo solicitar la eliminación de tu cuenta de FastCore y de los datos asociados.</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">1</span>Resumen</h2>
+        <p>FastCore: Intermittent Fasting permite a los titulares de cuentas solicitar la eliminación de su cuenta de la app y de los datos sincronizados asociados.</p>
+        <p>Esta página es el recurso web de eliminación para FastCore y Davis Kiprotich, de modo que los usuarios puedan solicitar la eliminación incluso si ya no tienen acceso a la app.</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">2</span>Eliminar dentro de la app</h2>
+        <p>Si todavía has iniciado sesión, puedes eliminar tu cuenta directamente dentro de FastCore.</p>
+        <ul><li>Abre FastCore.</li><li>Ve a tu perfil.</li><li>Selecciona <strong>Delete Account</strong>.</li><li>Escribe <strong>DELETE</strong> y confirma.</li></ul>
+        <div class="highlight-box"><p>La eliminación dentro de la app está pensada para usuarios con sesión iniciada. Los datos del modo invitado que solo existen en tu dispositivo pueden eliminarse borrando los datos de la app o desinstalándola.</p></div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">3</span>Eliminar desde esta página web</h2>
+        <p>Si ya desinstalaste la app o no puedes acceder a ella, puedes solicitar la eliminación por correo electrónico.</p>
+        <ul><li>Envía un correo a <strong>devmile45@gmail.com</strong>.</li><li>Usa el asunto <strong>FastCore Account Deletion Request</strong>.</li><li>Siempre que sea posible, envía la solicitud desde el correo vinculado a tu cuenta de FastCore.</li><li>Si no puedes hacerlo, incluye el correo vinculado a la cuenta y suficiente información para que podamos verificar la solicitud.</li></ul>
+        <a class="primary-link" href="mailto:devmile45@gmail.com?subject=FastCore%20Account%20Deletion%20Request">Enviar solicitud por correo</a>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">4</span>Qué eliminamos</h2>
+        <p>Cuando procesamos una solicitud válida de eliminación de una cuenta de FastCore, eliminamos la cuenta y los datos sincronizados asociados de nuestros sistemas activos, sujeto a las notas limitadas de conservación indicadas abajo.</p>
+        <ul><li>Información de cuenta y perfil como correo electrónico, nombre visible, datos de perfil y registros de autenticación vinculados a FastCore.</li><li>Sesiones de ayuno sincronizadas, registros de peso, registros de agua o hidratación y otros registros de bienestar vinculados a la cuenta.</li><li>Otras preferencias sincronizadas y registros vinculados a la cuenta que ya no sean necesarios para operar la cuenta eliminada.</li></ul>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">5</span>Qué puede conservarse</h2>
+        <p>Algunos datos pueden conservarse durante períodos limitados por motivos legítimos.</p>
+        <ul><li>Registros relacionados con seguridad, prevención de fraude, prevención de abuso, resolución de disputas o cumplimiento legal.</li><li>Registros de facturación y suscripción conservados por Google Play, Apple App Store o RevenueCat conforme a sus propias políticas.</li><li>Datos guardados solo en tu dispositivo hasta que borres los datos de la app o la desinstales.</li></ul>
+        <div class="highlight-box"><p>Eliminar tu cuenta de FastCore no cancela las suscripciones cobradas por Google Play o App Store. Debes gestionarlas o cancelarlas por separado en la tienda correspondiente.</p></div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">6</span>Ayuda y plazos</h2>
+        <p>Podemos necesitar verificar la solicitud antes de completarla. Si necesitas ayuda, contáctanos en <strong>devmile45@gmail.com</strong>.</p>
+        <p>Desarrollador: <strong>Davis Kiprotich</strong></p>
+        <p>App: <strong>FastCore: Intermittent Fasting</strong></p>
+      </div>
+
+      <div class="footer">
+        <p>© 2026 FastCore. Todos los derechos reservados.</p>
+        <p><a href="../privacy/index.html?lang=es">Política de Privacidad</a> | <a href="../terms/index.html?lang=es">Términos de Servicio</a></p>
+      </div>
+    </div>
+
+    <div class="lang-content" data-lang="ar" dir="rtl">
+      <div class="header">
+        <span class="badge">حذف الحساب</span>
+        <h1>حذف الحساب</h1>
+        <p class="updated">آخر تحديث: 5 مايو 2026</p>
+        <p class="subtitle">كيفية طلب حذف حساب FastCore والبيانات المرتبطة به.</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">1</span>نظرة عامة</h2>
+        <p>يتيح FastCore: Intermittent Fasting لأصحاب الحسابات طلب حذف حساب التطبيق والبيانات المتزامنة المرتبطة به.</p>
+        <p>هذه الصفحة هي مورد الحذف عبر الويب الخاص بـ FastCore و Davis Kiprotich حتى يتمكن المستخدمون من طلب الحذف حتى إذا لم يعد بإمكانهم الوصول إلى التطبيق.</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">2</span>الحذف من داخل التطبيق</h2>
+        <p>إذا كنت لا تزال مسجلاً للدخول، فيمكنك حذف حسابك مباشرة من داخل FastCore.</p>
+        <ul><li>افتح FastCore.</li><li>انتقل إلى شاشة الملف الشخصي.</li><li>اختر <strong>Delete Account</strong>.</li><li>اكتب <strong>DELETE</strong> ثم أكّد.</li></ul>
+        <div class="highlight-box"><p>الحذف من داخل التطبيق مخصص للمستخدمين المسجلين للدخول. أما بيانات وضع الضيف الموجودة فقط على جهازك فيمكن حذفها من خلال مسح بيانات التطبيق أو إزالة التطبيق.</p></div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">3</span>الحذف عبر هذه الصفحة</h2>
+        <p>إذا كنت قد حذفت التطبيق أو لم تعد تستطيع الوصول إليه، يمكنك طلب الحذف عبر البريد الإلكتروني.</p>
+        <ul><li>أرسل رسالة إلى <strong>devmile45@gmail.com</strong>.</li><li>استخدم العنوان <strong>FastCore Account Deletion Request</strong>.</li><li>كلما أمكن، أرسل الطلب من البريد الإلكتروني المرتبط بحساب FastCore الخاص بك.</li><li>إذا لم يكن ذلك ممكناً، فاذكر البريد المرتبط بالحساب ومعلومات كافية حتى نتمكن من التحقق من الطلب.</li></ul>
+        <a class="primary-link" href="mailto:devmile45@gmail.com?subject=FastCore%20Account%20Deletion%20Request">إرسال طلب الحذف</a>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">4</span>ما الذي نحذفه</h2>
+        <p>عند معالجة طلب حذف صالح لحساب FastCore، نحذف الحساب والبيانات المتزامنة المرتبطة به من أنظمتنا النشطة، مع مراعاة ملاحظات الاحتفاظ المحدودة أدناه.</p>
+        <ul><li>معلومات الحساب والملف الشخصي مثل البريد الإلكتروني والاسم الظاهر وبيانات الملف وسجلات المصادقة المرتبطة بـ FastCore.</li><li>جلسات الصيام المتزامنة وسجلات الوزن وسجلات الماء أو الترطيب وغيرها من سجلات العافية المرتبطة بالحساب.</li><li>أي تفضيلات متزامنة أخرى وسجلات مرتبطة بالحساب لم تعد ضرورية لتشغيل الحساب المحذوف.</li></ul>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">5</span>ما قد يتم الاحتفاظ به</h2>
+        <p>قد يلزم الاحتفاظ ببعض المعلومات لفترات محدودة لأسباب مشروعة.</p>
+        <ul><li>السجلات المتعلقة بالأمان ومنع الاحتيال ومنع إساءة الاستخدام وحل النزاعات أو الامتثال القانوني.</li><li>سجلات الفوترة والاشتراك التي تحتفظ بها Google Play أو Apple App Store أو RevenueCat وفق سياساتها الخاصة.</li><li>البيانات المحلية المحفوظة على جهازك إلى أن تقوم بمسح بيانات التطبيق أو إزالة التطبيق.</li></ul>
+        <div class="highlight-box"><p>حذف حساب FastCore لا يلغي الاشتراكات المفوترة عبر Google Play أو App Store. يجب إدارة هذه الاشتراكات أو إلغاؤها بشكل منفصل من إعدادات المتجر المعني.</p></div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">6</span>المساعدة والمدة</h2>
+        <p>قد نحتاج إلى التحقق من الطلب قبل إكماله. إذا كنت بحاجة إلى مساعدة، فاتصل بنا عبر <strong>devmile45@gmail.com</strong>.</p>
+        <p>المطور: <strong>Davis Kiprotich</strong></p>
+        <p>التطبيق: <strong>FastCore: Intermittent Fasting</strong></p>
+      </div>
+
+      <div class="footer">
+        <p>© 2026 FastCore. جميع الحقوق محفوظة.</p>
+        <p><a href="../privacy/index.html?lang=ar">سياسة الخصوصية</a> | <a href="../terms/index.html?lang=ar">شروط الخدمة</a></p>
+      </div>
+    </div>
+
+    <div class="lang-content" data-lang="fr" dir="ltr">
+      <div class="header">
+        <span class="badge">Suppression du compte</span>
+        <h1>Suppression du compte</h1>
+        <p class="updated">Dernière mise à jour : 5 mai 2026</p>
+        <p class="subtitle">Comment demander la suppression de votre compte FastCore et des données associées.</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">1</span>Vue d'ensemble</h2>
+        <p>FastCore: Intermittent Fasting permet aux titulaires d'un compte de demander la suppression de leur compte d'application et des données synchronisées associées.</p>
+        <p>Cette page est la ressource web de suppression pour FastCore et Davis Kiprotich afin que les utilisateurs puissent demander la suppression même s'ils n'ont plus accès à l'application.</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">2</span>Suppression depuis l'application</h2>
+        <p>Si vous êtes encore connecté, vous pouvez supprimer votre compte directement dans FastCore.</p>
+        <ul><li>Ouvrez FastCore.</li><li>Accédez à votre profil.</li><li>Sélectionnez <strong>Delete Account</strong>.</li><li>Saisissez <strong>DELETE</strong> puis confirmez.</li></ul>
+        <div class="highlight-box"><p>La suppression intégrée à l'application est destinée aux utilisateurs connectés. Les données du mode invité présentes uniquement sur votre appareil peuvent être supprimées en effaçant les données de l'application ou en désinstallant l'application.</p></div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">3</span>Suppression via cette page web</h2>
+        <p>Si vous avez déjà désinstallé l'application ou si vous ne pouvez plus y accéder, vous pouvez demander la suppression par e-mail.</p>
+        <ul><li>Envoyez un message à <strong>devmile45@gmail.com</strong>.</li><li>Utilisez l'objet <strong>FastCore Account Deletion Request</strong>.</li><li>Dans la mesure du possible, envoyez la demande depuis l'adresse e-mail liée à votre compte FastCore.</li><li>Sinon, indiquez l'adresse liée au compte ainsi que suffisamment d'informations pour nous permettre de vérifier la demande.</li></ul>
+        <a class="primary-link" href="mailto:devmile45@gmail.com?subject=FastCore%20Account%20Deletion%20Request">Envoyer la demande de suppression</a>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">4</span>Ce que nous supprimons</h2>
+        <p>Lorsque nous traitons une demande valide de suppression d'un compte FastCore, nous supprimons le compte et les données synchronisées associées de nos systèmes actifs, sous réserve des notes de conservation limitées ci-dessous.</p>
+        <ul><li>Les informations de compte et de profil comme l'adresse e-mail, le nom affiché, les données de profil et les enregistrements d'authentification liés à FastCore.</li><li>Les sessions de jeûne synchronisées, les entrées de poids, les enregistrements d'eau ou d'hydratation et les autres données de bien-être liées au compte.</li><li>Les autres préférences synchronisées et enregistrements liés au compte qui ne sont plus nécessaires au fonctionnement du compte supprimé.</li></ul>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">5</span>Ce qui peut être conservé</h2>
+        <p>Certaines informations peuvent devoir être conservées pendant des périodes limitées pour des raisons légitimes.</p>
+        <ul><li>Les enregistrements liés à la sécurité, à la prévention de la fraude, à la prévention des abus, au règlement des litiges ou au respect des obligations légales.</li><li>Les informations de facturation et d'abonnement conservées par Google Play, l'Apple App Store ou RevenueCat selon leurs propres politiques.</li><li>Les données stockées localement sur votre appareil jusqu'à ce que vous effaciez les données de l'application ou la désinstalliez.</li></ul>
+        <div class="highlight-box"><p>La suppression de votre compte FastCore n'annule pas les abonnements facturés via Google Play ou l'App Store. Gérez ou annulez ces abonnements séparément dans les paramètres de la boutique concernée.</p></div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">6</span>Aide et délai</h2>
+        <p>Nous pouvons avoir besoin de vérifier la demande avant de la traiter. Si vous avez besoin d'aide, contactez-nous à <strong>devmile45@gmail.com</strong>.</p>
+        <p>Développeur : <strong>Davis Kiprotich</strong></p>
+        <p>Application : <strong>FastCore: Intermittent Fasting</strong></p>
+      </div>
+
+      <div class="footer">
+        <p>© 2026 FastCore. Tous droits réservés.</p>
+        <p><a href="../privacy/index.html?lang=fr">Politique de Confidentialité</a> | <a href="../terms/index.html?lang=fr">Conditions d'Utilisation</a></p>
+      </div>
+    </div>
+
+    <div class="lang-content" data-lang="de" dir="ltr">
+      <div class="header">
+        <span class="badge">Konto löschen</span>
+        <h1>Kontolöschung</h1>
+        <p class="updated">Zuletzt aktualisiert: 5. Mai 2026</p>
+        <p class="subtitle">So beantragen Sie die Löschung Ihres FastCore-Kontos und der zugehörigen Daten.</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">1</span>Überblick</h2>
+        <p>FastCore: Intermittent Fasting ermöglicht Kontoinhabern, die Löschung ihres App-Kontos und der damit verbundenen synchronisierten Daten zu beantragen.</p>
+        <p>Diese Seite ist die webbasierte Löschressource für FastCore und Davis Kiprotich, damit Nutzer die Löschung auch dann beantragen können, wenn sie keinen Zugriff mehr auf die App haben.</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">2</span>Löschung in der App</h2>
+        <p>Wenn Sie noch angemeldet sind, können Sie Ihr Konto direkt in FastCore löschen.</p>
+        <ul><li>Öffnen Sie FastCore.</li><li>Gehen Sie zu Ihrem Profil.</li><li>Wählen Sie <strong>Delete Account</strong>.</li><li>Geben Sie <strong>DELETE</strong> ein und bestätigen Sie.</li></ul>
+        <div class="highlight-box"><p>Die In-App-Löschung ist für angemeldete Nutzer gedacht. Daten aus dem Gastmodus, die nur auf Ihrem Gerät gespeichert sind, können durch das Löschen der App-Daten oder durch Deinstallation entfernt werden.</p></div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">3</span>Löschung über diese Webseite</h2>
+        <p>Wenn Sie die App bereits deinstalliert haben oder nicht mehr darauf zugreifen können, können Sie die Löschung per E-Mail beantragen.</p>
+        <ul><li>Senden Sie eine E-Mail an <strong>devmile45@gmail.com</strong>.</li><li>Verwenden Sie den Betreff <strong>FastCore Account Deletion Request</strong>.</li><li>Senden Sie die Anfrage möglichst von der E-Mail-Adresse, die mit Ihrem FastCore-Konto verknüpft ist.</li><li>Falls das nicht möglich ist, nennen Sie die verknüpfte E-Mail-Adresse und genügend Informationen zur Überprüfung Ihrer Anfrage.</li></ul>
+        <a class="primary-link" href="mailto:devmile45@gmail.com?subject=FastCore%20Account%20Deletion%20Request">Löschanfrage per E-Mail senden</a>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">4</span>Was wir löschen</h2>
+        <p>Wenn wir eine gültige Löschanfrage für ein FastCore-Konto bearbeiten, löschen wir das Konto und die damit verbundenen synchronisierten Daten aus unseren aktiven Systemen, vorbehaltlich der unten genannten begrenzten Aufbewahrungshinweise.</p>
+        <ul><li>Konto- und Profilinformationen wie E-Mail-Adresse, Anzeigename, Profildaten und Authentifizierungsdaten, die mit FastCore verknüpft sind.</li><li>Synchronisierte Fastensitzungen, Gewichtseinträge, Wasser- oder Hydrationsdaten sowie andere mit dem Konto verbundene Wellness-Daten.</li><li>Weitere synchronisierte Einstellungen und kontobezogene Datensätze, die für das gelöschte Konto nicht mehr erforderlich sind.</li></ul>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">5</span>Was aufbewahrt werden kann</h2>
+        <p>Einige Informationen müssen möglicherweise aus legitimen Gründen für begrenzte Zeiträume aufbewahrt werden.</p>
+        <ul><li>Datensätze im Zusammenhang mit Sicherheit, Betrugsprävention, Missbrauchsprävention, Streitbeilegung oder gesetzlichen Verpflichtungen.</li><li>Abrechnungs- und Abonnementdaten, die von Google Play, dem Apple App Store oder RevenueCat nach deren eigenen Richtlinien aufbewahrt werden.</li><li>Lokal auf Ihrem Gerät gespeicherte Daten, bis Sie die App-Daten löschen oder die App deinstallieren.</li></ul>
+        <div class="highlight-box"><p>Das Löschen Ihres FastCore-Kontos beendet keine über Google Play oder den App Store abgerechneten Abonnements. Verwalten oder kündigen Sie diese separat in den Einstellungen des jeweiligen Stores.</p></div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">6</span>Hilfe und Bearbeitungszeit</h2>
+        <p>Möglicherweise müssen wir eine Löschanfrage vor der Bearbeitung verifizieren. Wenn Sie Hilfe benötigen, kontaktieren Sie uns unter <strong>devmile45@gmail.com</strong>.</p>
+        <p>Entwickler: <strong>Davis Kiprotich</strong></p>
+        <p>App: <strong>FastCore: Intermittent Fasting</strong></p>
+      </div>
+
+      <div class="footer">
+        <p>© 2026 FastCore. Alle Rechte vorbehalten.</p>
+        <p><a href="../privacy/index.html?lang=de">Datenschutzrichtlinie</a> | <a href="../terms/index.html?lang=de">Nutzungsbedingungen</a></p>
+      </div>
+    </div>
+
+    <div class="lang-content" data-lang="bn" dir="ltr">
+      <div class="header">
+        <span class="badge">অ্যাকাউন্ট মুছুন</span>
+        <h1>অ্যাকাউন্ট মুছে ফেলা</h1>
+        <p class="updated">সর্বশেষ হালনাগাদ: ৫ মে ২০২৬</p>
+        <p class="subtitle">কীভাবে আপনার FastCore অ্যাকাউন্ট এবং সম্পর্কিত ডেটা মুছে ফেলার অনুরোধ করবেন।</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">1</span>সংক্ষিপ্ত বিবরণ</h2>
+        <p>FastCore: Intermittent Fasting অ্যাকাউন্টধারীদের তাদের অ্যাপ অ্যাকাউন্ট এবং সংশ্লিষ্ট সিঙ্ক করা ডেটা মুছে ফেলার অনুরোধ করার সুযোগ দেয়।</p>
+        <p>এই পেজটি FastCore এবং Davis Kiprotich-এর জন্য ওয়েব-ভিত্তিক ডিলিশন রিসোর্স, যাতে ব্যবহারকারীরা অ্যাপ ব্যবহার করতে না পারলেও ডিলিশন অনুরোধ করতে পারেন।</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">2</span>অ্যাপের ভিতর থেকে মুছে ফেলা</h2>
+        <p>আপনি যদি এখনও সাইন ইন করা থাকেন, তাহলে FastCore-এর ভিতর থেকেই আপনার অ্যাকাউন্ট মুছে ফেলতে পারেন।</p>
+        <ul><li>FastCore খুলুন।</li><li>আপনার প্রোফাইল স্ক্রিনে যান।</li><li><strong>Delete Account</strong> নির্বাচন করুন।</li><li><strong>DELETE</strong> লিখে নিশ্চিত করুন।</li></ul>
+        <div class="highlight-box"><p>অ্যাপের ভিতরের ডিলিশন সাইন-ইন করা ব্যবহারকারীদের জন্য। শুধু আপনার ডিভাইসে থাকা গেস্ট মোড ডেটা অ্যাপ ডেটা মুছে বা অ্যাপ আনইনস্টল করে সরাতে হবে।</p></div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">3</span>এই ওয়েব পেজ থেকে মুছে ফেলা</h2>
+        <p>আপনি যদি অ্যাপটি ইতিমধ্যে আনইনস্টল করে থাকেন বা অ্যাক্সেস করতে না পারেন, তাহলে ইমেইলের মাধ্যমে ডিলিশন অনুরোধ পাঠাতে পারেন।</p>
+        <ul><li><strong>devmile45@gmail.com</strong> এ ইমেইল করুন।</li><li>সাবজেক্ট লাইনে <strong>FastCore Account Deletion Request</strong> লিখুন।</li><li>সম্ভব হলে আপনার FastCore অ্যাকাউন্টের সাথে যুক্ত ইমেইল ঠিকানা থেকেই অনুরোধ পাঠান।</li><li>যদি তা সম্ভব না হয়, তাহলে অ্যাকাউন্টের ইমেইল এবং অনুরোধ যাচাই করার জন্য পর্যাপ্ত তথ্য দিন।</li></ul>
+        <a class="primary-link" href="mailto:devmile45@gmail.com?subject=FastCore%20Account%20Deletion%20Request">ডিলিশন অনুরোধ ইমেইল করুন</a>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">4</span>আমরা কী মুছে ফেলি</h2>
+        <p>যখন আমরা FastCore অ্যাকাউন্টের জন্য একটি বৈধ ডিলিশন অনুরোধ প্রক্রিয়া করি, তখন নিচের সীমিত সংরক্ষণ নোটের আওতায় না পড়া অ্যাকাউন্ট এবং সংশ্লিষ্ট সিঙ্ক করা ডেটা আমাদের সক্রিয় সিস্টেম থেকে মুছে দিই।</p>
+        <ul><li>অ্যাকাউন্ট এবং প্রোফাইল তথ্য যেমন ইমেইল ঠিকানা, প্রদর্শিত নাম, প্রোফাইল ডেটা, এবং FastCore-সংশ্লিষ্ট অথেনটিকেশন রেকর্ড।</li><li>সিঙ্ক করা উপবাস সেশন, ওজন এন্ট্রি, পানি বা হাইড্রেশন রেকর্ড, এবং অ্যাকাউন্ট-সংযুক্ত অন্যান্য ওয়েলনেস রেকর্ড।</li><li>অন্য সিঙ্ক করা পছন্দ এবং অ্যাকাউন্ট-সংযুক্ত অ্যাপ রেকর্ড যা মুছে ফেলা অ্যাকাউন্ট চালাতে আর প্রয়োজন হয় না।</li></ul>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">5</span>কী সংরক্ষিত থাকতে পারে</h2>
+        <p>কিছু তথ্য বৈধ কারণে সীমিত সময়ের জন্য রাখা হতে পারে।</p>
+        <ul><li>নিরাপত্তা, প্রতারণা প্রতিরোধ, অপব্যবহার প্রতিরোধ, বিরোধ নিষ্পত্তি, বা আইনগত বাধ্যবাধকতার সাথে সম্পর্কিত রেকর্ড।</li><li>Google Play, Apple App Store, বা RevenueCat তাদের নিজস্ব নীতির অধীনে যে বিলিং ও সাবস্ক্রিপশন রেকর্ড রাখে।</li><li>আপনার নিজের ডিভাইসে থাকা স্থানীয় ডেটা, যতক্ষণ না আপনি অ্যাপ ডেটা মুছছেন বা অ্যাপ আনইনস্টল করছেন।</li></ul>
+        <div class="highlight-box"><p>FastCore অ্যাকাউন্ট মুছে ফেললে Google Play বা App Store-এর মাধ্যমে বিল হওয়া সাবস্ক্রিপশন স্বয়ংক্রিয়ভাবে বাতিল হয় না। সংশ্লিষ্ট স্টোর সেটিংস থেকে সেগুলো আলাদাভাবে পরিচালনা বা বাতিল করতে হবে।</p></div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">6</span>সহায়তা এবং সময়</h2>
+        <p>অনুরোধ সম্পূর্ণ করার আগে আমাদের যাচাই করতে হতে পারে। সহায়তার জন্য <strong>devmile45@gmail.com</strong> এ যোগাযোগ করুন।</p>
+        <p>ডেভেলপার: <strong>Davis Kiprotich</strong></p>
+        <p>অ্যাপ: <strong>FastCore: Intermittent Fasting</strong></p>
+      </div>
+
+      <div class="footer">
+        <p>© 2026 FastCore. সর্বস্বত্ব সংরক্ষিত।</p>
+        <p><a href="../privacy/index.html?lang=bn">গোপনীয়তা নীতি</a> | <a href="../terms/index.html?lang=bn">সেবার শর্তাবলি</a></p>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    const SUPPORTED_LANGS = ["en","zh","hi","es","ar","fr","de","bn"];
+    function getInitialLang() {
+      const params = new URLSearchParams(window.location.search);
+      const queryLang = params.get('lang');
+      const storedLang = localStorage.getItem('fastcore-legal-lang');
+      if (queryLang && SUPPORTED_LANGS.includes(queryLang)) return queryLang;
+      if (storedLang && SUPPORTED_LANGS.includes(storedLang)) return storedLang;
+      return 'en';
+    }
+    function applyLang(lang) {
+      const safeLang = SUPPORTED_LANGS.includes(lang) ? lang : 'en';
+      document.querySelectorAll('.lang-content').forEach((el) => {
+        el.classList.toggle('active', el.dataset.lang === safeLang);
+      });
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.lang === safeLang);
+      });
+      document.documentElement.lang = safeLang;
+      document.body.setAttribute('data-active-lang', safeLang);
+      const active = document.querySelector('.lang-content.active');
+      document.documentElement.dir = active ? (active.getAttribute('dir') || 'ltr') : 'ltr';
+      localStorage.setItem('fastcore-legal-lang', safeLang);
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', safeLang);
+      window.history.replaceState({}, '', url);
+    }
+    function switchLang(lang) {
+      applyLang(lang);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      applyLang(getInitialLang());
+    });
+  </script>
+</body>
+</html>
