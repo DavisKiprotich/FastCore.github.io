@@ -1,933 +1,193 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy — FastCore</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700&family=Noto+Sans+SC:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="last-updated" content="2026-08-04">
+  <title>Privacy Policy | FastCore</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.7;
-      color: #102235;
-      background: linear-gradient(180deg, #eef9fd 0%, #f8fcfe 100%);
-      min-height: 100vh;
-    }
-    body[data-active-lang="ar"] { direction: rtl; font-family: 'Noto Sans Arabic', 'Inter', sans-serif; }
-    body[data-active-lang="zh"] { font-family: 'Noto Sans SC', 'Inter', sans-serif; }
-    body[data-active-lang="hi"] { font-family: 'Noto Sans Devanagari', 'Inter', sans-serif; }
-    body[data-active-lang="bn"] { font-family: 'Noto Sans Bengali', 'Inter', sans-serif; }
-    .top-bar {
-      background: linear-gradient(135deg, #0b1220 0%, #0891b2 100%);
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 14px rgba(8, 145, 178, 0.22);
-      gap: 16px;
-    }
-    .top-bar a {
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .top-bar a:hover { opacity: 0.86; }
-    .lang-switcher { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
-    .lang-btn {
-      background: rgba(255, 255, 255, 0.14);
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      color: #ffffff;
-      padding: 6px 11px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .lang-btn:hover, .lang-btn.active {
-      background: rgba(255, 255, 255, 0.96);
-      color: #0b1220;
-    }
-    .container {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 32px 24px 80px;
-    }
-    .header {
-      text-align: center;
-      margin-bottom: 36px;
-      padding-top: 12px;
-    }
-    .badge {
-      display: inline-block;
-      background: #dff6fb;
-      color: #0f7490;
-      font-size: 12px;
-      font-weight: 800;
-      padding: 6px 14px;
-      border-radius: 999px;
-      margin-bottom: 16px;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-    }
-    .header h1 {
-      font-size: 32px;
-      font-weight: 800;
-      color: #0b1220;
-      margin-bottom: 8px;
-      letter-spacing: -0.6px;
-    }
-    .header .updated {
-      font-size: 13px;
-      color: #5b7288;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-    .header .subtitle {
-      font-size: 15px;
-      color: #3d5468;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    .card {
-      background: #ffffff;
-      border: 1px solid #d8e8ee;
-      border-radius: 18px;
-      padding: 28px;
-      margin-bottom: 20px;
-      box-shadow: 0 10px 32px rgba(11, 18, 32, 0.05);
-    }
-    .card h2 {
-      font-size: 18px;
-      font-weight: 800;
-      color: #0f7490;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .card h2 .num {
-      background: linear-gradient(135deg, #0891b2, #22d3ee);
-      color: #ffffff;
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: 800;
-      flex-shrink: 0;
-    }
-    .card p {
-      font-size: 14px;
-      color: #334155;
-      margin-bottom: 10px;
-    }
-    .card ul {
-      padding-left: 20px;
-      margin-bottom: 10px;
-    }
-    body[data-active-lang="ar"] .card ul {
-      padding-left: 0;
-      padding-right: 20px;
-    }
-    .card li {
-      font-size: 14px;
-      color: #334155;
-      margin-bottom: 6px;
-    }
-    .highlight-box {
-      background: #ecfeff;
-      border: 1px solid rgba(8, 145, 178, 0.18);
-      border-radius: 12px;
-      padding: 16px 18px;
-      margin-top: 12px;
-    }
-    .highlight-box p {
-      color: #0f5267;
-      font-size: 13px;
-      margin: 0;
-    }
-    .feature-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 200px;
-    }
-    .feature-card h2 {
-      display: block;
-      margin-bottom: 10px;
-    }
-    .primary-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: fit-content;
-      min-width: 180px;
-      padding: 12px 16px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #0b1220 0%, #0891b2 100%);
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
-      margin-top: 10px;
-    }
-    .primary-link:hover { opacity: 0.92; }
-    .footer {
-      text-align: center;
-      padding: 32px 0 8px;
-      border-top: 1px solid #d8e8ee;
-      margin-top: 8px;
-    }
-    .footer p {
-      color: #5b7288;
-      font-size: 13px;
-      margin-bottom: 6px;
-    }
-    .footer a {
-      color: #0f7490;
-      text-decoration: none;
-      font-weight: 700;
-    }
+    :root { color-scheme: dark; --bg: #08111f; --panel: #0e1a2b; --line: #203149; --text: #e8f5f7; --muted: #9db0c4; --accent: #22c3df; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: var(--bg); color: var(--text); font-family: Inter, "Noto Sans", system-ui, sans-serif; line-height: 1.7; }
+    .top-bar { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 20px; background: rgba(8,17,31,.97); border-bottom: 1px solid var(--line); }
+    .brand { color: var(--text); font-weight: 800; text-decoration: none; letter-spacing: .2px; }
+    .lang-switcher { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .lang-btn { min-height: 36px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); color: var(--muted); font-weight: 700; cursor: pointer; }
+    .lang-btn.active { border-color: var(--accent); background: #123144; color: var(--text); }
+    main { width: min(780px, 100%); margin: 0 auto; padding: 36px 20px 72px; }
     .lang-content { display: none; }
     .lang-content.active { display: block; }
-    @media (max-width: 700px) {
-      .container { padding: 24px 16px 56px; }
-      .header h1 { font-size: 26px; }
-      .card { padding: 22px 18px; }
-      .top-bar {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 12px 16px;
-      }
-      .top-bar a { justify-content: center; }
-      .hero-grid { grid-template-columns: 1fr; }
-    }
+    .page-header { padding-bottom: 28px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+    .badge { display: inline-block; padding: 5px 10px; border: 1px solid #175a6c; border-radius: 999px; color: var(--accent); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .7px; }
+    h1 { margin: 14px 0 4px; font-size: clamp(32px, 7vw, 48px); line-height: 1.12; letter-spacing: -1.2px; }
+    .updated { margin: 0; color: var(--muted); font-size: 13px; }
+    .intro { max-width: 68ch; margin: 18px 0 0; color: #bfd0dc; font-size: 16px; }
+    .legal-section { padding: 25px 0; border-bottom: 1px solid var(--line); }
+    .legal-section h2 { margin: 0 0 9px; color: var(--text); font-size: 19px; line-height: 1.35; }
+    .legal-section p { max-width: 72ch; margin: 0; color: #bdcad7; }
+    footer { display: flex; justify-content: space-between; gap: 20px; padding-top: 30px; color: var(--muted); font-size: 14px; }
+    footer p { margin: 0; }
+    footer a { color: var(--accent); font-weight: 700; text-decoration: none; }
+    [dir="rtl"] { text-align: right; }
+    @media (max-width: 680px) { .top-bar { align-items: flex-start; flex-direction: column; } .lang-switcher { justify-content: flex-start; } main { padding-top: 28px; } footer { flex-direction: column; } }
   </style>
 </head>
-<body data-active-lang="en">
-  <div class="top-bar">
-    <a href="../index.html?lang=en">⚡ FastCore</a>
-    <div class="lang-switcher">
-      <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button><button class="lang-btn" data-lang="zh" onclick="switchLang('zh')">中文</button><button class="lang-btn" data-lang="hi" onclick="switchLang('hi')">हिं</button><button class="lang-btn" data-lang="es" onclick="switchLang('es')">ES</button><button class="lang-btn" data-lang="ar" onclick="switchLang('ar')">عربي</button><button class="lang-btn" data-lang="fr" onclick="switchLang('fr')">FR</button><button class="lang-btn" data-lang="de" onclick="switchLang('de')">DE</button><button class="lang-btn" data-lang="bn" onclick="switchLang('bn')">বাংলা</button>
-    </div>
-  </div>
-  <div class="container">
-    
-    <div class="lang-content active" data-lang="en" dir="ltr">
-      <div class="header">
-        <span class="badge">🔒 Privacy</span>
+<body>
+  <nav class="top-bar" aria-label="Language and legal navigation">
+    <a class="brand" href="../index.html">FastCore</a>
+    <div class="lang-switcher"><button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button><button class="lang-btn" data-lang="zh" onclick="switchLang('zh')">中文</button><button class="lang-btn" data-lang="hi" onclick="switchLang('hi')">हिन्दी</button><button class="lang-btn" data-lang="es" onclick="switchLang('es')">ES</button><button class="lang-btn" data-lang="ar" onclick="switchLang('ar')">العربية</button><button class="lang-btn" data-lang="fr" onclick="switchLang('fr')">FR</button><button class="lang-btn" data-lang="de" onclick="switchLang('de')">DE</button><button class="lang-btn" data-lang="bn" onclick="switchLang('bn')">বাংলা</button></div>
+  </nav>
+  <main>
+    <article class="lang-content active" data-lang="en" dir="ltr">
+      <header class="page-header">
+        <span class="badge">Privacy</span>
         <h1>Privacy Policy</h1>
-        <p class="updated">Last updated: April 23, 2026</p>
-      </div>
-      
-    <div class="card">
-      <h2><span class="num">1</span>Introduction</h2>
-      <p>FastCore provides fasting, hydration, weight, mood, and wellness tracking tools. This Privacy Policy explains how we collect, use, store, and share information when you use the app and related services.</p><p>By using FastCore, you acknowledge the practices described in this policy.</p>
-      
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">2</span>Information We Collect</h2>
-      <p>We may collect the following categories of information:</p>
-      <ul><li>Account and profile information such as email address, display name, profile photo, and Google sign-in details when you create or connect an account.</li><li>Wellness information such as fasting sessions, weight entries, hydration logs, mood selections, questionnaire answers, goals, schedules, and notification preferences.</li><li>Technical information such as app version, device and operating system details, and diagnostic information made available by the platform or our service providers.</li><li>Subscription metadata such as subscription tier, status, product identifier, expiration date, and store-related IDs from Apple, Google, or RevenueCat.</li></ul>
-      <div class="highlight-box"><p>Payment cards and full billing credentials are processed by the app stores and are not stored by FastCore.</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">3</span>How We Use Information</h2>
-      
-      <ul><li>Provide app features, reminders, and account access.</li><li>Sync your history and preferences across devices when you sign in.</li><li>Manage subscriptions, trial access, purchases, and customer support.</li><li>Improve app performance, stability, language support, and security.</li><li>Enforce our Terms of Service and comply with legal obligations.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">4</span>Storage, Sync, and Security</h2>
-      <p>Some data is stored locally on your device so the app can work quickly and support guest mode.</p><p>If you sign in, certain account and tracking records may also be stored in Supabase so your information can sync across devices.</p>
-      <ul><li>Authentication and synced profile data may be processed through Supabase.</li><li>Subscription status may be processed through RevenueCat and the Apple App Store or Google Play.</li><li>We use reasonable technical and organizational safeguards, but no method of storage or transmission is completely secure.</li></ul>
-      <div class="highlight-box"><p>Using guest mode keeps more of your information on your device, but uninstalling the app can remove local-only records.</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">5</span>Notifications</h2>
-      <p>With your permission, FastCore may schedule notifications such as:</p>
-      <ul><li>Fasting reminders and eating-window alerts.</li><li>Hydration reminders.</li><li>Weight check-ins.</li><li>Motivational and progress notifications.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">6</span>When We Share Information</h2>
-      <p>We may share limited information with service providers that help us operate FastCore.</p>
-      <ul><li>Supabase for authentication and synced data storage.</li><li>RevenueCat and app stores for subscription and billing workflows.</li><li>Expo and platform services for notifications, distribution, and app infrastructure.</li></ul>
-      <div class="highlight-box"><p>We do not sell your personal information.</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">7</span>Your Choices and Rights</h2>
-      
-      <ul><li>You can review and update much of your information inside the app.</li><li>You can disable notifications in FastCore or in your device settings.</li><li>You can sign out and use guest mode if you do not want cloud sync.</li><li>If you are signed in, you can use the in-app Delete Account option to permanently delete your FastCore account and synced data.</li><li>You can still contact us if you need help with a synced data deletion request.</li><li>You can remove guest-mode or other local-only data by clearing app data or uninstalling the app.</li><li>Deleting your FastCore account does not cancel subscriptions billed through the app stores; manage or cancel those in the relevant store settings.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">8</span>Retention and Deletion</h2>
-      <p>We keep information for as long as needed to provide the service, maintain subscriptions, resolve disputes, protect the app, and meet legal obligations.</p>
-      <ul><li>Local records remain on your device until you clear the app data or uninstall.</li><li>If you delete your account from inside the app while signed in, we delete your FastCore account and synced wellness records from our active systems, except where limited retention is required for legal, billing, security, or fraud-prevention purposes.</li><li>Billing and subscription records may be retained by the app stores and RevenueCat under their own policies.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">9</span>Children&#39;s Privacy</h2>
-      <p>FastCore is a wellness app for people who are able to make their own health and account decisions. It is not intended for children.</p><p>If you believe a child has provided personal information through FastCore, contact us at devmile45@gmail.com so we can review and respond.</p>
-      
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">10</span>Changes and Contact</h2>
-      <p>We may update this Privacy Policy from time to time. The latest version will appear on this page with a revised last-updated date.</p><p>If you have questions, support requests, or a data deletion request, email devmile45@gmail.com.</p>
-      
-      
-    </div>
-  
-      <div class="footer">
-        <p>© 2026 FastCore. All rights reserved.</p>
-        <p><a href="../terms/index.html?lang=en">Terms of Service →</a></p>
-      </div>
-    </div>
-  
-    <div class="lang-content" data-lang="zh" dir="ltr">
-      <div class="header">
-        <span class="badge">🔒 隐私</span>
+        <p class="updated">Last updated: August 4, 2026</p>
+        <p class="intro">FastCore is a local-first wellness tracker. This policy explains what information the app handles, where it is stored, and which service providers receive limited subscription data.</p>
+      </header>
+      <section class="legal-section"><h2>1. Information stored on your device</h2><p>FastCore stores your display name, language, onboarding answers, fasting sessions and active-fast state, mood selections, hydration logs, weight entries, goals, and schedules locally on your device. FastCore does not require a FastCore account and does not upload this wellness history to a FastCore cloud database.</p></section>
+      <section class="legal-section"><h2>2. Subscription and technical information</h2><p>Apple App Store or Google Play handles payment details. RevenueCat helps validate purchases and restore premium access. It may receive an anonymous app user ID, device type and operating system, locale and currency, last-seen time, product and entitlement information, Apple receipts, or Google purchase tokens. FastCore does not send your wellness records or display name to RevenueCat, and does not store your payment-card details.</p></section>
+      <section class="legal-section"><h2>3. How information is used</h2><p>Local information is used to provide the timer, progress statistics, hydration and weight tracking, reminders, personalization, and backup and restore. Subscription information is used to show available plans, determine premium access, validate and restore purchases, prevent purchase fraud, and provide subscription support. FastCore does not sell personal information and does not include third-party advertising or cross-app tracking.</p></section>
+      <section class="legal-section"><h2>4. Backups and notifications</h2><p>If device backup is enabled, Apple, Google, or your device provider may back up eligible app data under your settings and their policies. A backup you export is a readable JSON file and is not encrypted by FastCore; you choose where to save or share it and must protect it. Imported files are read only after you select them. With permission, FastCore schedules notifications locally on your device; notification text may appear on the lock screen according to device settings.</p></section>
+      <section class="legal-section"><h2>5. Sharing and international processing</h2><p>Information is disclosed only as needed to Apple, Google, RevenueCat, Expo or operating-system services, and any storage provider you choose for a backup. These providers process information under their own terms and may do so in other countries. FastCore may also disclose information when required by law or necessary to protect users, the app, or legal rights.</p></section>
+      <section class="legal-section"><h2>6. Retention, deletion, and your choices</h2><p>Local records remain until you reset FastCore, clear app data, or uninstall the app. Exported and device backups remain where you saved them until you delete them. Apple, Google, and RevenueCat retain purchase records under their own policies and legal duties. Deleting app data does not cancel a subscription. You can manage notification permission and device backup in system settings and manage billing in the applicable app store.</p></section>
+      <section class="legal-section"><h2>7. Security, children, and contact</h2><p>FastCore uses reasonable safeguards, but no device, file, or transmission method is completely secure. The app is not directed to children who cannot legally consent to its use, and minors should not fast without guidance from a guardian and qualified health professional. We may update this policy and will change the date above. For privacy questions or requests, contact devmile45@gmail.com.</p></section>
+      <footer><p>© 2026 FastCore</p><a href="../terms/index.html?lang=en">Terms of Service</a></footer>
+    </article>
+
+    <article class="lang-content" data-lang="zh" dir="ltr">
+      <header class="page-header">
+        <span class="badge">隐私</span>
         <h1>隐私政策</h1>
-        <p class="updated">最后更新：2026年4月23日</p>
-      </div>
-      
-    <div class="card">
-      <h2><span class="num">1</span>简介</h2>
-      <p>FastCore 提供断食、饮水、体重、心情和健康追踪工具。本隐私政策说明您在使用本应用及相关服务时，我们如何收集、使用、存储和共享信息。</p><p>使用 FastCore 即表示您确认本政策中所述的做法。</p>
-      
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">2</span>我们收集的信息</h2>
-      <p>我们可能收集以下类别的信息：</p>
-      <ul><li>账户和资料信息，例如电子邮箱、显示名称、头像，以及您创建或连接账户时使用的 Google 登录信息。</li><li>健康与追踪信息，例如断食记录、体重记录、饮水记录、心情选择、问卷答案、目标、计划和通知偏好。</li><li>技术信息，例如应用版本、设备和操作系统信息，以及平台或服务提供商提供的诊断信息。</li><li>订阅元数据，例如订阅等级、状态、产品标识、到期时间，以及来自 Apple、Google 或 RevenueCat 的相关标识符。</li></ul>
-      <div class="highlight-box"><p>支付卡信息和完整的账单凭据由应用商店处理，FastCore 不会存储这些信息。</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">3</span>我们如何使用信息</h2>
-      
-      <ul><li>提供应用功能、提醒和账户访问。</li><li>在您登录后同步您的历史记录和偏好设置。</li><li>管理订阅、试用资格、购买和客户支持。</li><li>改进应用性能、稳定性、语言支持和安全性。</li><li>执行我们的服务条款并履行法律义务。</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">4</span>存储、同步与安全</h2>
-      <p>部分数据会保存在您的设备本地，以便应用快速运行并支持访客模式。</p><p>如果您登录，某些账户和追踪记录也可能存储在 Supabase 中，以便在不同设备之间同步。</p>
-      <ul><li>身份验证和同步资料数据可能通过 Supabase 处理。</li><li>订阅状态可能通过 RevenueCat 以及 Apple App Store 或 Google Play 处理。</li><li>我们采取合理的技术和组织安全措施，但没有任何存储或传输方式是绝对安全的。</li></ul>
-      <div class="highlight-box"><p>使用访客模式会让更多信息保留在设备本地，但卸载应用可能会删除仅保存在本地的记录。</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">5</span>通知</h2>
-      <p>在您授权的情况下，FastCore 可能发送以下通知：</p>
-      <ul><li>断食提醒和进食窗口提醒。</li><li>饮水提醒。</li><li>体重打卡提醒。</li><li>激励和进度通知。</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">6</span>我们何时共享信息</h2>
-      <p>我们可能会与帮助我们运营 FastCore 的服务提供商共享有限的信息。</p>
-      <ul><li>Supabase，用于身份验证和同步数据存储。</li><li>RevenueCat 及应用商店，用于订阅和账单流程。</li><li>Expo 和平台服务，用于通知、分发和应用基础设施。</li></ul>
-      <div class="highlight-box"><p>我们不会出售您的个人信息。</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">7</span>您的选择和权利</h2>
-      
-      <ul><li>??????????????????</li><li>???? FastCore ???????????</li><li>?????????????????????????</li><li>?????????????????????????????? FastCore ?????????</li><li>??????????????????????????????</li><li>??????????????????????????????????</li><li>?? FastCore ?????????????????????????????????????</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">8</span>保存期限与删除</h2>
-      <p>我们会在提供服务、维护订阅、解决争议、保护应用以及履行法律义务所需的期限内保留信息。</p>
-      <ul><li>?????????????????????????????</li><li>??????????????????????????????????? FastCore ??????????????????????????????????????????????</li><li>???????????????? RevenueCat ??????????</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">9</span>儿童隐私</h2>
-      <p>FastCore 是一款面向能够自行作出健康和账户决定的用户的健康应用，不面向儿童。</p><p>如果您认为儿童通过 FastCore 提供了个人信息，请发送邮件至 devmile45@gmail.com，我们会进行审核并处理。</p>
-      
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">10</span>变更与联系我们</h2>
-      <p>我们可能会不时更新本隐私政策。最新版本将显示在本页面，并附带新的更新时间。</p><p>如果您有问题、支持请求或数据删除请求，请发送邮件至 devmile45@gmail.com。</p>
-      
-      
-    </div>
-  
-      <div class="footer">
-        <p>© 2026 FastCore。保留所有权利。</p>
-        <p><a href="../terms/index.html?lang=zh">服务条款 →</a></p>
-      </div>
-    </div>
-  
-    <div class="lang-content" data-lang="hi" dir="ltr">
-      <div class="header">
-        <span class="badge">🔒 गोपनीयता</span>
+        <p class="updated">最后更新：2026年8月4日</p>
+        <p class="intro">FastCore 是一款以本地存储为主的健康追踪应用。本政策说明应用处理哪些信息、信息存储在哪里，以及哪些服务提供商会收到有限的订阅数据。</p>
+      </header>
+      <section class="legal-section"><h2>1. 存储在您设备上的信息</h2><p>FastCore 会将您的显示名称、语言、引导问卷答案、断食记录和当前断食状态、心情选择、饮水记录、体重记录、目标与计划保存在您的设备上。FastCore 不要求创建账户，也不会将这些健康记录上传到 FastCore 云数据库。</p></section>
+      <section class="legal-section"><h2>2. 订阅与技术信息</h2><p>付款信息由 Apple App Store 或 Google Play 处理。RevenueCat 用于验证购买并恢复高级权限，可能接收匿名应用用户 ID、设备类型和操作系统、地区与货币、最近使用时间、产品和权限信息、Apple 收据或 Google 购买令牌。FastCore 不会向 RevenueCat 发送您的健康记录或显示名称，也不会保存您的银行卡信息。</p></section>
+      <section class="legal-section"><h2>3. 信息用途</h2><p>本地信息用于提供计时器、进度统计、饮水和体重追踪、提醒、个性化以及备份与恢复。订阅信息用于显示可用套餐、判断高级权限、验证和恢复购买、防止购买欺诈并提供订阅支持。FastCore 不出售个人信息，也不包含第三方广告或跨应用追踪。</p></section>
+      <section class="legal-section"><h2>4. 备份与通知</h2><p>如果您启用设备备份，Apple、Google 或设备提供商可根据您的设置和其政策备份符合条件的应用数据。您导出的备份是可读取的 JSON 文件，FastCore 不会对其加密；保存或分享位置由您选择，请妥善保护。只有在您选择文件后，应用才会读取导入文件。经您授权后，FastCore 会在设备本地安排通知；通知文字是否显示在锁屏上取决于设备设置。</p></section>
+      <section class="legal-section"><h2>5. 共享与跨境处理</h2><p>仅在必要时向 Apple、Google、RevenueCat、Expo 或操作系统服务，以及您为备份选择的存储提供商披露信息。这些提供商依据各自条款处理信息，并可能在其他国家或地区处理。法律要求或为保护用户、应用及合法权利时，FastCore 也可能披露信息。</p></section>
+      <section class="legal-section"><h2>6. 保留、删除与您的选择</h2><p>本地记录会保留到您重置 FastCore、清除应用数据或卸载应用为止。导出备份和设备备份会保留在您选择的位置，直到您自行删除。Apple、Google 和 RevenueCat 会依其政策和法律义务保留购买记录。删除应用数据不会取消订阅。您可在系统设置中管理通知和设备备份，并在相应应用商店管理订阅。</p></section>
+      <section class="legal-section"><h2>7. 安全、儿童与联系</h2><p>FastCore 采取合理的安全措施，但任何设备、文件或传输方式都无法保证绝对安全。本应用不面向无法依法同意使用的儿童；未成年人不应在没有监护人和合格医疗专业人员指导的情况下断食。我们可能更新本政策并修改上方日期。隐私问题或请求请联系 devmile45@gmail.com。</p></section>
+      <footer><p>© 2026 FastCore</p><a href="../terms/index.html?lang=zh">服务条款</a></footer>
+    </article>
+
+    <article class="lang-content" data-lang="hi" dir="ltr">
+      <header class="page-header">
+        <span class="badge">गोपनीयता</span>
         <h1>गोपनीयता नीति</h1>
-        <p class="updated">अंतिम अपडेट: 23 अप्रैल 2026</p>
-      </div>
-      
-    <div class="card">
-      <h2><span class="num">1</span>परिचय</h2>
-      <p>FastCore उपवास, हाइड्रेशन, वज़न, मूड और वेलनेस ट्रैकिंग टूल प्रदान करता है। यह गोपनीयता नीति बताती है कि ऐप और संबंधित सेवाओं का उपयोग करते समय हम जानकारी कैसे एकत्र, उपयोग, संग्रहीत और साझा करते हैं।</p><p>FastCore का उपयोग करके आप इस नीति में बताई गई प्रक्रियाओं को स्वीकार करते हैं।</p>
-      
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">2</span>हम कौन-सी जानकारी एकत्र करते हैं</h2>
-      <p>हम निम्न प्रकार की जानकारी एकत्र कर सकते हैं:</p>
-      <ul><li>खाता और प्रोफ़ाइल जानकारी जैसे ईमेल पता, डिस्प्ले नाम, प्रोफ़ाइल फ़ोटो और Google साइन-इन विवरण।</li><li>वेलनेस जानकारी जैसे उपवास सत्र, वज़न प्रविष्टियाँ, पानी पीने के रिकॉर्ड, मूड चयन, प्रश्नावली के उत्तर, लक्ष्य, शेड्यूल और नोटिफिकेशन प्राथमिकताएँ।</li><li>तकनीकी जानकारी जैसे ऐप संस्करण, डिवाइस और ऑपरेटिंग सिस्टम का विवरण, तथा प्लेटफ़ॉर्म या सेवा प्रदाताओं द्वारा उपलब्ध कराई गई डायग्नोस्टिक जानकारी।</li><li>सदस्यता मेटाडेटा जैसे प्लान स्तर, स्थिति, प्रोडक्ट आईडी, समाप्ति तिथि और Apple, Google या RevenueCat से जुड़ी पहचान जानकारी।</li></ul>
-      <div class="highlight-box"><p>भुगतान कार्ड की जानकारी और पूर्ण बिलिंग विवरण ऐप स्टोर संभालते हैं; FastCore इन्हें संग्रहीत नहीं करता।</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">3</span>हम जानकारी का उपयोग कैसे करते हैं</h2>
-      
-      <ul><li>ऐप सुविधाएँ, रिमाइंडर और खाता पहुँच प्रदान करने के लिए।</li><li>साइन इन करने पर आपका इतिहास और प्राथमिकताएँ डिवाइसों में सिंक करने के लिए।</li><li>सदस्यता, ट्रायल एक्सेस, खरीदारी और सहायता प्रबंधन के लिए।</li><li>ऐप की स्थिरता, प्रदर्शन, भाषा समर्थन और सुरक्षा सुधारने के लिए।</li><li>हमारी सेवा शर्तों को लागू करने और कानूनी दायित्वों का पालन करने के लिए।</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">4</span>संग्रहण, सिंक और सुरक्षा</h2>
-      <p>कुछ डेटा आपके डिवाइस पर स्थानीय रूप से संग्रहीत होता है ताकि ऐप तेज़ी से काम करे और गेस्ट मोड का समर्थन करे।</p><p>यदि आप साइन इन करते हैं, तो कुछ खाता और ट्रैकिंग रिकॉर्ड Supabase में भी संग्रहीत हो सकते हैं ताकि आपकी जानकारी डिवाइसों में सिंक हो सके।</p>
-      <ul><li>प्रमाणीकरण और सिंक की गई प्रोफ़ाइल जानकारी Supabase के माध्यम से प्रोसेस हो सकती है।</li><li>सदस्यता स्थिति RevenueCat तथा Apple App Store या Google Play के माध्यम से प्रोसेस हो सकती है।</li><li>हम उचित तकनीकी और संगठनात्मक सुरक्षा उपाय अपनाते हैं, लेकिन कोई भी संग्रहण या प्रसारण तरीका पूरी तरह सुरक्षित नहीं होता।</li></ul>
-      <div class="highlight-box"><p>गेस्ट मोड का उपयोग करने पर अधिक डेटा आपके डिवाइस पर रहता है, लेकिन ऐप हटाने पर स्थानीय रिकॉर्ड मिट सकते हैं।</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">5</span>नोटिफिकेशन</h2>
-      <p>आपकी अनुमति से FastCore निम्न प्रकार के नोटिफिकेशन भेज सकता है:</p>
-      <ul><li>उपवास रिमाइंडर और खाने की विंडो अलर्ट।</li><li>हाइड्रेशन रिमाइंडर।</li><li>वज़न चेक-इन रिमाइंडर।</li><li>मोटिवेशन और प्रोग्रेस नोटिफिकेशन।</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">6</span>हम जानकारी कब साझा करते हैं</h2>
-      <p>हम FastCore चलाने में मदद करने वाले सेवा प्रदाताओं के साथ सीमित जानकारी साझा कर सकते हैं।</p>
-      <ul><li>प्रमाणीकरण और सिंक डेटा स्टोरेज के लिए Supabase।</li><li>सदस्यता और बिलिंग वर्कफ़्लो के लिए RevenueCat और ऐप स्टोर।</li><li>नोटिफिकेशन, वितरण और ऐप इन्फ्रास्ट्रक्चर के लिए Expo और प्लेटफ़ॉर्म सेवाएँ।</li></ul>
-      <div class="highlight-box"><p>हम आपकी व्यक्तिगत जानकारी बेचते नहीं हैं।</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">7</span>आपके विकल्प और अधिकार</h2>
-      
-      <ul><li>?? ?? ?? ???? ???? ??????? ??????? ??? ?? ????? ?? ???? ????</li><li>?? FastCore ?? ?????? ???????? ??? ?????????? ??? ?? ???? ????</li><li>??? ?? ?????? ???? ???? ?????, ?? ???? ??? ???? ????? ??? ?? ????? ?? ???? ????</li><li>??? ?? ????-?? ???, ?? ?? ?? ?? ???? Delete Account ?????? ?? ????? ???? ???? FastCore ???? ?? ???? ???? ??? ???? ?????? ??? ?? ??? ???? ????</li><li>??? ???? ???? ??? ?? ???? ?? ????? ??? ????? ?????? ?????, ?? ?? ???? ?????? ?? ?? ???? ????</li><li>?? ?? ???? ???? ???? ?? ?? ????????? ???? ????? ??? ?? ???? ??????? ???? ??? ???? ????</li><li>FastCore ???? ????? ?? ?? ????? ?? ?????? ?? ??? ???? ???? ??????? ???? ???? ????; ??? ??????? ????? ???????? ??? ???????? ?? ???? ?????</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">8</span>रिटेंशन और डिलीशन</h2>
-      <p>हम जानकारी को उतनी अवधि तक रखते हैं जितनी सेवा देने, सदस्यता बनाए रखने, विवाद सुलझाने, ऐप की सुरक्षा करने और कानूनी दायित्व पूरा करने के लिए आवश्यक हो।</p>
-      <ul><li>??????? ??????? ???? ?????? ?? ?? ?? ???? ??? ?? ?? ?? ?? ???? ???? ?? ?? ????????? ???? ?????</li><li>??? ?? ????-?? ???? ??? ?? ?? ???? ?? ???? ???? ????? ???, ?? ?? ???? ?????? ?????? ?? ???? FastCore ???? ?? ???? ??? ?? ?????? ??????? ??? ???? ???, ????? ?? ????? ??????? ?? ??????? ??????, ??????, ??????? ?? ????????-????? ?????????? ?? ??? ???? ?????? ???</li><li>?????? ?? ??????? ??????? ?? ????? ?? RevenueCat ???? ??????? ?? ?????? ?? ???? ????</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">9</span>बच्चों की गोपनीयता</h2>
-      <p>FastCore एक वेलनेस ऐप है और उन लोगों के लिए बनाया गया है जो अपने स्वास्थ्य और खाते से जुड़े निर्णय स्वयं ले सकते हैं। यह बच्चों के लिए नहीं है।</p><p>यदि आपको लगता है कि किसी बच्चे ने FastCore के माध्यम से व्यक्तिगत जानकारी दी है, तो devmile45@gmail.com पर संपर्क करें ताकि हम समीक्षा कर सकें।</p>
-      
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">10</span>बदलाव और संपर्क</h2>
-      <p>हम समय-समय पर इस गोपनीयता नीति को अपडेट कर सकते हैं। नवीनतम संस्करण इस पेज पर नई अपडेट तिथि के साथ दिखाई देगा।</p><p>यदि आपके पास प्रश्न, सहायता अनुरोध या डेटा हटाने का अनुरोध है, तो devmile45@gmail.com पर ईमेल करें।</p>
-      
-      
-    </div>
-  
-      <div class="footer">
-        <p>© 2026 FastCore. सर्वाधिकार सुरक्षित।</p>
-        <p><a href="../terms/index.html?lang=hi">सेवा की शर्तें →</a></p>
-      </div>
-    </div>
-  
-    <div class="lang-content" data-lang="es" dir="ltr">
-      <div class="header">
-        <span class="badge">🔒 Privacidad</span>
+        <p class="updated">अंतिम अपडेट: 4 अगस्त 2026</p>
+        <p class="intro">FastCore एक स्थानीय-प्रथम वेलनेस ट्रैकर है। यह नीति बताती है कि ऐप कौन-सी जानकारी संभालता है, वह कहाँ रहती है और किन सेवा प्रदाताओं को सीमित सदस्यता डेटा मिलता है।</p>
+      </header>
+      <section class="legal-section"><h2>1. आपके डिवाइस पर संग्रहीत जानकारी</h2><p>FastCore आपका प्रदर्शन नाम, भाषा, ऑनबोर्डिंग उत्तर, उपवास सत्र और सक्रिय उपवास स्थिति, मूड, पानी का रिकॉर्ड, वज़न प्रविष्टियाँ, लक्ष्य और समय-सारिणी आपके डिवाइस पर रखता है। FastCore खाते की आवश्यकता नहीं है और यह वेलनेस इतिहास किसी FastCore क्लाउड डेटाबेस पर अपलोड नहीं होता।</p></section>
+      <section class="legal-section"><h2>2. सदस्यता और तकनीकी जानकारी</h2><p>भुगतान विवरण Apple App Store या Google Play संभालता है। RevenueCat खरीद सत्यापित करने और प्रीमियम पहुँच बहाल करने में मदद करता है। उसे अनाम ऐप उपयोगकर्ता ID, डिवाइस प्रकार और ऑपरेटिंग सिस्टम, लोकेल और मुद्रा, अंतिम उपयोग समय, उत्पाद और अधिकार की जानकारी, Apple रसीद या Google खरीद टोकन मिल सकते हैं। FastCore आपके स्वास्थ्य रिकॉर्ड, प्रदर्शन नाम या कार्ड विवरण RevenueCat को नहीं भेजता।</p></section>
+      <section class="legal-section"><h2>3. जानकारी का उपयोग</h2><p>स्थानीय जानकारी टाइमर, प्रगति आँकड़े, पानी और वज़न ट्रैकिंग, रिमाइंडर, निजीकरण और बैकअप/बहाली के लिए उपयोग होती है। सदस्यता जानकारी योजनाएँ दिखाने, प्रीमियम पहुँच तय करने, खरीद सत्यापित और बहाल करने, धोखाधड़ी रोकने तथा सदस्यता सहायता के लिए उपयोग होती है। FastCore निजी जानकारी नहीं बेचता और इसमें तृतीय-पक्ष विज्ञापन या क्रॉस-ऐप ट्रैकिंग नहीं है।</p></section>
+      <section class="legal-section"><h2>4. बैकअप और सूचनाएँ</h2><p>डिवाइस बैकअप चालू होने पर Apple, Google या डिवाइस प्रदाता आपकी सेटिंग और अपनी नीतियों के अनुसार योग्य ऐप डेटा का बैकअप ले सकता है। निर्यातित बैकअप पढ़ी जा सकने वाली JSON फ़ाइल है और FastCore उसे एन्क्रिप्ट नहीं करता; उसे सुरक्षित रखना आपकी जिम्मेदारी है। ऐप केवल आपके चुने हुए आयात फ़ाइल को पढ़ता है। अनुमति मिलने पर सूचनाएँ डिवाइस पर स्थानीय रूप से तय होती हैं और उनकी सामग्री लॉक स्क्रीन पर दिख सकती है।</p></section>
+      <section class="legal-section"><h2>5. साझा करना और अंतरराष्ट्रीय प्रोसेसिंग</h2><p>जानकारी केवल आवश्यकता के अनुसार Apple, Google, RevenueCat, Expo या ऑपरेटिंग-सिस्टम सेवाओं और आपके चुने बैकअप प्रदाता के साथ साझा होती है। ये प्रदाता अपनी शर्तों के तहत अन्य देशों में जानकारी संसाधित कर सकते हैं। कानून की मांग या उपयोगकर्ताओं, ऐप और कानूनी अधिकारों की रक्षा के लिए भी जानकारी दी जा सकती है।</p></section>
+      <section class="legal-section"><h2>6. रखरखाव, हटाना और आपके विकल्प</h2><p>स्थानीय रिकॉर्ड तब तक रहते हैं जब तक आप FastCore रीसेट, ऐप डेटा साफ़ या ऐप अनइंस्टॉल नहीं करते। बैकअप आपके चुने स्थान पर तब तक रहते हैं जब तक आप उन्हें हटाते नहीं। Apple, Google और RevenueCat खरीद रिकॉर्ड अपनी नीतियों के अनुसार रखते हैं। ऐप डेटा हटाने से सदस्यता रद्द नहीं होती। सिस्टम सेटिंग में सूचनाएँ और बैकअप तथा स्टोर में बिलिंग प्रबंधित करें।</p></section>
+      <section class="legal-section"><h2>7. सुरक्षा, बच्चे और संपर्क</h2><p>FastCore उचित सुरक्षा उपाय अपनाता है, लेकिन कोई डिवाइस, फ़ाइल या प्रसारण पूरी तरह सुरक्षित नहीं होता। ऐप उन बच्चों के लिए नहीं है जो कानूनी सहमति नहीं दे सकते; नाबालिगों को अभिभावक और योग्य स्वास्थ्य विशेषज्ञ की सलाह के बिना उपवास नहीं करना चाहिए। नीति बदलने पर ऊपर की तारीख बदलेगी। प्रश्न या अनुरोध devmile45@gmail.com पर भेजें।</p></section>
+      <footer><p>© 2026 FastCore</p><a href="../terms/index.html?lang=hi">सेवा की शर्तें</a></footer>
+    </article>
+
+    <article class="lang-content" data-lang="es" dir="ltr">
+      <header class="page-header">
+        <span class="badge">Privacidad</span>
         <h1>Política de Privacidad</h1>
-        <p class="updated">Última actualización: 23 de abril de 2026</p>
-      </div>
-      
-    <div class="card">
-      <h2><span class="num">1</span>Introducción</h2>
-      <p>FastCore ofrece herramientas para seguimiento de ayuno, hidratación, peso, estado de ánimo y bienestar. Esta Política de Privacidad explica cómo recopilamos, usamos, almacenamos y compartimos información cuando usas la app y los servicios relacionados.</p><p>Al usar FastCore, reconoces las prácticas descritas en esta política.</p>
-      
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">2</span>Información que recopilamos</h2>
-      <p>Podemos recopilar las siguientes categorías de información:</p>
-      <ul><li>Información de cuenta y perfil como correo electrónico, nombre visible, foto de perfil y datos de acceso con Google.</li><li>Información de bienestar como sesiones de ayuno, registros de peso, consumo de agua, selecciones de ánimo, respuestas del cuestionario, metas, horarios y preferencias de notificaciones.</li><li>Información técnica como versión de la app, datos del dispositivo y del sistema operativo, e información diagnóstica proporcionada por la plataforma o nuestros proveedores.</li><li>Metadatos de suscripción como nivel del plan, estado, identificador del producto, fecha de expiración e identificadores relacionados de Apple, Google o RevenueCat.</li></ul>
-      <div class="highlight-box"><p>Las tarjetas de pago y las credenciales completas de facturación son procesadas por las tiendas de aplicaciones y no son almacenadas por FastCore.</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">3</span>Cómo usamos la información</h2>
-      
-      <ul><li>Para ofrecer funciones de la app, recordatorios y acceso a la cuenta.</li><li>Para sincronizar tu historial y tus preferencias entre dispositivos cuando inicias sesión.</li><li>Para gestionar suscripciones, acceso de prueba, compras y soporte al cliente.</li><li>Para mejorar el rendimiento, la estabilidad, los idiomas y la seguridad de la app.</li><li>Para hacer cumplir nuestros Términos de Servicio y cumplir obligaciones legales.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">4</span>Almacenamiento, sincronización y seguridad</h2>
-      <p>Parte de los datos se almacena localmente en tu dispositivo para que la app funcione con rapidez y admita el modo invitado.</p><p>Si inicias sesión, determinados registros de cuenta y seguimiento también pueden almacenarse en Supabase para sincronizar tu información entre dispositivos.</p>
-      <ul><li>La autenticación y los datos de perfil sincronizados pueden procesarse mediante Supabase.</li><li>El estado de la suscripción puede procesarse mediante RevenueCat y Apple App Store o Google Play.</li><li>Usamos medidas técnicas y organizativas razonables, pero ningún método de almacenamiento o transmisión es completamente seguro.</li></ul>
-      <div class="highlight-box"><p>Usar el modo invitado mantiene más información en tu dispositivo, pero desinstalar la app puede eliminar los registros locales.</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">5</span>Notificaciones</h2>
-      <p>Con tu permiso, FastCore puede programar notificaciones como:</p>
-      <ul><li>Recordatorios de ayuno y alertas de ventana de comida.</li><li>Recordatorios de hidratación.</li><li>Recordatorios de control de peso.</li><li>Notificaciones motivacionales y de progreso.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">6</span>Cuándo compartimos información</h2>
-      <p>Podemos compartir información limitada con proveedores que nos ayudan a operar FastCore.</p>
-      <ul><li>Supabase para autenticación y almacenamiento sincronizado.</li><li>RevenueCat y las tiendas de aplicaciones para flujos de suscripción y facturación.</li><li>Expo y servicios de la plataforma para notificaciones, distribución e infraestructura.</li></ul>
-      <div class="highlight-box"><p>No vendemos tu información personal.</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">7</span>Tus opciones y derechos</h2>
-      
-      <ul><li>Puedes revisar y actualizar gran parte de tu informaci?n dentro de la app.</li><li>Puedes desactivar las notificaciones en FastCore o en la configuraci?n del dispositivo.</li><li>Puedes cerrar sesi?n y usar el modo invitado si no quieres sincronizaci?n en la nube.</li><li>Si has iniciado sesi?n, puedes usar la opci?n Eliminar cuenta dentro de la app para borrar permanentemente tu cuenta de FastCore y los datos sincronizados.</li><li>Tambi?n puedes contactarnos si necesitas ayuda con una solicitud de eliminaci?n de datos sincronizados.</li><li>Puedes eliminar datos del modo invitado o solo locales borrando los datos de la app o desinstal?ndola.</li><li>Eliminar tu cuenta de FastCore no cancela las suscripciones facturadas por las tiendas; debes gestionarlas o cancelarlas en la configuraci?n de la tienda correspondiente.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">8</span>Conservación y eliminación</h2>
-      <p>Conservamos la información durante el tiempo necesario para prestar el servicio, mantener suscripciones, resolver disputas, proteger la app y cumplir obligaciones legales.</p>
-      <ul><li>Los registros locales permanecen en tu dispositivo hasta que borres los datos o desinstales la app.</li><li>Si eliminas tu cuenta desde la app mientras has iniciado sesi?n, eliminamos tu cuenta de FastCore y los registros sincronizados de bienestar de nuestros sistemas activos, salvo aquellos datos limitados que debamos conservar por motivos legales, de facturaci?n, seguridad o prevenci?n del fraude.</li><li>Los registros de facturaci?n y suscripci?n pueden ser conservados por las tiendas y RevenueCat seg?n sus propias pol?ticas.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">9</span>Privacidad infantil</h2>
-      <p>FastCore es una app de bienestar para personas capaces de tomar sus propias decisiones de salud y cuenta. No está dirigida a niños.</p><p>Si crees que un menor proporcionó información personal a través de FastCore, contáctanos en devmile45@gmail.com para que podamos revisarlo.</p>
-      
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">10</span>Cambios y contacto</h2>
-      <p>Podemos actualizar esta Política de Privacidad periódicamente. La versión más reciente aparecerá en esta página con una nueva fecha de actualización.</p><p>Si tienes preguntas, solicitudes de soporte o una solicitud de eliminación de datos, escribe a devmile45@gmail.com.</p>
-      
-      
-    </div>
-  
-      <div class="footer">
-        <p>© 2026 FastCore. Todos los derechos reservados.</p>
-        <p><a href="../terms/index.html?lang=es">Términos de Servicio →</a></p>
-      </div>
-    </div>
-  
-    <div class="lang-content" data-lang="ar" dir="rtl">
-      <div class="header">
-        <span class="badge">🔒 الخصوصية</span>
+        <p class="updated">Última actualización: 4 de agosto de 2026</p>
+        <p class="intro">FastCore es un rastreador de bienestar que prioriza el almacenamiento local. Esta política explica qué información maneja la app, dónde se guarda y qué datos limitados de suscripción reciben los proveedores.</p>
+      </header>
+      <section class="legal-section"><h2>1. Información almacenada en tu dispositivo</h2><p>FastCore guarda localmente tu nombre visible, idioma, respuestas de incorporación, sesiones y estado de ayuno activo, estados de ánimo, registros de agua y peso, objetivos y horarios. FastCore no requiere una cuenta y no sube este historial de bienestar a una base de datos en la nube de FastCore.</p></section>
+      <section class="legal-section"><h2>2. Información de suscripción y técnica</h2><p>Apple App Store o Google Play gestiona los datos de pago. RevenueCat ayuda a validar compras y restaurar el acceso premium. Puede recibir un ID anónimo de usuario, tipo de dispositivo y sistema operativo, región y moneda, última actividad, datos de productos y derechos, recibos de Apple o tokens de compra de Google. FastCore no envía a RevenueCat tus registros de bienestar ni tu nombre, y no guarda los datos de tu tarjeta.</p></section>
+      <section class="legal-section"><h2>3. Cómo usamos la información</h2><p>La información local permite ofrecer el temporizador, estadísticas, seguimiento de agua y peso, recordatorios, personalización y copias de seguridad. Los datos de suscripción sirven para mostrar planes, determinar el acceso premium, validar y restaurar compras, prevenir fraude y prestar soporte. FastCore no vende información personal ni incluye publicidad de terceros o seguimiento entre aplicaciones.</p></section>
+      <section class="legal-section"><h2>4. Copias de seguridad y notificaciones</h2><p>Si activas la copia del dispositivo, Apple, Google o el proveedor del dispositivo puede guardar datos elegibles según tus ajustes y sus políticas. La copia exportada es un archivo JSON legible y FastCore no la cifra; tú eliges dónde guardarla y debes protegerla. Solo se leen archivos que selecciones para importar. Con permiso, FastCore programa notificaciones localmente; su texto puede aparecer en la pantalla bloqueada según tus ajustes.</p></section>
+      <section class="legal-section"><h2>5. Divulgación y tratamiento internacional</h2><p>La información solo se divulga cuando es necesario a Apple, Google, RevenueCat, Expo o servicios del sistema operativo, y al proveedor de almacenamiento que elijas. Estos proveedores aplican sus propias condiciones y pueden tratar datos en otros países. También podremos divulgar información si la ley lo exige o para proteger a usuarios, la app o derechos legales.</p></section>
+      <section class="legal-section"><h2>6. Conservación, eliminación y opciones</h2><p>Los registros locales permanecen hasta que restableces FastCore, borras sus datos o desinstalas la app. Las copias permanecen donde las guardaste hasta que las elimines. Apple, Google y RevenueCat conservan registros de compra según sus políticas. Borrar datos no cancela la suscripción. Gestiona notificaciones y copias en los ajustes del sistema, y la facturación en la tienda correspondiente.</p></section>
+      <section class="legal-section"><h2>7. Seguridad, menores y contacto</h2><p>FastCore aplica medidas razonables, pero ningún dispositivo, archivo o transmisión es completamente seguro. La app no está dirigida a menores que no puedan consentir legalmente; un menor no debe ayunar sin la orientación de su tutor y un profesional sanitario. Podemos actualizar esta política y la fecha superior. Para consultas o solicitudes de privacidad, escribe a devmile45@gmail.com.</p></section>
+      <footer><p>© 2026 FastCore</p><a href="../terms/index.html?lang=es">Términos de Servicio</a></footer>
+    </article>
+
+    <article class="lang-content" data-lang="ar" dir="rtl">
+      <header class="page-header">
+        <span class="badge">الخصوصية</span>
         <h1>سياسة الخصوصية</h1>
-        <p class="updated">آخر تحديث: 23 أبريل 2026</p>
-      </div>
-      
-    <div class="card">
-      <h2><span class="num">1</span>المقدمة</h2>
-      <p>يوفر FastCore أدوات لتتبع الصيام والماء والوزن والمزاج والعافية. توضح سياسة الخصوصية هذه كيف نجمع المعلومات ونستخدمها ونخزنها ونشاركها عند استخدامك للتطبيق والخدمات المرتبطة به.</p><p>باستخدام FastCore فإنك تقر بالممارسات الموضحة في هذه السياسة.</p>
-      
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">2</span>المعلومات التي نجمعها</h2>
-      <p>قد نجمع الفئات التالية من المعلومات:</p>
-      <ul><li>معلومات الحساب والملف الشخصي مثل البريد الإلكتروني والاسم الظاهر وصورة الملف الشخصي وبيانات تسجيل الدخول عبر Google.</li><li>معلومات العافية مثل جلسات الصيام وسجلات الوزن وسجلات الماء واختيارات المزاج وإجابات الاستبيان والأهداف والجداول الزمنية وتفضيلات الإشعارات.</li><li>معلومات تقنية مثل إصدار التطبيق وتفاصيل الجهاز ونظام التشغيل والمعلومات التشخيصية التي توفرها المنصة أو مزودو الخدمة.</li><li>بيانات الاشتراك مثل مستوى الاشتراك والحالة ومعرّف المنتج وتاريخ الانتهاء والمعرّفات المرتبطة من Apple أو Google أو RevenueCat.</li></ul>
-      <div class="highlight-box"><p>تتم معالجة بطاقات الدفع وبيانات الفوترة الكاملة بواسطة متاجر التطبيقات ولا يتم تخزينها بواسطة FastCore.</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">3</span>كيف نستخدم المعلومات</h2>
-      
-      <ul><li>لتقديم ميزات التطبيق والتذكيرات والوصول إلى الحساب.</li><li>لمزامنة سجلك وتفضيلاتك بين الأجهزة عند تسجيل الدخول.</li><li>لإدارة الاشتراكات وفترات التجربة وعمليات الشراء ودعم العملاء.</li><li>لتحسين أداء التطبيق واستقراره ودعم اللغات والأمان.</li><li>لفرض شروط الخدمة والامتثال للالتزامات القانونية.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">4</span>التخزين والمزامنة والأمان</h2>
-      <p>يتم تخزين بعض البيانات محلياً على جهازك حتى يعمل التطبيق بسرعة ويدعم وضع الضيف.</p><p>إذا قمت بتسجيل الدخول فقد يتم أيضاً تخزين بعض بيانات الحساب والتتبع في Supabase حتى تتم مزامنتها بين الأجهزة.</p>
-      <ul><li>قد تتم معالجة بيانات المصادقة والملف الشخصي المتزامنة عبر Supabase.</li><li>قد تتم معالجة حالة الاشتراك عبر RevenueCat وApple App Store أو Google Play.</li><li>نستخدم إجراءات تقنية وتنظيمية معقولة، لكن لا توجد وسيلة تخزين أو نقل آمنة بشكل كامل.</li></ul>
-      <div class="highlight-box"><p>استخدام وضع الضيف يبقي مزيداً من البيانات على جهازك، لكن حذف التطبيق قد يزيل السجلات المحلية فقط.</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">5</span>الإشعارات</h2>
-      <p>بموافقتك، قد يقوم FastCore بجدولة إشعارات مثل:</p>
-      <ul><li>تذكيرات الصيام وتنبيهات نافذة الأكل.</li><li>تذكيرات شرب الماء.</li><li>تذكيرات متابعة الوزن.</li><li>إشعارات التحفيز والتقدم.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">6</span>متى نشارك المعلومات</h2>
-      <p>قد نشارك معلومات محدودة مع مزودي الخدمة الذين يساعدوننا في تشغيل FastCore.</p>
-      <ul><li>Supabase للمصادقة وتخزين البيانات المتزامنة.</li><li>RevenueCat ومتاجر التطبيقات لعمليات الاشتراك والفوترة.</li><li>Expo وخدمات المنصة للإشعارات والتوزيع والبنية التحتية للتطبيق.</li></ul>
-      <div class="highlight-box"><p>نحن لا نبيع معلوماتك الشخصية.</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">7</span>خياراتك وحقوقك</h2>
-      
-      <ul><li>????? ?????? ?????? ?? ???????? ???????? ???? ???????.</li><li>????? ????? ????????? ?? FastCore ?? ?? ??????? ?????.</li><li>????? ????? ?????? ???????? ??? ????? ??? ??? ?? ???? ???????? ????????.</li><li>????? ????? ??????? ????? ??????? ???? ??? ?????? ???? ??????? ???? ???? FastCore ????????? ????????? ???????.</li><li>????? ????? ??????? ???? ??? ??? ????? ??? ?????? ?? ??? ??? ???????? ?????????.</li><li>????? ????? ?????? ??? ????? ?? ???????? ??????? ??? ??? ??? ?????? ??????? ?? ????? ??????.</li><li>??? ???? FastCore ?? ???? ?????????? ???? ??? ??????? ??? ????? ?????????? ??? ??????? ?? ??????? ?? ??????? ?????? ??????.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">8</span>الاحتفاظ بالبيانات وحذفها</h2>
-      <p>نحتفظ بالمعلومات طالما كان ذلك ضرورياً لتقديم الخدمة والحفاظ على الاشتراكات وحل النزاعات وحماية التطبيق والامتثال للالتزامات القانونية.</p>
-      <ul><li>???? ??????? ??????? ??? ????? ??? ???? ?????? ??????? ?? ???? ??????.</li><li>??? ???? ????? ?? ???? ??????? ????? ????? ??????? ????? ???? ???? FastCore ?????? ??????? ????????? ?? ??????? ??????? ???????? ??????? ???????? ???? ??? ???????? ??? ?????? ??????? ?? ?????? ???????? ?? ?????? ?? ??? ????????.</li><li>?? ????? ????? ????????? ?RevenueCat ?????? ??????? ????????? ??? ???????? ??????.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">9</span>خصوصية الأطفال</h2>
-      <p>FastCore هو تطبيق عافية للأشخاص القادرين على اتخاذ قراراتهم الصحية وإدارة حساباتهم. وهو غير موجه للأطفال.</p><p>إذا كنت تعتقد أن طفلاً قدم معلومات شخصية عبر FastCore، فيرجى التواصل معنا على devmile45@gmail.com حتى نراجع الأمر.</p>
-      
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">10</span>التغييرات والتواصل</h2>
-      <p>قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. ستظهر أحدث نسخة في هذه الصفحة مع تاريخ تحديث جديد.</p><p>إذا كانت لديك أسئلة أو طلبات دعم أو طلب حذف بيانات، فأرسل بريداً إلكترونياً إلى devmile45@gmail.com.</p>
-      
-      
-    </div>
-  
-      <div class="footer">
-        <p>© 2026 FastCore. جميع الحقوق محفوظة.</p>
-        <p><a href="../terms/index.html?lang=ar">شروط الخدمة →</a></p>
-      </div>
-    </div>
-  
-    <div class="lang-content" data-lang="fr" dir="ltr">
-      <div class="header">
-        <span class="badge">🔒 Confidentialité</span>
-        <h1>Politique de Confidentialité</h1>
-        <p class="updated">Dernière mise à jour : 23 avril 2026</p>
-      </div>
-      
-    <div class="card">
-      <h2><span class="num">1</span>Introduction</h2>
-      <p>FastCore fournit des outils de suivi du jeûne, de l&#39;hydratation, du poids, de l&#39;humeur et du bien-être. Cette Politique de Confidentialité explique comment nous collectons, utilisons, stockons et partageons les informations lorsque vous utilisez l&#39;application et les services associés.</p><p>En utilisant FastCore, vous reconnaissez les pratiques décrites dans cette politique.</p>
-      
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">2</span>Informations que nous collectons</h2>
-      <p>Nous pouvons collecter les catégories d&#39;informations suivantes :</p>
-      <ul><li>Des informations de compte et de profil comme l&#39;adresse e-mail, le nom affiché, la photo de profil et les détails de connexion Google.</li><li>Des informations de bien-être comme les sessions de jeûne, les entrées de poids, l&#39;hydratation, les humeurs, les réponses au questionnaire, les objectifs, les horaires et les préférences de notification.</li><li>Des informations techniques comme la version de l&#39;application, les informations sur l&#39;appareil et le système d&#39;exploitation, ainsi que des données diagnostiques fournies par la plateforme ou nos prestataires.</li><li>Des métadonnées d&#39;abonnement comme le niveau d&#39;abonnement, le statut, l&#39;identifiant produit, la date d&#39;expiration et des identifiants liés à Apple, Google ou RevenueCat.</li></ul>
-      <div class="highlight-box"><p>Les cartes de paiement et les informations complètes de facturation sont traitées par les boutiques d&#39;applications et ne sont pas stockées par FastCore.</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">3</span>Comment nous utilisons les informations</h2>
-      
-      <ul><li>Fournir les fonctionnalités de l&#39;application, les rappels et l&#39;accès au compte.</li><li>Synchroniser votre historique et vos préférences entre appareils lorsque vous vous connectez.</li><li>Gérer les abonnements, l&#39;accès d&#39;essai, les achats et le support client.</li><li>Améliorer les performances, la stabilité, la prise en charge des langues et la sécurité de l&#39;application.</li><li>Faire respecter nos Conditions d&#39;Utilisation et répondre à nos obligations légales.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">4</span>Stockage, synchronisation et sécurité</h2>
-      <p>Certaines données sont stockées localement sur votre appareil afin que l&#39;application fonctionne rapidement et prenne en charge le mode invité.</p><p>Si vous vous connectez, certaines données de compte et de suivi peuvent aussi être stockées dans Supabase pour synchroniser vos informations entre appareils.</p>
-      <ul><li>L&#39;authentification et les données de profil synchronisées peuvent être traitées via Supabase.</li><li>Le statut d&#39;abonnement peut être traité via RevenueCat ainsi que l&#39;Apple App Store ou Google Play.</li><li>Nous utilisons des mesures techniques et organisationnelles raisonnables, mais aucune méthode de stockage ou de transmission n&#39;est totalement sûre.</li></ul>
-      <div class="highlight-box"><p>Le mode invité conserve davantage d&#39;informations sur votre appareil, mais la désinstallation de l&#39;application peut supprimer les données locales uniquement.</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">5</span>Notifications</h2>
-      <p>Avec votre autorisation, FastCore peut programmer des notifications telles que :</p>
-      <ul><li>Des rappels de jeûne et des alertes de fenêtre alimentaire.</li><li>Des rappels d&#39;hydratation.</li><li>Des rappels de suivi du poids.</li><li>Des notifications de motivation et de progression.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">6</span>Quand nous partageons des informations</h2>
-      <p>Nous pouvons partager des informations limitées avec les prestataires qui nous aident à exploiter FastCore.</p>
-      <ul><li>Supabase pour l&#39;authentification et le stockage synchronisé.</li><li>RevenueCat et les boutiques d&#39;applications pour les abonnements et la facturation.</li><li>Expo et les services de plateforme pour les notifications, la distribution et l&#39;infrastructure de l&#39;application.</li></ul>
-      <div class="highlight-box"><p>Nous ne vendons pas vos informations personnelles.</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">7</span>Vos choix et vos droits</h2>
-      
-      <ul><li>Vous pouvez consulter et mettre ? jour une grande partie de vos informations dans l&#39;application.</li><li>Vous pouvez d?sactiver les notifications dans FastCore ou dans les r?glages de votre appareil.</li><li>Vous pouvez vous d?connecter et utiliser le mode invit? si vous ne souhaitez pas de synchronisation cloud.</li><li>Lorsque vous ?tes connect?, vous pouvez utiliser l&#39;option Supprimer le compte dans l&#39;application pour supprimer d?finitivement votre compte FastCore et vos donn?es synchronis?es.</li><li>Vous pouvez ?galement nous contacter si vous avez besoin d&#39;aide pour une demande de suppression de donn?es synchronis?es.</li><li>Vous pouvez supprimer les donn?es du mode invit? ou les donn?es uniquement locales en effa?ant les donn?es de l&#39;application ou en la d?sinstallant.</li><li>La suppression de votre compte FastCore n&#39;annule pas les abonnements factur?s par les boutiques d&#39;applications ; vous devez les g?rer ou les annuler dans les r?glages de la boutique concern?e.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">8</span>Conservation et suppression</h2>
-      <p>Nous conservons les informations aussi longtemps que nécessaire pour fournir le service, maintenir les abonnements, résoudre les litiges, protéger l&#39;application et respecter nos obligations légales.</p>
-      <ul><li>Les donn?es locales restent sur votre appareil jusqu&#39;? ce que vous effaciez les donn?es de l&#39;application ou la d?sinstalliez.</li><li>Si vous supprimez votre compte depuis l&#39;application lorsque vous ?tes connect?, nous supprimons votre compte FastCore et vos donn?es synchronis?es de bien-?tre de nos syst?mes actifs, sauf les donn?es limit?es que nous devons conserver pour des raisons juridiques, de facturation, de s?curit? ou de pr?vention de la fraude.</li><li>Les donn?es de facturation et d&#39;abonnement peuvent ?tre conserv?es par les boutiques d&#39;applications et RevenueCat selon leurs propres politiques.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">9</span>Confidentialité des enfants</h2>
-      <p>FastCore est une application de bien-être destinée aux personnes capables de prendre leurs propres décisions de santé et de compte. Elle n&#39;est pas destinée aux enfants.</p><p>Si vous pensez qu&#39;un enfant a fourni des informations personnelles via FastCore, contactez-nous à devmile45@gmail.com afin que nous puissions examiner la situation.</p>
-      
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">10</span>Modifications et contact</h2>
-      <p>Nous pouvons mettre à jour cette Politique de Confidentialité de temps à autre. La version la plus récente sera affichée sur cette page avec une nouvelle date de mise à jour.</p><p>Pour toute question, demande d&#39;assistance ou demande de suppression de données, écrivez à devmile45@gmail.com.</p>
-      
-      
-    </div>
-  
-      <div class="footer">
-        <p>© 2026 FastCore. Tous droits réservés.</p>
-        <p><a href="../terms/index.html?lang=fr">Conditions d&#39;Utilisation →</a></p>
-      </div>
-    </div>
-  
-    <div class="lang-content" data-lang="de" dir="ltr">
-      <div class="header">
-        <span class="badge">🔒 Datenschutz</span>
-        <h1>Datenschutzrichtlinie</h1>
-        <p class="updated">Zuletzt aktualisiert: 23. April 2026</p>
-      </div>
-      
-    <div class="card">
-      <h2><span class="num">1</span>Einleitung</h2>
-      <p>FastCore bietet Tools zur Verfolgung von Fasten, Hydration, Gewicht, Stimmung und Wohlbefinden. Diese Datenschutzrichtlinie erklärt, wie wir Informationen erfassen, verwenden, speichern und teilen, wenn Sie die App und verbundene Dienste nutzen.</p><p>Durch die Nutzung von FastCore erkennen Sie die in dieser Richtlinie beschriebenen Praktiken an.</p>
-      
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">2</span>Welche Informationen wir erfassen</h2>
-      <p>Wir können folgende Kategorien von Informationen erfassen:</p>
-      <ul><li>Konto- und Profilinformationen wie E-Mail-Adresse, Anzeigename, Profilbild und Google-Anmeldedaten.</li><li>Wellness-Informationen wie Fastensitzungen, Gewichtseinträge, Wasserprotokolle, Stimmungsauswahl, Fragebogenantworten, Ziele, Zeitpläne und Benachrichtigungseinstellungen.</li><li>Technische Informationen wie App-Version, Geräte- und Betriebssystemdetails sowie Diagnoseinformationen von der Plattform oder unseren Dienstleistern.</li><li>Abonnement-Metadaten wie Tarifstufe, Status, Produktkennung, Ablaufdatum und zugehörige Kennungen von Apple, Google oder RevenueCat.</li></ul>
-      <div class="highlight-box"><p>Zahlungskarten und vollständige Rechnungsdaten werden von den App-Stores verarbeitet und nicht von FastCore gespeichert.</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">3</span>Wie wir Informationen verwenden</h2>
-      
-      <ul><li>Um App-Funktionen, Erinnerungen und Kontozugriff bereitzustellen.</li><li>Um Ihren Verlauf und Ihre Einstellungen zwischen Geräten zu synchronisieren, wenn Sie sich anmelden.</li><li>Um Abonnements, Testzugänge, Käufe und Support zu verwalten.</li><li>Um Leistung, Stabilität, Sprachunterstützung und Sicherheit der App zu verbessern.</li><li>Um unsere Nutzungsbedingungen durchzusetzen und gesetzlichen Pflichten nachzukommen.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">4</span>Speicherung, Synchronisierung und Sicherheit</h2>
-      <p>Einige Daten werden lokal auf Ihrem Gerät gespeichert, damit die App schnell funktioniert und den Gastmodus unterstützt.</p><p>Wenn Sie sich anmelden, können bestimmte Konto- und Tracking-Daten auch in Supabase gespeichert werden, damit Ihre Informationen zwischen Geräten synchronisiert werden können.</p>
-      <ul><li>Authentifizierung und synchronisierte Profildaten können über Supabase verarbeitet werden.</li><li>Der Abonnementstatus kann über RevenueCat sowie den Apple App Store oder Google Play verarbeitet werden.</li><li>Wir verwenden angemessene technische und organisatorische Schutzmaßnahmen, aber keine Speicher- oder Übertragungsmethode ist vollständig sicher.</li></ul>
-      <div class="highlight-box"><p>Der Gastmodus hält mehr Informationen auf Ihrem Gerät, aber das Löschen der App kann lokale Daten entfernen.</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">5</span>Benachrichtigungen</h2>
-      <p>Mit Ihrer Zustimmung kann FastCore Benachrichtigungen wie folgende planen:</p>
-      <ul><li>Fastenerinnerungen und Essensfenster-Alarme.</li><li>Hydrationserinnerungen.</li><li>Gewicht-Check-ins.</li><li>Motivations- und Fortschrittsmeldungen.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">6</span>Wann wir Informationen teilen</h2>
-      <p>Wir können begrenzte Informationen mit Dienstleistern teilen, die uns beim Betrieb von FastCore unterstützen.</p>
-      <ul><li>Supabase für Authentifizierung und synchronisierte Datenspeicherung.</li><li>RevenueCat und App-Stores für Abonnement- und Abrechnungsvorgänge.</li><li>Expo und Plattformdienste für Benachrichtigungen, Verteilung und App-Infrastruktur.</li></ul>
-      <div class="highlight-box"><p>Wir verkaufen Ihre personenbezogenen Daten nicht.</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">7</span>Ihre Wahlmöglichkeiten und Rechte</h2>
-      
-      <ul><li>Sie k?nnen viele Ihrer Informationen direkt in der App einsehen und aktualisieren.</li><li>Sie k?nnen Benachrichtigungen in FastCore oder in den Ger?teeinstellungen deaktivieren.</li><li>Sie k?nnen sich abmelden und den Gastmodus nutzen, wenn Sie keine Cloud-Synchronisierung w?nschen.</li><li>Wenn Sie angemeldet sind, k?nnen Sie die In-App-Option Konto l?schen verwenden, um Ihr FastCore-Konto und Ihre synchronisierten Daten dauerhaft zu l?schen.</li><li>Sie k?nnen uns auch kontaktieren, wenn Sie Hilfe bei einer Anfrage zur L?schung synchronisierter Daten ben?tigen.</li><li>Daten aus dem Gastmodus oder sonstige nur lokal gespeicherte Daten k?nnen Sie entfernen, indem Sie die App-Daten l?schen oder die App deinstallieren.</li><li>Das L?schen Ihres FastCore-Kontos beendet keine ?ber App-Stores abgerechneten Abonnements; verwalten oder k?ndigen Sie diese in den Einstellungen des jeweiligen Stores.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">8</span>Aufbewahrung und Löschung</h2>
-      <p>Wir speichern Informationen so lange, wie es erforderlich ist, um den Dienst bereitzustellen, Abonnements zu verwalten, Streitigkeiten zu klären, die App zu schützen und gesetzlichen Pflichten nachzukommen.</p>
-      <ul><li>Lokale Daten verbleiben auf Ihrem Ger?t, bis Sie die App-Daten l?schen oder die App deinstallieren.</li><li>Wenn Sie Ihr Konto in der App l?schen, w?hrend Sie angemeldet sind, l?schen wir Ihr FastCore-Konto und die synchronisierten Wellness-Daten aus unseren aktiven Systemen, au?er soweit wir begrenzte Daten aus rechtlichen, abrechnungsbezogenen, sicherheitsbezogenen oder Betrugspr?ventionsgr?nden aufbewahren m?ssen.</li><li>Abrechnungs- und Abonnementdaten k?nnen von den App-Stores und RevenueCat gem?? deren eigenen Richtlinien gespeichert werden.</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">9</span>Datenschutz von Kindern</h2>
-      <p>FastCore ist eine Wellness-App für Personen, die eigene Gesundheits- und Kontenentscheidungen treffen können. Sie ist nicht für Kinder bestimmt.</p><p>Wenn Sie glauben, dass ein Kind personenbezogene Daten über FastCore bereitgestellt hat, kontaktieren Sie uns unter devmile45@gmail.com, damit wir dies prüfen können.</p>
-      
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">10</span>Änderungen und Kontakt</h2>
-      <p>Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Die aktuelle Version wird auf dieser Seite mit einem neuen Aktualisierungsdatum angezeigt.</p><p>Bei Fragen, Supportanfragen oder einem Datenlöschungswunsch schreiben Sie bitte an devmile45@gmail.com.</p>
-      
-      
-    </div>
-  
-      <div class="footer">
-        <p>© 2026 FastCore. Alle Rechte vorbehalten.</p>
-        <p><a href="../terms/index.html?lang=de">Nutzungsbedingungen →</a></p>
-      </div>
-    </div>
-  
-    <div class="lang-content" data-lang="bn" dir="ltr">
-      <div class="header">
-        <span class="badge">🔒 গোপনীয়তা</span>
+        <p class="updated">آخر تحديث: 4 أغسطس 2026</p>
+        <p class="intro">FastCore تطبيق لتتبع العافية يعتمد التخزين المحلي أولاً. توضح هذه السياسة المعلومات التي يعالجها التطبيق ومكان حفظها والبيانات المحدودة التي تصل إلى مزودي خدمات الاشتراك.</p>
+      </header>
+      <section class="legal-section"><h2>1. المعلومات المخزنة على جهازك</h2><p>يحفظ FastCore محلياً اسم العرض واللغة وإجابات الإعداد وسجلات الصيام وحالة الصيام النشط والمزاج وسجلات الماء والوزن والأهداف والجداول. لا يتطلب FastCore حساباً ولا يرفع سجل العافية هذا إلى قاعدة بيانات سحابية تابعة له.</p></section>
+      <section class="legal-section"><h2>2. معلومات الاشتراك والمعلومات التقنية</h2><p>تتولى Apple App Store أو Google Play بيانات الدفع. تساعد RevenueCat في التحقق من المشتريات واستعادة الوصول المميز، وقد تستلم معرّف مستخدم مجهولاً ونوع الجهاز ونظام التشغيل والمنطقة والعملة ووقت آخر استخدام وبيانات المنتجات والاستحقاقات وإيصالات Apple أو رموز شراء Google. لا يرسل FastCore سجلات العافية أو اسم العرض إلى RevenueCat ولا يخزن بيانات بطاقتك.</p></section>
+      <section class="legal-section"><h2>3. كيفية استخدام المعلومات</h2><p>تُستخدم المعلومات المحلية لتوفير المؤقت والإحصاءات وتتبع الماء والوزن والتذكيرات والتخصيص والنسخ الاحتياطي والاستعادة. تُستخدم معلومات الاشتراك لعرض الخطط وتحديد الوصول المميز والتحقق من المشتريات واستعادتها ومنع الاحتيال وتقديم الدعم. لا يبيع FastCore المعلومات الشخصية ولا يتضمن إعلانات خارجية أو تتبعاً بين التطبيقات.</p></section>
+      <section class="legal-section"><h2>4. النسخ الاحتياطية والإشعارات</h2><p>عند تفعيل النسخ الاحتياطي للجهاز قد تحفظ Apple أو Google أو جهة الجهاز بيانات التطبيق المؤهلة وفق إعداداتك وسياساتها. النسخة التي تصدرها ملف JSON قابل للقراءة ولا يشفره FastCore؛ أنت تختار مكانه وعليك حمايته. لا يقرأ التطبيق ملف الاستيراد إلا بعد اختياره. بإذنك تُجدول الإشعارات محلياً وقد يظهر نصها على شاشة القفل وفق إعدادات الجهاز.</p></section>
+      <section class="legal-section"><h2>5. الإفصاح والمعالجة الدولية</h2><p>لا تُفصح المعلومات إلا عند الحاجة إلى Apple وGoogle وRevenueCat وExpo أو خدمات نظام التشغيل وإلى مزود التخزين الذي تختاره. يعالج هؤلاء المعلومات وفق شروطهم وقد يتم ذلك في دول أخرى. قد نفصح أيضاً عندما يطلب القانون أو لحماية المستخدمين أو التطبيق أو الحقوق القانونية.</p></section>
+      <section class="legal-section"><h2>6. الاحتفاظ والحذف وخياراتك</h2><p>تبقى السجلات المحلية حتى تعيد ضبط FastCore أو تمسح بياناته أو تحذفه. تبقى النسخ حيث حفظتها حتى تحذفها. تحتفظ Apple وGoogle وRevenueCat بسجلات الشراء وفق سياساتها. حذف بيانات التطبيق لا يلغي الاشتراك. يمكنك إدارة الإشعارات ونسخ الجهاز في إعدادات النظام وإدارة الفوترة في المتجر المناسب.</p></section>
+      <section class="legal-section"><h2>7. الأمان والأطفال والتواصل</h2><p>يستخدم FastCore إجراءات حماية معقولة، لكن لا يوجد جهاز أو ملف أو نقل آمن بالكامل. التطبيق غير موجه للأطفال غير القادرين قانونياً على الموافقة، ولا ينبغي للقاصر الصيام دون توجيه ولي الأمر ومختص صحي مؤهل. قد نحدث السياسة ونغير التاريخ أعلاه. للأسئلة أو طلبات الخصوصية راسل devmile45@gmail.com.</p></section>
+      <footer><p>© 2026 FastCore</p><a href="../terms/index.html?lang=ar">شروط الخدمة</a></footer>
+    </article>
+
+    <article class="lang-content" data-lang="fr" dir="ltr">
+      <header class="page-header">
+        <span class="badge">Confidentialité</span>
+        <h1>Politique de confidentialité</h1>
+        <p class="updated">Dernière mise à jour : 4 août 2026</p>
+        <p class="intro">FastCore est un outil de bien-être privilégiant le stockage local. Cette politique explique les informations traitées, leur emplacement et les données d’abonnement limitées reçues par les prestataires.</p>
+      </header>
+      <section class="legal-section"><h2>1. Informations stockées sur votre appareil</h2><p>FastCore conserve localement votre nom d’affichage, langue, réponses d’intégration, sessions et état du jeûne actif, humeur, suivi de l’eau et du poids, objectifs et horaires. Aucun compte FastCore n’est requis et cet historique de bien-être n’est pas envoyé vers une base de données cloud FastCore.</p></section>
+      <section class="legal-section"><h2>2. Informations d’abonnement et techniques</h2><p>Apple App Store ou Google Play traite les données de paiement. RevenueCat aide à valider les achats et restaurer l’accès premium. Il peut recevoir un identifiant anonyme, le type d’appareil et le système, la langue et la devise, la dernière activité, les produits et droits, les reçus Apple ou jetons Google. FastCore ne lui transmet ni vos données de bien-être ni votre nom et ne conserve pas votre carte bancaire.</p></section>
+      <section class="legal-section"><h2>3. Utilisation des informations</h2><p>Les données locales servent au minuteur, aux statistiques, au suivi de l’eau et du poids, aux rappels, à la personnalisation et aux sauvegardes. Les données d’abonnement servent à afficher les offres, déterminer l’accès premium, valider et restaurer les achats, prévenir la fraude et fournir l’assistance. FastCore ne vend aucune information personnelle et n’intègre ni publicité tierce ni suivi inter-applications.</p></section>
+      <section class="legal-section"><h2>4. Sauvegardes et notifications</h2><p>Si la sauvegarde de l’appareil est activée, Apple, Google ou le fournisseur de l’appareil peut sauvegarder les données éligibles selon vos réglages et ses règles. Une sauvegarde exportée est un fichier JSON lisible non chiffré par FastCore; vous choisissez son emplacement et devez le protéger. Seuls les fichiers sélectionnés sont importés. Avec autorisation, les notifications sont planifiées localement et leur texte peut apparaître sur l’écran verrouillé.</p></section>
+      <section class="legal-section"><h2>5. Partage et traitement international</h2><p>Les informations ne sont communiquées que si nécessaire à Apple, Google, RevenueCat, Expo ou aux services du système, ainsi qu’au stockage choisi pour une sauvegarde. Ces prestataires appliquent leurs propres conditions et peuvent traiter les données dans d’autres pays. Une divulgation peut aussi avoir lieu si la loi l’exige ou pour protéger les utilisateurs, l’application ou des droits légaux.</p></section>
+      <section class="legal-section"><h2>6. Conservation, suppression et choix</h2><p>Les données locales restent jusqu’à la réinitialisation de FastCore, l’effacement de ses données ou sa désinstallation. Les sauvegardes restent à l’emplacement choisi jusqu’à leur suppression. Apple, Google et RevenueCat conservent les achats selon leurs règles. Effacer l’application n’annule pas l’abonnement. Gérez notifications et sauvegardes dans le système, et la facturation dans la boutique concernée.</p></section>
+      <section class="legal-section"><h2>7. Sécurité, mineurs et contact</h2><p>FastCore applique des mesures raisonnables, mais aucun appareil, fichier ou transfert n’est totalement sûr. L’application ne vise pas les enfants ne pouvant consentir légalement; un mineur ne devrait pas jeûner sans l’avis d’un responsable légal et d’un professionnel qualifié. Nous pouvons mettre à jour cette politique et sa date. Pour toute question ou demande, écrivez à devmile45@gmail.com.</p></section>
+      <footer><p>© 2026 FastCore</p><a href="../terms/index.html?lang=fr">Conditions d’utilisation</a></footer>
+    </article>
+
+    <article class="lang-content" data-lang="de" dir="ltr">
+      <header class="page-header">
+        <span class="badge">Datenschutz</span>
+        <h1>Datenschutzerklärung</h1>
+        <p class="updated">Zuletzt aktualisiert: 4. August 2026</p>
+        <p class="intro">FastCore ist ein Wellness-Tracker mit lokaler Datenspeicherung. Diese Erklärung beschreibt, welche Informationen verarbeitet werden, wo sie liegen und welche begrenzten Abodaten Dienstleister erhalten.</p>
+      </header>
+      <section class="legal-section"><h2>1. Auf deinem Gerät gespeicherte Informationen</h2><p>FastCore speichert Anzeigenamen, Sprache, Onboarding-Antworten, Fastenzeiten und aktiven Status, Stimmung, Wasser- und Gewichtseinträge, Ziele und Pläne lokal auf deinem Gerät. Ein FastCore-Konto ist nicht erforderlich, und dieser Wellness-Verlauf wird nicht in eine FastCore-Cloud-Datenbank hochgeladen.</p></section>
+      <section class="legal-section"><h2>2. Abo- und technische Informationen</h2><p>Apple App Store oder Google Play verarbeitet Zahlungsdaten. RevenueCat hilft bei Kaufprüfung und Wiederherstellung des Premiumzugangs. Dabei können eine anonyme App-Nutzer-ID, Gerätetyp und Betriebssystem, Region und Währung, letzte Nutzung, Produkt- und Berechtigungsdaten, Apple-Belege oder Google-Kauftoken verarbeitet werden. FastCore sendet keine Wellnessdaten oder Anzeigenamen an RevenueCat und speichert keine Kartendaten.</p></section>
+      <section class="legal-section"><h2>3. Verwendung der Informationen</h2><p>Lokale Daten ermöglichen Timer, Statistiken, Wasser- und Gewichtsverfolgung, Erinnerungen, Personalisierung sowie Sicherung und Wiederherstellung. Abodaten dienen zur Anzeige von Plänen, Prüfung des Premiumzugangs, Kaufvalidierung und Wiederherstellung, Betrugsabwehr und Unterstützung. FastCore verkauft keine persönlichen Daten und nutzt keine Drittanbieterwerbung oder appübergreifendes Tracking.</p></section>
+      <section class="legal-section"><h2>4. Backups und Benachrichtigungen</h2><p>Bei aktivierter Gerätesicherung können Apple, Google oder der Geräteanbieter geeignete App-Daten nach deinen Einstellungen und eigenen Regeln sichern. Ein exportiertes Backup ist eine lesbare JSON-Datei und wird von FastCore nicht verschlüsselt; du wählst den Speicherort und musst sie schützen. Nur ausgewählte Dateien werden importiert. Mit Erlaubnis werden Hinweise lokal geplant und können je nach Einstellung auf dem Sperrbildschirm erscheinen.</p></section>
+      <section class="legal-section"><h2>5. Weitergabe und internationale Verarbeitung</h2><p>Informationen werden nur bei Bedarf an Apple, Google, RevenueCat, Expo oder Betriebssystemdienste sowie an deinen gewählten Backup-Speicher weitergegeben. Diese Anbieter verarbeiten nach eigenen Bedingungen und möglicherweise in anderen Ländern. Eine Offenlegung kann auch gesetzlich erforderlich sein oder dem Schutz von Nutzern, App und Rechten dienen.</p></section>
+      <section class="legal-section"><h2>6. Aufbewahrung, Löschung und Auswahl</h2><p>Lokale Daten bleiben bis zum Zurücksetzen, Löschen der App-Daten oder Deinstallieren. Backups bleiben am gewählten Ort, bis du sie löschst. Apple, Google und RevenueCat bewahren Kaufdaten nach eigenen Regeln auf. Das Löschen der App beendet kein Abo. Benachrichtigungen und Gerätesicherung verwaltest du im System, Abrechnung im jeweiligen Store.</p></section>
+      <section class="legal-section"><h2>7. Sicherheit, Kinder und Kontakt</h2><p>FastCore nutzt angemessene Schutzmaßnahmen, doch kein Gerät, keine Datei und keine Übertragung ist völlig sicher. Die App richtet sich nicht an Kinder, die nicht wirksam zustimmen können; Minderjährige sollten nur mit Erziehungsberechtigten und qualifizierter medizinischer Beratung fasten. Änderungen werden mit neuem Datum veröffentlicht. Datenschutzfragen oder Anfragen an devmile45@gmail.com.</p></section>
+      <footer><p>© 2026 FastCore</p><a href="../terms/index.html?lang=de">Nutzungsbedingungen</a></footer>
+    </article>
+
+    <article class="lang-content" data-lang="bn" dir="ltr">
+      <header class="page-header">
+        <span class="badge">গোপনীয়তা</span>
         <h1>গোপনীয়তা নীতি</h1>
-        <p class="updated">সর্বশেষ হালনাগাদ: ২৩ এপ্রিল ২০২৬</p>
-      </div>
-      
-    <div class="card">
-      <h2><span class="num">1</span>ভূমিকা</h2>
-      <p>FastCore উপবাস, পানি, ওজন, মুড এবং ওয়েলনেস ট্র্যাক করার টুল দেয়। এই গোপনীয়তা নীতি ব্যাখ্যা করে আপনি অ্যাপ এবং সংশ্লিষ্ট সেবা ব্যবহার করলে আমরা কীভাবে তথ্য সংগ্রহ, ব্যবহার, সংরক্ষণ এবং ভাগ করি।</p><p>FastCore ব্যবহার করে আপনি এই নীতিতে বর্ণিত প্রক্রিয়াগুলো স্বীকার করছেন।</p>
-      
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">2</span>আমরা কী তথ্য সংগ্রহ করি</h2>
-      <p>আমরা নিচের ধরনের তথ্য সংগ্রহ করতে পারি:</p>
-      <ul><li>অ্যাকাউন্ট ও প্রোফাইল তথ্য যেমন ইমেইল ঠিকানা, প্রদর্শিত নাম, প্রোফাইল ছবি এবং Google সাইন-ইন তথ্য।</li><li>ওয়েলনেস তথ্য যেমন উপবাস সেশন, ওজন এন্ট্রি, পানি খাওয়ার রেকর্ড, মুড নির্বাচন, প্রশ্নাবলির উত্তর, লক্ষ্য, সময়সূচি এবং নোটিফিকেশন পছন্দ।</li><li>প্রযুক্তিগত তথ্য যেমন অ্যাপের সংস্করণ, ডিভাইস ও অপারেটিং সিস্টেমের তথ্য এবং প্ল্যাটফর্ম বা সেবা প্রদানকারীদের দেওয়া ডায়াগনস্টিক তথ্য।</li><li>সাবস্ক্রিপশন সম্পর্কিত তথ্য যেমন প্ল্যান স্তর, স্ট্যাটাস, পণ্যের আইডি, মেয়াদ শেষ হওয়ার তারিখ এবং Apple, Google বা RevenueCat-এর সংশ্লিষ্ট আইডি।</li></ul>
-      <div class="highlight-box"><p>পেমেন্ট কার্ড এবং পূর্ণ বিলিং তথ্য অ্যাপ স্টোরগুলো প্রক্রিয়া করে; FastCore সেগুলো সংরক্ষণ করে না।</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">3</span>আমরা কীভাবে তথ্য ব্যবহার করি</h2>
-      
-      <ul><li>অ্যাপের ফিচার, রিমাইন্ডার এবং অ্যাকাউন্ট অ্যাক্সেস দেওয়ার জন্য।</li><li>আপনি সাইন ইন করলে ডিভাইস জুড়ে আপনার হিস্ট্রি ও পছন্দ সিঙ্ক করার জন্য।</li><li>সাবস্ক্রিপশন, ট্রায়াল অ্যাক্সেস, কেনাকাটা এবং সহায়তা পরিচালনা করার জন্য।</li><li>অ্যাপের পারফরম্যান্স, স্থিতিশীলতা, ভাষা সহায়তা এবং নিরাপত্তা উন্নত করার জন্য।</li><li>আমাদের সেবার শর্তাবলি কার্যকর করা এবং আইনগত বাধ্যবাধকতা পূরণের জন্য।</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">4</span>সংরক্ষণ, সিঙ্ক এবং নিরাপত্তা</h2>
-      <p>কিছু তথ্য আপনার ডিভাইসে স্থানীয়ভাবে সংরক্ষিত হয় যাতে অ্যাপ দ্রুত কাজ করে এবং অতিথি মোড সমর্থন করে।</p><p>আপনি সাইন ইন করলে কিছু অ্যাকাউন্ট ও ট্র্যাকিং তথ্য Supabase-এও সংরক্ষিত হতে পারে যাতে সেগুলো একাধিক ডিভাইসে সিঙ্ক হয়।</p>
-      <ul><li>অথেনটিকেশন এবং সিঙ্ক হওয়া প্রোফাইল তথ্য Supabase-এর মাধ্যমে প্রক্রিয়া হতে পারে।</li><li>সাবস্ক্রিপশন স্ট্যাটাস RevenueCat এবং Apple App Store বা Google Play-এর মাধ্যমে প্রক্রিয়া হতে পারে।</li><li>আমরা যুক্তিসঙ্গত প্রযুক্তিগত ও সাংগঠনিক সুরক্ষা ব্যবহার করি, তবে কোনো সংরক্ষণ বা প্রেরণ পদ্ধতি সম্পূর্ণ নিরাপদ নয়।</li></ul>
-      <div class="highlight-box"><p>অতিথি মোড ব্যবহার করলে বেশি তথ্য আপনার ডিভাইসে থাকে, তবে অ্যাপ মুছে ফেললে স্থানীয় রেকর্ড হারিয়ে যেতে পারে।</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">5</span>নোটিফিকেশন</h2>
-      <p>আপনার অনুমতিতে FastCore নিচের মতো নোটিফিকেশন পাঠাতে পারে:</p>
-      <ul><li>উপবাস রিমাইন্ডার এবং খাবারের সময়সীমা সতর্কতা।</li><li>পানি পানের রিমাইন্ডার।</li><li>ওজন চেক-ইন রিমাইন্ডার।</li><li>প্রেরণামূলক এবং অগ্রগতির নোটিফিকেশন।</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">6</span>কখন আমরা তথ্য ভাগ করি</h2>
-      <p>FastCore পরিচালনায় সাহায্যকারী সেবা প্রদানকারীদের সাথে আমরা সীমিত তথ্য ভাগ করতে পারি।</p>
-      <ul><li>অথেনটিকেশন ও সিঙ্ক ডেটা স্টোরেজের জন্য Supabase।</li><li>সাবস্ক্রিপশন ও বিলিং কার্যপ্রবাহের জন্য RevenueCat এবং অ্যাপ স্টোরগুলো।</li><li>নোটিফিকেশন, বিতরণ এবং অ্যাপ অবকাঠামোর জন্য Expo ও প্ল্যাটফর্ম সেবা।</li></ul>
-      <div class="highlight-box"><p>আমরা আপনার ব্যক্তিগত তথ্য বিক্রি করি না।</p></div>
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">7</span>আপনার পছন্দ ও অধিকার</h2>
-      
-      <ul><li>???? ??????? ???? ???? ????? ???????? ???? ????? ? ????? ???? ??????</li><li>???? FastCore ?? ?????? ?????? ???? ?????????? ???? ???? ??????</li><li>???? ?????? ????? ?? ????? ???? ??? ??? ????? ??? ??????? ???? ??????</li><li>???? ????-?? ??????? ??????? ?????? Delete Account ???? ??????? ??? ????? FastCore ?????????? ? ????? ???? ???? ?????????? ???? ????? ??????</li><li>????? ???? ???? ???? ????? ??????? ?????? ????? ???? ?????? ?????? ??????? ???? ??????</li><li>???? ????? ???? ??????? ??? ?? ????? ???????? ??? ????? ????? ?? ???? ??????? ???? ????? ??????</li><li>FastCore ?????????? ???? ????? ????? ??????? ??????? ??? ???? ???????????? ????? ?? ??; ?????? ????????? ????? ?????? ???? ???????? ?? ????? ???? ????</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">8</span>সংরক্ষণকাল ও মুছে ফেলা</h2>
-      <p>সেবা প্রদান, সাবস্ক্রিপশন রক্ষা, বিরোধ নিষ্পত্তি, অ্যাপ সুরক্ষা এবং আইনগত বাধ্যবাধকতা পূরণের জন্য যতদিন প্রয়োজন ততদিন আমরা তথ্য সংরক্ষণ করি।</p>
-      <ul><li>??????? ?????? ????? ??????? ???? ?????? ?? ???? ????? ???? ???? ????? ?? ????? ???????? ?????</li><li>???? ????-?? ??????? ??????? ???? ???? ?????????? ???? ????? ???? ?????? ?????? ??????? ???? ????? FastCore ?????????? ? ????? ???? ??????? ?????? ???? ????, ??? ?????, ?????, ????????? ?? ????????-?????????? ???????? ????? ???? ?????? ??????? ???? ??? ?????</li><li>????? ? ???????????? ?????? ????? ????? ? RevenueCat ????? ?????? ???????? ??????? ????? ?????</li></ul>
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">9</span>শিশুদের গোপনীয়তা</h2>
-      <p>FastCore এমন ব্যবহারকারীদের জন্য একটি ওয়েলনেস অ্যাপ যারা নিজের স্বাস্থ্য ও অ্যাকাউন্ট সম্পর্কিত সিদ্ধান্ত নিজেরা নিতে পারেন। এটি শিশুদের জন্য নয়।</p><p>আপনার মনে হলে কোনো শিশু FastCore-এর মাধ্যমে ব্যক্তিগত তথ্য দিয়েছে, তাহলে devmile45@gmail.com-এ যোগাযোগ করুন যাতে আমরা বিষয়টি পর্যালোচনা করতে পারি।</p>
-      
-      
-    </div>
-  
-    <div class="card">
-      <h2><span class="num">10</span>পরিবর্তন ও যোগাযোগ</h2>
-      <p>আমরা সময়ে সময়ে এই গোপনীয়তা নীতি হালনাগাদ করতে পারি। সর্বশেষ সংস্করণ এই পাতায় নতুন হালনাগাদ তারিখসহ প্রকাশিত হবে।</p><p>প্রশ্ন, সহায়তার অনুরোধ বা ডেটা মুছে ফেলার অনুরোধ থাকলে devmile45@gmail.com-এ ইমেইল করুন।</p>
-      
-      
-    </div>
-  
-      <div class="footer">
-        <p>© 2026 FastCore. সর্বস্বত্ব সংরক্ষিত।</p>
-        <p><a href="../terms/index.html?lang=bn">সেবার শর্তাবলি →</a></p>
-      </div>
-    </div>
-  
-  </div>
+        <p class="updated">সর্বশেষ হালনাগাদ: ৪ আগস্ট ২০২৬</p>
+        <p class="intro">FastCore একটি লোকাল-ফার্স্ট সুস্থতা ট্র্যাকার। এই নীতিতে অ্যাপ কোন তথ্য ব্যবহার করে, কোথায় রাখে এবং সেবা প্রদানকারীরা সীমিত কোন সাবস্ক্রিপশন তথ্য পায় তা বলা হয়েছে।</p>
+      </header>
+      <section class="legal-section"><h2>১. আপনার ডিভাইসে রাখা তথ্য</h2><p>FastCore আপনার প্রদর্শিত নাম, ভাষা, অনবোর্ডিং উত্তর, উপবাসের সেশন ও সক্রিয় অবস্থা, মুড, পানি ও ওজনের রেকর্ড, লক্ষ্য এবং সময়সূচি ডিভাইসে রাখে। FastCore অ্যাকাউন্ট লাগে না এবং এই সুস্থতার ইতিহাস FastCore-এর কোনো ক্লাউড ডেটাবেসে আপলোড করা হয় না।</p></section>
+      <section class="legal-section"><h2>২. সাবস্ক্রিপশন ও প্রযুক্তিগত তথ্য</h2><p>পেমেন্ট তথ্য Apple App Store বা Google Play পরিচালনা করে। RevenueCat কেনাকাটা যাচাই ও প্রিমিয়াম সুবিধা পুনরুদ্ধারে সহায়তা করে। তারা বেনামী অ্যাপ ইউজার ID, ডিভাইস ও অপারেটিং সিস্টেম, অঞ্চল ও মুদ্রা, শেষ ব্যবহারের সময়, পণ্য ও সুবিধার তথ্য, Apple রসিদ বা Google ক্রয় টোকেন পেতে পারে। FastCore আপনার সুস্থতার রেকর্ড, নাম বা কার্ডের তথ্য RevenueCat-কে দেয় না।</p></section>
+      <section class="legal-section"><h2>৩. তথ্যের ব্যবহার</h2><p>লোকাল তথ্য টাইমার, পরিসংখ্যান, পানি ও ওজন ট্র্যাকিং, রিমাইন্ডার, ব্যক্তিগতকরণ এবং ব্যাকআপ/পুনরুদ্ধারে ব্যবহৃত হয়। সাবস্ক্রিপশন তথ্য পরিকল্পনা দেখানো, প্রিমিয়াম প্রবেশ নির্ধারণ, কেনাকাটা যাচাই ও পুনরুদ্ধার, জালিয়াতি ঠেকানো এবং সহায়তার কাজে লাগে। FastCore ব্যক্তিগত তথ্য বিক্রি করে না এবং তৃতীয় পক্ষের বিজ্ঞাপন বা অ্যাপ-জুড়ে ট্র্যাকিং নেই।</p></section>
+      <section class="legal-section"><h2>৪. ব্যাকআপ ও নোটিফিকেশন</h2><p>ডিভাইস ব্যাকআপ চালু থাকলে Apple, Google বা ডিভাইস প্রদানকারী আপনার সেটিং ও তাদের নীতি অনুযায়ী উপযুক্ত অ্যাপ ডেটা রাখতে পারে। রপ্তানি করা ব্যাকআপ পাঠযোগ্য JSON ফাইল এবং FastCore এটি এনক্রিপ্ট করে না; আপনি কোথায় রাখবেন তা বেছে নেন এবং সুরক্ষা দেন। আপনার বেছে নেওয়া ফাইলই শুধু আমদানি করা হয়। অনুমতি দিলে নোটিফিকেশন ডিভাইসে স্থানীয়ভাবে নির্ধারিত হয় এবং লক স্ক্রিনে দেখা যেতে পারে।</p></section>
+      <section class="legal-section"><h2>৫. শেয়ার ও আন্তর্জাতিক প্রক্রিয়াকরণ</h2><p>প্রয়োজন হলে শুধু Apple, Google, RevenueCat, Expo বা অপারেটিং সিস্টেমের সেবা এবং আপনার বেছে নেওয়া ব্যাকআপ স্টোরেজে তথ্য দেওয়া হয়। তারা নিজস্ব শর্তে এবং অন্য দেশে তথ্য প্রক্রিয়া করতে পারে। আইন চাইলে বা ব্যবহারকারী, অ্যাপ ও আইনি অধিকার রক্ষায়ও তথ্য প্রকাশ করা হতে পারে।</p></section>
+      <section class="legal-section"><h2>৬. সংরক্ষণ, মুছে ফেলা ও আপনার পছন্দ</h2><p>আপনি FastCore রিসেট, অ্যাপ ডেটা পরিষ্কার বা অ্যাপ আনইনস্টল না করা পর্যন্ত লোকাল রেকর্ড থাকে। ব্যাকআপ আপনি মুছে না ফেলা পর্যন্ত নির্বাচিত স্থানে থাকে। Apple, Google ও RevenueCat নিজস্ব নীতিতে কেনাকাটার রেকর্ড রাখে। অ্যাপ ডেটা মুছলে সাবস্ক্রিপশন বাতিল হয় না। সিস্টেম সেটিংসে নোটিফিকেশন ও ব্যাকআপ এবং স্টোরে বিলিং পরিচালনা করুন।</p></section>
+      <section class="legal-section"><h2>৭. নিরাপত্তা, শিশু ও যোগাযোগ</h2><p>FastCore যুক্তিসঙ্গত সুরক্ষা ব্যবহার করে, তবে কোনো ডিভাইস, ফাইল বা স্থানান্তর পুরোপুরি নিরাপদ নয়। আইনত সম্মতি দিতে পারে না এমন শিশুদের জন্য অ্যাপটি নয়; অভিভাবক ও যোগ্য স্বাস্থ্য বিশেষজ্ঞের পরামর্শ ছাড়া অপ্রাপ্তবয়স্কদের উপবাস করা উচিত নয়। নীতি বদলালে উপরের তারিখ বদলাবে। প্রশ্ন বা অনুরোধ পাঠান devmile45@gmail.com ঠিকানায়।</p></section>
+      <footer><p>© 2026 FastCore</p><a href="../terms/index.html?lang=bn">পরিষেবার শর্তাবলি</a></footer>
+    </article></main>
   <script>
-    const SUPPORTED_LANGS = ["en","zh","hi","es","ar","fr","de","bn"];
-    function getInitialLang() {
-      const params = new URLSearchParams(window.location.search);
-      const queryLang = params.get('lang');
-      const storedLang = localStorage.getItem('fastcore-legal-lang');
-      if (queryLang && SUPPORTED_LANGS.includes(queryLang)) return queryLang;
-      if (storedLang && SUPPORTED_LANGS.includes(storedLang)) return storedLang;
-      return 'en';
+    function switchLang(code) {
+      const supported = Array.from(document.querySelectorAll('.lang-content')).map((node) => node.dataset.lang)
+      const next = supported.includes(code) ? code : 'en'
+      document.querySelectorAll('.lang-content').forEach((node) => node.classList.toggle('active', node.dataset.lang === next))
+      document.querySelectorAll('.lang-btn').forEach((node) => node.classList.toggle('active', node.dataset.lang === next))
+      document.documentElement.lang = next
+      document.body.dir = document.querySelector('.lang-content.active').dir || 'ltr'
+      const url = new URL(window.location.href)
+      url.searchParams.set('lang', next)
+      history.replaceState({}, '', url)
     }
-    function applyLang(lang) {
-      const safeLang = SUPPORTED_LANGS.includes(lang) ? lang : 'en';
-      document.querySelectorAll('.lang-content').forEach((el) => {
-        el.classList.toggle('active', el.dataset.lang === safeLang);
-      });
-      document.querySelectorAll('.lang-btn').forEach((btn) => {
-        btn.classList.toggle('active', btn.dataset.lang === safeLang);
-      });
-      document.documentElement.lang = safeLang;
-      document.body.setAttribute('data-active-lang', safeLang);
-      const active = document.querySelector('.lang-content.active');
-      document.documentElement.dir = active ? (active.getAttribute('dir') || 'ltr') : 'ltr';
-      localStorage.setItem('fastcore-legal-lang', safeLang);
-      const url = new URL(window.location.href);
-      url.searchParams.set('lang', safeLang);
-      window.history.replaceState({}, '', url);
-    }
-    function switchLang(lang) {
-      applyLang(lang);
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-      applyLang(getInitialLang());
-    });
+    const requested = new URLSearchParams(window.location.search).get('lang')
+    const browserLanguage = (navigator.language || 'en').split('-')[0]
+    switchLang(requested || browserLanguage)
   </script>
 </body>
 </html>
