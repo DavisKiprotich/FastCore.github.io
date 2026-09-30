@@ -28,8 +28,10 @@
     footer { display: flex; justify-content: space-between; gap: 20px; padding-top: 30px; color: var(--muted); font-size: 14px; }
     footer p { margin: 0; }
     footer a { color: var(--accent); font-weight: 700; text-decoration: none; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 10px 22px; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
     [dir="rtl"] { text-align: right; }
-    @media (max-width: 680px) { .top-bar { align-items: flex-start; flex-direction: column; } .lang-switcher { justify-content: flex-start; } main { padding-top: 28px; } footer { flex-direction: column; } }
+    @media (max-width: 680px) { .top-bar { align-items: flex-start; flex-direction: column; width: 100%; overflow: hidden; } .lang-switcher { width: 100%; min-width: 0; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; } .lang-btn { flex: 0 0 auto; } main { padding-top: 28px; } footer { flex-direction: column; } }
   </style>
 </head>
 <body>
@@ -52,7 +54,7 @@
       <section class="legal-section"><h2>5. License and acceptable use</h2><p>FastCore grants you a limited, personal, non-exclusive, non-transferable, revocable license for lawful, non-commercial use. Do not copy, resell, rent, sublicense, disrupt, reverse engineer except where law permits, bypass subscription controls, introduce malicious code, access systems without authorization, or use the app unlawfully. You keep ownership of information you enter. FastCore and its licensors retain all rights in the app.</p></section>
       <section class="legal-section"><h2>6. Availability and changes</h2><p>Features, plans, and compatibility may change, and updates may be required. We do not promise uninterrupted or error-free operation. We may restrict access when needed for security, legal compliance, store requirements, or misuse. Material changes to these terms will be posted with an updated date; continued use after they take effect means you accept them where permitted by law.</p></section>
       <section class="legal-section"><h2>7. Disclaimers, liability, and contact</h2><p>FastCore is provided as is and as available to the maximum extent permitted by law. You remain responsible for fasting decisions, health outcomes, device security, and backups. To the maximum extent permitted by law, FastCore is not liable for indirect, incidental, special, consequential, or punitive loss, including loss of data or health outcomes. Nothing excludes rights or liability that cannot legally be excluded. Questions may be sent to devmile45@gmail.com.</p></section>
-      <footer><p>© 2026 FastCore</p><a href="../privacy/index.html?lang=en">Privacy Policy</a></footer>
+      <footer><p>© 2026 FastCore</p><nav class="footer-links" aria-label="Related pages"><a href="../privacy/index.html?lang=en">Privacy Policy</a><a href="../support/index.html?lang=en">FastCore Support</a></nav></footer>
     </article>
 
     <article class="lang-content" data-lang="zh" dir="ltr">
@@ -69,7 +71,7 @@
       <section class="legal-section"><h2>5. 许可与可接受使用</h2><p>FastCore 授予您有限、个人、非独占、不可转让且可撤销的许可，仅用于合法的非商业用途。不得复制、转售、出租、再许可、干扰应用、在法律不允许时进行逆向工程、绕过订阅控制、引入恶意代码、未经授权访问系统或违法使用。您保留所输入信息的所有权；FastCore 及其许可方保留应用的全部权利。</p></section>
       <section class="legal-section"><h2>6. 可用性与变更</h2><p>功能、套餐和兼容性可能变化，并可能需要安装更新。我们不保证服务始终可用或完全无误。出于安全、法律合规、商店要求或防止滥用的需要，我们可能限制访问。重大条款变更将更新日期并发布；在法律允许的情况下，变更生效后继续使用即表示接受。</p></section>
       <section class="legal-section"><h2>7. 免责声明、责任与联系</h2><p>在法律允许的最大范围内，FastCore 按现状和可用状态提供。您应自行负责断食决定、健康结果、设备安全和备份。在法律允许的最大范围内，FastCore 不对间接、附带、特殊、后果性或惩罚性损失负责，包括数据丢失或健康结果。本条款不排除依法不得排除的权利或责任。问题请发送至 devmile45@gmail.com。</p></section>
-      <footer><p>© 2026 FastCore</p><a href="../privacy/index.html?lang=zh">隐私政策</a></footer>
+      <footer><p>© 2026 FastCore</p><nav class="footer-links" aria-label="Related pages"><a href="../privacy/index.html?lang=zh">隐私政策</a><a href="../support/index.html?lang=zh">FastCore 支持</a></nav></footer>
     </article>
 
     <article class="lang-content" data-lang="hi" dir="ltr">
@@ -86,7 +88,7 @@
       <section class="legal-section"><h2>5. लाइसेंस और स्वीकार्य उपयोग</h2><p>FastCore आपको वैध, निजी, गैर-व्यावसायिक उपयोग के लिए सीमित, गैर-विशिष्ट, गैर-हस्तांतरणीय और रद्द योग्य लाइसेंस देता है। ऐप को कॉपी, बेचना, किराए पर देना, बाधित करना, कानून के विपरीत रिवर्स इंजीनियर करना, सदस्यता नियंत्रण से बचना, हानिकारक कोड डालना, अनधिकृत पहुँच या अवैध उपयोग न करें। दर्ज जानकारी आपकी रहती है; ऐप के अधिकार FastCore और लाइसेंसदाताओं के पास रहते हैं।</p></section>
       <section class="legal-section"><h2>6. उपलब्धता और बदलाव</h2><p>सुविधाएँ, योजनाएँ और अनुकूलता बदल सकती हैं और अपडेट आवश्यक हो सकते हैं। निर्बाध या त्रुटिरहित सेवा की गारंटी नहीं है। सुरक्षा, कानूनी अनुपालन, स्टोर आवश्यकताओं या दुरुपयोग के कारण पहुँच सीमित हो सकती है। महत्वपूर्ण बदलाव नई तारीख के साथ प्रकाशित होंगे; कानून की अनुमति के अनुसार लागू होने के बाद उपयोग जारी रखना स्वीकृति है।</p></section>
       <section class="legal-section"><h2>7. अस्वीकरण, दायित्व और संपर्क</h2><p>कानून की अधिकतम अनुमति तक FastCore जैसा है और उपलब्ध आधार पर दिया जाता है। उपवास निर्णय, स्वास्थ्य परिणाम, डिवाइस सुरक्षा और बैकअप आपकी जिम्मेदारी हैं। कानून की अधिकतम सीमा तक FastCore अप्रत्यक्ष, आकस्मिक, विशेष, परिणामी या दंडात्मक नुकसान, डेटा हानि या स्वास्थ्य परिणाम के लिए जिम्मेदार नहीं है। जो अधिकार या दायित्व कानूनन बाहर नहीं किए जा सकते, वे बने रहते हैं। प्रश्न devmile45@gmail.com पर भेजें।</p></section>
-      <footer><p>© 2026 FastCore</p><a href="../privacy/index.html?lang=hi">गोपनीयता नीति</a></footer>
+      <footer><p>© 2026 FastCore</p><nav class="footer-links" aria-label="Related pages"><a href="../privacy/index.html?lang=hi">गोपनीयता नीति</a><a href="../support/index.html?lang=hi">FastCore सहायता</a></nav></footer>
     </article>
 
     <article class="lang-content" data-lang="es" dir="ltr">
@@ -103,7 +105,7 @@
       <section class="legal-section"><h2>5. Licencia y uso aceptable</h2><p>FastCore concede una licencia limitada, personal, no exclusiva, intransferible y revocable para uso lícito y no comercial. No copies, revendas, alquiles, sublicencies, interrumpas, hagas ingeniería inversa salvo permiso legal, eludas controles, introduzcas código malicioso, accedas sin autorización ni uses ilegalmente la app. Conservas tus datos; FastCore y sus licenciantes conservan los derechos sobre la app.</p></section>
       <section class="legal-section"><h2>6. Disponibilidad y cambios</h2><p>Las funciones, planes y compatibilidad pueden cambiar y requerir actualizaciones. No garantizamos funcionamiento continuo o sin errores. Podemos limitar acceso por seguridad, cumplimiento legal, requisitos de la tienda o abuso. Los cambios importantes se publicarán con nueva fecha; donde la ley lo permita, continuar usando la app tras su vigencia implica aceptación.</p></section>
       <section class="legal-section"><h2>7. Exenciones, responsabilidad y contacto</h2><p>FastCore se ofrece tal cual y según disponibilidad hasta donde permita la ley. Tú respondes de tus decisiones de ayuno, resultados de salud, seguridad y copias. En la máxima medida legal, FastCore no responde por daños indirectos, incidentales, especiales, consecuentes o punitivos, incluida pérdida de datos o resultados de salud. No se excluyen derechos o responsabilidades que la ley prohíba excluir. Escribe a devmile45@gmail.com.</p></section>
-      <footer><p>© 2026 FastCore</p><a href="../privacy/index.html?lang=es">Política de Privacidad</a></footer>
+      <footer><p>© 2026 FastCore</p><nav class="footer-links" aria-label="Related pages"><a href="../privacy/index.html?lang=es">Política de Privacidad</a><a href="../support/index.html?lang=es">Ayuda de FastCore</a></nav></footer>
     </article>
 
     <article class="lang-content" data-lang="ar" dir="rtl">
@@ -120,7 +122,7 @@
       <section class="legal-section"><h2>5. الترخيص والاستخدام المقبول</h2><p>يمنحك FastCore ترخيصاً محدوداً وشخصياً وغير حصري وغير قابل للنقل وقابلاً للإلغاء للاستخدام القانوني غير التجاري. لا تنسخ التطبيق أو تعيد بيعه أو تؤجره أو ترخصه أو تعطل عمله أو تفككه إلا حيث يسمح القانون أو تتجاوز ضوابط الاشتراك أو تضف شيفرة ضارة أو تصل دون تصريح أو تستخدمه بصورة غير قانونية. تبقى معلوماتك ملكك وتبقى حقوق التطبيق لـ FastCore ومرخصيه.</p></section>
       <section class="legal-section"><h2>6. التوفر والتغييرات</h2><p>قد تتغير الميزات والخطط والتوافق وقد تلزم تحديثات. لا نضمن عملاً متواصلاً أو خالياً من الأخطاء. قد نقيد الوصول للأمان أو الامتثال أو متطلبات المتجر أو إساءة الاستخدام. تنشر التغييرات المهمة بتاريخ جديد؛ وحيث يسمح القانون يعني استمرار الاستخدام بعد سريانها قبولها.</p></section>
       <section class="legal-section"><h2>7. إخلاء المسؤولية والتواصل</h2><p>يُقدم FastCore كما هو وحسب التوفر إلى أقصى حد يسمح به القانون. أنت مسؤول عن قرارات الصيام والنتائج الصحية وأمان الجهاز والنسخ. إلى أقصى حد قانوني لا يتحمل FastCore الخسائر غير المباشرة أو العرضية أو الخاصة أو التبعية أو العقابية، بما فيها فقد البيانات أو النتائج الصحية. لا تُستبعد الحقوق أو المسؤوليات التي يمنع القانون استبعادها. للأسئلة راسل devmile45@gmail.com.</p></section>
-      <footer><p>© 2026 FastCore</p><a href="../privacy/index.html?lang=ar">سياسة الخصوصية</a></footer>
+      <footer><p>© 2026 FastCore</p><nav class="footer-links" aria-label="Related pages"><a href="../privacy/index.html?lang=ar">سياسة الخصوصية</a><a href="../support/index.html?lang=ar">دعم FastCore</a></nav></footer>
     </article>
 
     <article class="lang-content" data-lang="fr" dir="ltr">
@@ -137,7 +139,7 @@
       <section class="legal-section"><h2>5. Licence et utilisation acceptable</h2><p>FastCore vous accorde une licence limitée, personnelle, non exclusive, non transférable et révocable pour un usage légal non commercial. Ne copiez, revendez, louez, concédez, perturbez ou désassemblez pas l’application sauf permission légale; ne contournez pas l’abonnement, n’introduisez pas de code nuisible, n’accédez pas sans autorisation et ne l’utilisez pas illégalement. Vos informations restent les vôtres; FastCore et ses concédants conservent les droits sur l’application.</p></section>
       <section class="legal-section"><h2>6. Disponibilité et modifications</h2><p>Les fonctions, offres et compatibilités peuvent changer et nécessiter une mise à jour. Aucun fonctionnement continu ou sans erreur n’est garanti. L’accès peut être limité pour la sécurité, la conformité, les exigences des boutiques ou les abus. Les changements importants seront publiés avec une nouvelle date; lorsque la loi l’autorise, poursuivre l’utilisation après leur entrée en vigueur vaut acceptation.</p></section>
       <section class="legal-section"><h2>7. Garanties, responsabilité et contact</h2><p>FastCore est fourni en l’état et selon disponibilité dans les limites légales. Vous restez responsable de vos décisions de jeûne, résultats de santé, sécurité et sauvegardes. Dans les limites légales, FastCore n’est pas responsable des pertes indirectes, accessoires, spéciales, consécutives ou punitives, y compris les données ou résultats de santé. Aucun droit ni responsabilité légalement incontournable n’est exclu. Écrivez à devmile45@gmail.com.</p></section>
-      <footer><p>© 2026 FastCore</p><a href="../privacy/index.html?lang=fr">Politique de confidentialité</a></footer>
+      <footer><p>© 2026 FastCore</p><nav class="footer-links" aria-label="Related pages"><a href="../privacy/index.html?lang=fr">Politique de confidentialité</a><a href="../support/index.html?lang=fr">Assistance FastCore</a></nav></footer>
     </article>
 
     <article class="lang-content" data-lang="de" dir="ltr">
@@ -154,7 +156,7 @@
       <section class="legal-section"><h2>5. Lizenz und zulässige Nutzung</h2><p>FastCore gewährt eine begrenzte, persönliche, nicht exklusive, nicht übertragbare und widerrufliche Lizenz zur legalen, nicht kommerziellen Nutzung. Die App darf nicht kopiert, weiterverkauft, vermietet, unterlizenziert, gestört oder entgegen dem Gesetz rückentwickelt werden. Umgehe keine Abokontrollen, füge keinen Schadcode ein und greife nicht unbefugt zu. Deine Eingaben bleiben deine; App-Rechte bleiben bei FastCore und Lizenzgebern.</p></section>
       <section class="legal-section"><h2>6. Verfügbarkeit und Änderungen</h2><p>Funktionen, Pläne und Kompatibilität können sich ändern und Updates erfordern. Störungsfreier, dauerhafter Betrieb wird nicht zugesagt. Zugriff kann wegen Sicherheit, Recht, Store-Anforderungen oder Missbrauch eingeschränkt werden. Wesentliche Änderungen werden mit neuem Datum veröffentlicht; soweit rechtlich zulässig gilt weitere Nutzung nach Inkrafttreten als Zustimmung.</p></section>
       <section class="legal-section"><h2>7. Haftungsausschluss und Kontakt</h2><p>FastCore wird im gesetzlich zulässigen Umfang wie vorhanden und verfügbar bereitgestellt. Du verantwortest Fastenentscheidungen, Gesundheitsfolgen, Gerätesicherheit und Backups. Soweit zulässig haftet FastCore nicht für indirekte, zufällige, besondere, Folge- oder Strafschäden, einschließlich Datenverlust oder Gesundheitsergebnissen. Unabdingbare Rechte und Haftung bleiben unberührt. Fragen an devmile45@gmail.com.</p></section>
-      <footer><p>© 2026 FastCore</p><a href="../privacy/index.html?lang=de">Datenschutzerklärung</a></footer>
+      <footer><p>© 2026 FastCore</p><nav class="footer-links" aria-label="Related pages"><a href="../privacy/index.html?lang=de">Datenschutzerklärung</a><a href="../support/index.html?lang=de">FastCore-Hilfe</a></nav></footer>
     </article>
 
     <article class="lang-content" data-lang="bn" dir="ltr">
@@ -171,7 +173,7 @@
       <section class="legal-section"><h2>৫. লাইসেন্স ও গ্রহণযোগ্য ব্যবহার</h2><p>FastCore বৈধ, ব্যক্তিগত ও অ-বাণিজ্যিক ব্যবহারের জন্য সীমিত, ব্যক্তিগত, অ-একচেটিয়া, হস্তান্তরযোগ্য নয় এবং প্রত্যাহারযোগ্য লাইসেন্স দেয়। অ্যাপ কপি, পুনর্বিক্রি, ভাড়া, সাবলাইসেন্স, বিঘ্ন, আইনবহির্ভূত রিভার্স ইঞ্জিনিয়ার, সাবস্ক্রিপশন নিয়ন্ত্রণ এড়ানো, ক্ষতিকর কোড, অননুমোদিত প্রবেশ বা অবৈধ ব্যবহার করবেন না। আপনার দেওয়া তথ্য আপনারই; অ্যাপের অধিকার FastCore ও লাইসেন্সদাতাদের।</p></section>
       <section class="legal-section"><h2>৬. প্রাপ্যতা ও পরিবর্তন</h2><p>ফিচার, পরিকল্পনা ও সামঞ্জস্য বদলাতে পারে এবং আপডেট লাগতে পারে। নিরবচ্ছিন্ন বা ত্রুটিমুক্ত সেবার নিশ্চয়তা নেই। নিরাপত্তা, আইন, স্টোরের নিয়ম বা অপব্যবহারের কারণে প্রবেশ সীমিত হতে পারে। গুরুত্বপূর্ণ পরিবর্তন নতুন তারিখসহ প্রকাশ হবে; আইন অনুমতি দিলে কার্যকর হওয়ার পর ব্যবহার চালানো সম্মতি হিসেবে গণ্য হবে।</p></section>
       <section class="legal-section"><h2>৭. অস্বীকৃতি, দায় ও যোগাযোগ</h2><p>আইন যতটুকু অনুমতি দেয় FastCore বর্তমান ও উপলভ্য অবস্থায় দেওয়া হয়। উপবাসের সিদ্ধান্ত, স্বাস্থ্য ফলাফল, ডিভাইস নিরাপত্তা ও ব্যাকআপ আপনার দায়িত্ব। আইনসিদ্ধ সর্বোচ্চ সীমায় FastCore পরোক্ষ, আকস্মিক, বিশেষ, ফলস্বরূপ বা শাস্তিমূলক ক্ষতি, তথ্য হারানো বা স্বাস্থ্য ফলাফলের জন্য দায়ী নয়। আইনত বাদ দেওয়া যায় না এমন অধিকার বা দায় বহাল থাকে। প্রশ্ন পাঠান devmile45@gmail.com ঠিকানায়।</p></section>
-      <footer><p>© 2026 FastCore</p><a href="../privacy/index.html?lang=bn">গোপনীয়তা নীতি</a></footer>
+      <footer><p>© 2026 FastCore</p><nav class="footer-links" aria-label="Related pages"><a href="../privacy/index.html?lang=bn">গোপনীয়তা নীতি</a><a href="../support/index.html?lang=bn">FastCore সহায়তা</a></nav></footer>
     </article></main>
   <script>
     function switchLang(code) {

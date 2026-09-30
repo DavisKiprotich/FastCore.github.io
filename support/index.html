@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FastCore Support</title>
+  <style>
+    :root { color-scheme: dark; --bg: #08111f; --panel: #0e1a2b; --line: #203149; --text: #e8f5f7; --muted: #9db0c4; --accent: #22c3df; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: var(--bg); color: var(--text); font-family: Inter, "Noto Sans", system-ui, sans-serif; line-height: 1.7; }
+    .top-bar { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 20px; background: rgba(8,17,31,.97); border-bottom: 1px solid var(--line); }
+    .brand { color: var(--text); font-weight: 800; text-decoration: none; letter-spacing: .2px; }
+    .lang-switcher { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .lang-btn { min-height: 36px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); color: var(--muted); font-weight: 700; cursor: pointer; }
+    .lang-btn.active { border-color: var(--accent); background: #123144; color: var(--text); }
+    main { width: min(780px, 100%); margin: 0 auto; padding: 36px 20px 72px; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+    .page-header { padding-bottom: 28px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+    .badge { display: inline-block; padding: 5px 10px; border: 1px solid #175a6c; border-radius: 999px; color: var(--accent); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .7px; }
+    h1 { margin: 14px 0 4px; font-size: clamp(32px, 7vw, 48px); line-height: 1.12; letter-spacing: -1.2px; }
+    .updated { margin: 0; color: var(--muted); font-size: 13px; }
+    .intro { max-width: 68ch; margin: 18px 0 0; color: #bfd0dc; font-size: 16px; }
+    .legal-section { padding: 25px 0; border-bottom: 1px solid var(--line); }
+    .legal-section h2 { margin: 0 0 9px; color: var(--text); font-size: 19px; line-height: 1.35; }
+    .legal-section p { max-width: 72ch; margin: 0; color: #bdcad7; }
+    footer { display: flex; justify-content: space-between; gap: 20px; padding-top: 30px; color: var(--muted); font-size: 14px; }
+    footer p { margin: 0; }
+    footer a { color: var(--accent); font-weight: 700; text-decoration: none; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 10px 22px; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    [dir="rtl"] { text-align: right; }
+    @media (max-width: 680px) { .top-bar { align-items: flex-start; flex-direction: column; width: 100%; overflow: hidden; } .lang-switcher { width: 100%; min-width: 0; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; } .lang-btn { flex: 0 0 auto; } main { padding-top: 28px; } footer { flex-direction: column; } }
+    .support-contact { padding-top: 26px; }
+    .support-action-row { margin-top: 18px !important; }
+    .support-action { display: inline-block; padding: 10px 16px; border-radius: 10px; background: var(--accent); color: #08111f; font-weight: 800; text-decoration: none; }
+    .support-action:hover { background: #76deed; }
+    .support-email { margin-top: 12px !important; color: var(--muted) !important; overflow-wrap: anywhere; }
+    .store-links { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 16px; }
+    .store-links a { color: var(--accent); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <nav class="top-bar" aria-label="Language and support navigation">
+    <a class="brand" href="../index.html">FastCore</a>
+    <div class="lang-switcher"><button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button><button class="lang-btn" data-lang="zh" onclick="switchLang('zh')">中文</button><button class="lang-btn" data-lang="hi" onclick="switchLang('hi')">हिन्दी</button><button class="lang-btn" data-lang="es" onclick="switchLang('es')">ES</button><button class="lang-btn" data-lang="ar" onclick="switchLang('ar')">العربية</button><button class="lang-btn" data-lang="fr" onclick="switchLang('fr')">FR</button><button class="lang-btn" data-lang="de" onclick="switchLang('de')">DE</button><button class="lang-btn" data-lang="bn" onclick="switchLang('bn')">বাংলা</button></div>
+  </nav>
+  <main>
+    <article class="lang-content active" data-lang="en" dir="ltr">
+      <header class="page-header">
+        <span class="badge">Support</span>
+        <h1>FastCore Support</h1>
+        <p class="intro">Help with the FastCore fasting tracker, subscriptions, and your local data.</p>
+      </header>
+      <section class="legal-section support-contact">
+        <h2>Contact us</h2>
+        <p>Email us with a short description of the problem, your app version, device model, and the steps that led to it. Please do not email payment-card details or an exported wellness backup.</p>
+        <p class="support-action-row"><a class="support-action" href="mailto:devmile45@gmail.com?subject=FastCore%20Support">Email FastCore Support</a></p>
+        <p class="support-email">devmile45@gmail.com</p>
+      </section>
+      <section class="legal-section"><h2>Subscriptions and billing</h2><p>Weekly and annual subscriptions are billed by Apple or Google. If a purchase is not recognized, use Restore Purchases on the paywall or in Profile. To cancel or change a plan, use the subscriptions page for the store that billed you. Deleting the app does not cancel a subscription.</p><div class="store-links"><a href="https://apps.apple.com/account/subscriptions">Manage Apple subscriptions</a><a href="https://play.google.com/store/account/subscriptions">Manage Google Play subscriptions</a></div></section>
+      <section class="legal-section"><h2>Your data and backups</h2><p>Fasting, water, and weight records are stored on your device. In Profile, open Backup &amp; Restore to export a backup or import one you saved. Exported JSON files are readable and should be kept private. FastCore does not automatically sync this history between devices.</p></section>
+      <section class="legal-section"><h2>Accounts and health questions</h2><p>The current FastCore app does not require an account or login. FastCore is a wellness tracking tool, not a medical service. For medical questions or symptoms, contact a qualified health professional.</p></section>
+      <footer><p>© 2026 FastCore</p><nav class="footer-links" aria-label="Related pages"><a href="../privacy/index.html?lang=en">Privacy Policy</a><a href="../terms/index.html?lang=en">Terms of Service</a></nav></footer>
+    </article>
+
+    <article class="lang-content" data-lang="zh" dir="ltr">
+      <header class="page-header">
+        <span class="badge">支持</span>
+        <h1>FastCore 支持</h1>
+        <p class="intro">获取 FastCore 断食记录、订阅和本地数据方面的帮助。</p>
+      </header>
+      <section class="legal-section support-contact">
+        <h2>联系我们</h2>
+        <p>请发邮件简述问题，并附上应用版本、设备型号和重现步骤。请勿发送银行卡信息或导出的健康数据备份。</p>
+        <p class="support-action-row"><a class="support-action" href="mailto:devmile45@gmail.com?subject=FastCore%20Support">发送邮件联系 FastCore 支持</a></p>
+        <p class="support-email">devmile45@gmail.com</p>
+      </section>
+      <section class="legal-section"><h2>订阅与付款</h2><p>周订阅和年订阅由 Apple 或 Google 收费。如果购买未显示，请在付费页面或“个人资料”中使用“恢复购买”。取消或更改套餐请前往付款商店的订阅页面。删除应用不会取消订阅。</p><div class="store-links"><a href="https://apps.apple.com/account/subscriptions">管理 Apple 订阅</a><a href="https://play.google.com/store/account/subscriptions">管理 Google Play 订阅</a></div></section>
+      <section class="legal-section"><h2>数据与备份</h2><p>断食、饮水和体重记录保存在您的设备上。请在“个人资料”中打开“备份与恢复”，导出备份或导入已保存的备份。导出的 JSON 文件可被读取，请妥善保管。FastCore 不会在设备之间自动同步这些记录。</p></section>
+      <section class="legal-section"><h2>账户与健康问题</h2><p>当前版本的 FastCore 不需要账户或登录。FastCore 是健康记录工具，不是医疗服务。如有健康问题或症状，请咨询合格的医疗专业人员。</p></section>
+      <footer><p>© 2026 FastCore</p><nav class="footer-links" aria-label="Related pages"><a href="../privacy/index.html?lang=zh">隐私政策</a><a href="../terms/index.html?lang=zh">服务条款</a></nav></footer>
+    </article>
+
+    <article class="lang-content" data-lang="hi" dir="ltr">
+      <header class="page-header">
+        <span class="badge">सहायता</span>
+        <h1>FastCore सहायता</h1>
+        <p class="intro">FastCore में उपवास ट्रैकिंग, सदस्यता और स्थानीय डेटा के लिए सहायता।</p>
+      </header>
+      <section class="legal-section support-contact">
+        <h2>हमसे संपर्क करें</h2>
+        <p>समस्या का संक्षिप्त विवरण, ऐप संस्करण, डिवाइस मॉडल और उसे दोहराने के चरण ईमेल करें। भुगतान कार्ड की जानकारी या निर्यात किया गया वेलनेस बैकअप ईमेल न करें।</p>
+        <p class="support-action-row"><a class="support-action" href="mailto:devmile45@gmail.com?subject=FastCore%20Support">FastCore सहायता को ईमेल करें</a></p>
+        <p class="support-email">devmile45@gmail.com</p>
+      </section>
+      <section class="legal-section"><h2>सदस्यता और भुगतान</h2><p>साप्ताहिक और वार्षिक सदस्यताओं का भुगतान Apple या Google के माध्यम से होता है। खरीद दिखाई न दे तो पेवॉल या प्रोफ़ाइल में Restore Purchases इस्तेमाल करें। योजना बदलने या रद्द करने के लिए संबंधित स्टोर की सदस्यता सेटिंग खोलें। ऐप हटाने से सदस्यता रद्द नहीं होती।</p><div class="store-links"><a href="https://apps.apple.com/account/subscriptions">Apple सदस्यताएँ प्रबंधित करें</a><a href="https://play.google.com/store/account/subscriptions">Google Play सदस्यताएँ प्रबंधित करें</a></div></section>
+      <section class="legal-section"><h2>आपका डेटा और बैकअप</h2><p>उपवास, पानी और वज़न के रिकॉर्ड आपके डिवाइस पर रहते हैं। प्रोफ़ाइल में Backup &amp; Restore से बैकअप निर्यात करें या सहेजी हुई फ़ाइल आयात करें। निर्यात की गई JSON फ़ाइल पढ़ी जा सकती है, इसलिए उसे सुरक्षित रखें। FastCore यह इतिहास दूसरे डिवाइस पर अपने आप सिंक नहीं करता।</p></section>
+      <section class="legal-section"><h2>खाते और स्वास्थ्य संबंधी प्रश्न</h2><p>मौजूदा FastCore ऐप में खाते या लॉगिन की आवश्यकता नहीं है। यह वेलनेस ट्रैकिंग टूल है, चिकित्सा सेवा नहीं। स्वास्थ्य संबंधी प्रश्न या लक्षण होने पर योग्य स्वास्थ्य विशेषज्ञ से संपर्क करें।</p></section>
+      <footer><p>© 2026 FastCore</p><nav class="footer-links" aria-label="Related pages"><a href="../privacy/index.html?lang=hi">गोपनीयता नीति</a><a href="../terms/index.html?lang=hi">सेवा की शर्तें</a></nav></footer>
+    </article>
+
+    <article class="lang-content" data-lang="es" dir="ltr">
+      <header class="page-header">
+        <span class="badge">Ayuda</span>
+        <h1>Ayuda de FastCore</h1>
+        <p class="intro">Ayuda con el seguimiento del ayuno, las suscripciones y los datos locales de FastCore.</p>
+      </header>
+      <section class="legal-section support-contact">
+        <h2>Contáctanos</h2>
+        <p>Escríbenos con una breve descripción del problema, la versión de la app, el modelo del dispositivo y los pasos para reproducirlo. No envíes datos de tarjetas ni una copia exportada de tus datos de bienestar.</p>
+        <p class="support-action-row"><a class="support-action" href="mailto:devmile45@gmail.com?subject=FastCore%20Support">Enviar un correo a FastCore</a></p>
+        <p class="support-email">devmile45@gmail.com</p>
+      </section>
+      <section class="legal-section"><h2>Suscripciones y pagos</h2><p>Apple o Google cobra las suscripciones semanales y anuales. Si no se reconoce una compra, usa Restaurar compras en la pantalla de suscripción o en Perfil. Para cancelar o cambiar el plan, abre las suscripciones de la tienda que te cobró. Eliminar la app no cancela la suscripción.</p><div class="store-links"><a href="https://apps.apple.com/account/subscriptions">Gestionar suscripciones de Apple</a><a href="https://play.google.com/store/account/subscriptions">Gestionar suscripciones de Google Play</a></div></section>
+      <section class="legal-section"><h2>Datos y copias de seguridad</h2><p>Los registros de ayuno, agua y peso se guardan en tu dispositivo. En Perfil, abre Copia de seguridad y restauración para exportar o importar una copia guardada. Los archivos JSON exportados se pueden leer; protégelos. FastCore no sincroniza automáticamente este historial entre dispositivos.</p></section>
+      <section class="legal-section"><h2>Cuentas y salud</h2><p>La app actual de FastCore no requiere cuenta ni inicio de sesión. FastCore es una herramienta de bienestar, no un servicio médico. Si tienes síntomas o dudas médicas, consulta a un profesional sanitario cualificado.</p></section>
+      <footer><p>© 2026 FastCore</p><nav class="footer-links" aria-label="Related pages"><a href="../privacy/index.html?lang=es">Política de Privacidad</a><a href="../terms/index.html?lang=es">Términos de Servicio</a></nav></footer>
+    </article>
+
+    <article class="lang-content" data-lang="ar" dir="rtl">
+      <header class="page-header">
+        <span class="badge">الدعم</span>
+        <h1>دعم FastCore</h1>
+        <p class="intro">مساعدة بشأن تتبع الصيام والاشتراكات والبيانات المحلية في FastCore.</p>
+      </header>
+      <section class="legal-section support-contact">
+        <h2>تواصل معنا</h2>
+        <p>أرسل وصفًا موجزًا للمشكلة وإصدار التطبيق وطراز الجهاز وخطوات تكرارها. لا ترسل بيانات بطاقتك أو نسخة احتياطية مصدّرة من بياناتك الصحية عبر البريد.</p>
+        <p class="support-action-row"><a class="support-action" href="mailto:devmile45@gmail.com?subject=FastCore%20Support">راسل دعم FastCore</a></p>
+        <p class="support-email">devmile45@gmail.com</p>
+      </section>
+      <section class="legal-section"><h2>الاشتراكات والفوترة</h2><p>تتولى Apple أو Google تحصيل رسوم الاشتراكات الأسبوعية والسنوية. إذا لم يظهر الشراء، استخدم استعادة المشتريات في شاشة الاشتراك أو الملف الشخصي. للإلغاء أو تغيير الخطة، افتح اشتراكات المتجر الذي حصّل الرسوم. حذف التطبيق لا يلغي الاشتراك.</p><div class="store-links"><a href="https://apps.apple.com/account/subscriptions">إدارة اشتراكات Apple</a><a href="https://play.google.com/store/account/subscriptions">إدارة اشتراكات Google Play</a></div></section>
+      <section class="legal-section"><h2>بياناتك والنسخ الاحتياطية</h2><p>تُحفظ سجلات الصيام والماء والوزن على جهازك. من الملف الشخصي افتح النسخ الاحتياطي والاستعادة لتصدير نسخة أو استيراد نسخة محفوظة. ملفات JSON المصدّرة قابلة للقراءة، فاحتفظ بها في مكان آمن. لا يزامن FastCore هذه السجلات تلقائيًا بين الأجهزة.</p></section>
+      <section class="legal-section"><h2>الحسابات والأسئلة الصحية</h2><p>لا يتطلب تطبيق FastCore الحالي حسابًا أو تسجيل دخول. FastCore أداة لتتبع العافية وليست خدمة طبية. للأسئلة الطبية أو الأعراض، تواصل مع مختص صحي مؤهل.</p></section>
+      <footer><p>© 2026 FastCore</p><nav class="footer-links" aria-label="Related pages"><a href="../privacy/index.html?lang=ar">سياسة الخصوصية</a><a href="../terms/index.html?lang=ar">شروط الخدمة</a></nav></footer>
+    </article>
+
+    <article class="lang-content" data-lang="fr" dir="ltr">
+      <header class="page-header">
+        <span class="badge">Assistance</span>
+        <h1>Assistance FastCore</h1>
+        <p class="intro">Aide pour le suivi du jeûne, les abonnements et les données locales de FastCore.</p>
+      </header>
+      <section class="legal-section support-contact">
+        <h2>Nous contacter</h2>
+        <p>Envoyez-nous une brève description du problème, la version de l’application, le modèle de l’appareil et les étapes pour le reproduire. N’envoyez ni données bancaires ni sauvegarde exportée de vos données de bien-être.</p>
+        <p class="support-action-row"><a class="support-action" href="mailto:devmile45@gmail.com?subject=FastCore%20Support">Écrire à l’assistance FastCore</a></p>
+        <p class="support-email">devmile45@gmail.com</p>
+      </section>
+      <section class="legal-section"><h2>Abonnements et facturation</h2><p>Les abonnements hebdomadaires et annuels sont facturés par Apple ou Google. Si un achat n’est pas reconnu, utilisez Restaurer les achats sur l’écran d’abonnement ou dans Profil. Pour annuler ou modifier une offre, ouvrez les abonnements de la boutique qui vous a facturé. Supprimer l’app n’annule pas l’abonnement.</p><div class="store-links"><a href="https://apps.apple.com/account/subscriptions">Gérer les abonnements Apple</a><a href="https://play.google.com/store/account/subscriptions">Gérer les abonnements Google Play</a></div></section>
+      <section class="legal-section"><h2>Données et sauvegardes</h2><p>Les données de jeûne, d’eau et de poids sont conservées sur votre appareil. Dans Profil, ouvrez Sauvegarde et restauration pour exporter ou importer une sauvegarde enregistrée. Les fichiers JSON exportés sont lisibles : protégez-les. FastCore ne synchronise pas automatiquement cet historique entre appareils.</p></section>
+      <section class="legal-section"><h2>Comptes et santé</h2><p>La version actuelle de FastCore ne nécessite ni compte ni connexion. FastCore est un outil de suivi du bien-être, pas un service médical. Pour des symptômes ou questions médicales, consultez un professionnel qualifié.</p></section>
+      <footer><p>© 2026 FastCore</p><nav class="footer-links" aria-label="Related pages"><a href="../privacy/index.html?lang=fr">Politique de confidentialité</a><a href="../terms/index.html?lang=fr">Conditions d’utilisation</a></nav></footer>
+    </article>
+
+    <article class="lang-content" data-lang="de" dir="ltr">
+      <header class="page-header">
+        <span class="badge">Hilfe</span>
+        <h1>FastCore-Hilfe</h1>
+        <p class="intro">Hilfe zu FastCore, Abonnements und lokal gespeicherten Daten.</p>
+      </header>
+      <section class="legal-section support-contact">
+        <h2>Kontakt</h2>
+        <p>Sende uns eine kurze Fehlerbeschreibung, die App-Version, das Gerätemodell und Schritte zum Nachstellen. Bitte sende keine Zahlungskartendaten oder exportierte Wellness-Backups per E-Mail.</p>
+        <p class="support-action-row"><a class="support-action" href="mailto:devmile45@gmail.com?subject=FastCore%20Support">FastCore-Support per E-Mail kontaktieren</a></p>
+        <p class="support-email">devmile45@gmail.com</p>
+      </section>
+      <section class="legal-section"><h2>Abos und Abrechnung</h2><p>Wöchentliche und jährliche Abos werden von Apple oder Google abgerechnet. Wird ein Kauf nicht erkannt, nutze Käufe wiederherstellen auf der Paywall oder im Profil. Zum Kündigen oder Ändern öffne die Aboseite des abrechnenden Stores. Das Löschen der App kündigt das Abo nicht.</p><div class="store-links"><a href="https://apps.apple.com/account/subscriptions">Apple-Abos verwalten</a><a href="https://play.google.com/store/account/subscriptions">Google-Play-Abos verwalten</a></div></section>
+      <section class="legal-section"><h2>Daten und Backups</h2><p>Fasten-, Wasser- und Gewichtseinträge bleiben auf deinem Gerät. Öffne im Profil Backup &amp; Wiederherstellung, um ein Backup zu exportieren oder ein gespeichertes zu importieren. Exportierte JSON-Dateien sind lesbar und sollten geschützt werden. FastCore synchronisiert diesen Verlauf nicht automatisch zwischen Geräten.</p></section>
+      <section class="legal-section"><h2>Konten und Gesundheitsfragen</h2><p>Die aktuelle FastCore-App benötigt weder Konto noch Anmeldung. FastCore ist ein Wellness-Tracker und kein medizinischer Dienst. Bei medizinischen Fragen oder Beschwerden wende dich an qualifiziertes Fachpersonal.</p></section>
+      <footer><p>© 2026 FastCore</p><nav class="footer-links" aria-label="Related pages"><a href="../privacy/index.html?lang=de">Datenschutzerklärung</a><a href="../terms/index.html?lang=de">Nutzungsbedingungen</a></nav></footer>
+    </article>
+
+    <article class="lang-content" data-lang="bn" dir="ltr">
+      <header class="page-header">
+        <span class="badge">সহায়তা</span>
+        <h1>FastCore সহায়তা</h1>
+        <p class="intro">FastCore-এ উপবাস ট্র্যাকিং, সাবস্ক্রিপশন ও স্থানীয় ডেটা সম্পর্কে সহায়তা।</p>
+      </header>
+      <section class="legal-section support-contact">
+        <h2>যোগাযোগ করুন</h2>
+        <p>সমস্যার সংক্ষিপ্ত বিবরণ, অ্যাপের সংস্করণ, ডিভাইসের মডেল এবং সমস্যাটি পুনরায় ঘটানোর ধাপ ইমেইলে জানান। কার্ডের তথ্য বা রপ্তানি করা স্বাস্থ্যসংক্রান্ত ব্যাকআপ ইমেইল করবেন না।</p>
+        <p class="support-action-row"><a class="support-action" href="mailto:devmile45@gmail.com?subject=FastCore%20Support">FastCore সহায়তায় ইমেইল করুন</a></p>
+        <p class="support-email">devmile45@gmail.com</p>
+      </section>
+      <section class="legal-section"><h2>সাবস্ক্রিপশন ও বিলিং</h2><p>সাপ্তাহিক ও বার্ষিক সাবস্ক্রিপশনের বিল Apple বা Google নেয়। কেনাকাটা দেখা না গেলে পেওয়াল বা প্রোফাইলের Restore Purchases ব্যবহার করুন। পরিকল্পনা বদলাতে বা বাতিল করতে যে স্টোর বিল নিয়েছে তার সাবস্ক্রিপশন পৃষ্ঠা খুলুন। অ্যাপ মুছে ফেললে সাবস্ক্রিপশন বাতিল হয় না।</p><div class="store-links"><a href="https://apps.apple.com/account/subscriptions">Apple সাবস্ক্রিপশন পরিচালনা করুন</a><a href="https://play.google.com/store/account/subscriptions">Google Play সাবস্ক্রিপশন পরিচালনা করুন</a></div></section>
+      <section class="legal-section"><h2>আপনার ডেটা ও ব্যাকআপ</h2><p>উপবাস, পানি ও ওজনের রেকর্ড আপনার ডিভাইসে থাকে। প্রোফাইলের Backup &amp; Restore থেকে ব্যাকআপ রপ্তানি বা সংরক্ষিত ব্যাকআপ আমদানি করুন। রপ্তানি করা JSON ফাইল পড়া যায়, তাই নিরাপদে রাখুন। FastCore এই তথ্য ডিভাইসগুলোর মধ্যে স্বয়ংক্রিয়ভাবে সিঙ্ক করে না।</p></section>
+      <section class="legal-section"><h2>অ্যাকাউন্ট ও স্বাস্থ্যসংক্রান্ত প্রশ্ন</h2><p>বর্তমান FastCore অ্যাপে অ্যাকাউন্ট বা লগইন লাগে না। FastCore সুস্থতা ট্র্যাক করার টুল, চিকিৎসাসেবা নয়। চিকিৎসা প্রশ্ন বা উপসর্গ থাকলে যোগ্য স্বাস্থ্যকর্মীর সঙ্গে যোগাযোগ করুন।</p></section>
+      <footer><p>© 2026 FastCore</p><nav class="footer-links" aria-label="Related pages"><a href="../privacy/index.html?lang=bn">গোপনীয়তা নীতি</a><a href="../terms/index.html?lang=bn">পরিষেবার শর্তাবলি</a></nav></footer>
+    </article></main>
+  <script>
+    function switchLang(code) {
+      const supported = Array.from(document.querySelectorAll('.lang-content')).map((node) => node.dataset.lang)
+      const next = supported.includes(code) ? code : 'en'
+      document.querySelectorAll('.lang-content').forEach((node) => node.classList.toggle('active', node.dataset.lang === next))
+      document.querySelectorAll('.lang-btn').forEach((node) => node.classList.toggle('active', node.dataset.lang === next))
+      document.documentElement.lang = next
+      document.body.dir = document.querySelector('.lang-content.active').dir || 'ltr'
+      const url = new URL(window.location.href)
+      url.searchParams.set('lang', next)
+      history.replaceState({}, '', url)
+    }
+    const requested = new URLSearchParams(window.location.search).get('lang')
+    const browserLanguage = (navigator.language || 'en').split('-')[0]
+    switchLang(requested || browserLanguage)
+  </script>
+</body>
+</html>
