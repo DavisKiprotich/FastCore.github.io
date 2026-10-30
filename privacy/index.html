@@ -17,7 +17,8 @@
     .brand { display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; color: var(--text); font-size: 19px; font-weight: 800; letter-spacing: -0.4px; text-decoration: none; }
     .brand:hover { color: var(--text); }
     .brand-mark { width: 29px; height: 29px; border: 3px solid var(--accent); border-inline-end-color: var(--line); border-radius: 50%; transform: rotate(-35deg); }
-    .lang-switcher { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .lang-switcher { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; scrollbar-width: none; }
+    .lang-switcher::-webkit-scrollbar, .document-nav::-webkit-scrollbar { display: none; }
     .lang-btn { min-height: 38px; padding: 6px 11px; border: 1px solid transparent; border-radius: 9px; background: transparent; color: var(--muted); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
     .lang-btn:hover { color: var(--text); background: var(--surface); }
     .lang-btn.active { border-color: var(--accent); background: var(--accent-soft); color: var(--text); }
@@ -31,7 +32,7 @@
     h1 { max-width: 19ch; margin: 16px 0 8px; font-size: 2.75rem; line-height: 1.12; font-weight: 800; letter-spacing: -1.3px; }
     .updated { margin: 0; color: var(--muted); font-size: 13px; }
     .intro { max-width: 58ch; margin: 18px 0 0; color: var(--muted); font-size: 16px; line-height: 1.65; }
-    .document-nav { display: flex; gap: 22px; overflow-x: auto; border-bottom: 1px solid var(--line); margin-bottom: 6px; }
+    .document-nav { display: flex; gap: 22px; overflow-x: auto; border-bottom: 1px solid var(--line); margin-bottom: 6px; scrollbar-width: none; }
     .document-nav a { display: inline-flex; align-items: center; flex: 0 0 auto; min-height: 52px; border-bottom: 2px solid transparent; color: var(--muted); font-size: 14px; font-weight: 700; text-decoration: none; }
     .document-nav a:hover, .document-nav a[aria-current="page"] { border-bottom-color: var(--accent); color: var(--text); }
     .legal-section { padding: 30px 0 32px; border-bottom: 1px solid var(--line); }
@@ -160,7 +161,7 @@
         <p class="intro">FastCore est un outil de bien-être privilégiant le stockage local. Cette politique explique les informations traitées, leur emplacement et les données d’abonnement limitées reçues par les prestataires.</p>
       </header>
       <nav class="document-nav" aria-label="Informations légales FastCore"><a href="../privacy/index.html?lang=fr" aria-current="page">Politique de confidentialité</a><a href="../terms/index.html?lang=fr">Conditions d’utilisation</a><a href="../support/index.html?lang=fr">Assistance FastCore</a></nav>
-      <section class="legal-section"><h2>1. Informations stockées sur votre appareil</h2><p>FastCore conserve localement votre nom d’affichage, langue, réponses d’intégration, sessions et état du jeûne actif, humeur, suivi de l’eau et du poids, objectifs et horaires. Aucun compte FastCore n’est requis et cet historique de bien-être n’est pas envoyé vers une base de données cloud FastCore.</p></section>
+      <section class="legal-section"><h2>1. Informations stockées sur votre appareil</h2><p>FastCore conserve localement votre nom d’affichage, langue, réponses de configuration initiale, sessions et état du jeûne actif, humeur, suivi de l’eau et du poids, objectifs et horaires. Aucun compte FastCore n’est requis et cet historique de bien-être n’est pas envoyé vers une base de données cloud FastCore.</p></section>
       <section class="legal-section"><h2>2. Informations d’abonnement et techniques</h2><p>Apple App Store ou Google Play traite les données de paiement. RevenueCat aide à valider les achats et restaurer l’accès premium. Il peut recevoir un identifiant anonyme, le type d’appareil et le système, la langue et la devise, la dernière activité, les produits et droits, les reçus Apple ou jetons Google. FastCore ne lui transmet ni vos données de bien-être ni votre nom et ne conserve pas votre carte bancaire.</p></section>
       <section class="legal-section"><h2>3. Utilisation des informations</h2><p>Les données locales servent au minuteur, aux statistiques, au suivi de l’eau et du poids, aux rappels, à la personnalisation et aux sauvegardes. Les données d’abonnement servent à afficher les offres, déterminer l’accès premium, valider et restaurer les achats, prévenir la fraude et fournir l’assistance. FastCore ne vend aucune information personnelle et n’intègre ni publicité tierce ni suivi inter-applications.</p></section>
       <section class="legal-section"><h2>4. Sauvegardes et notifications</h2><p>Si la sauvegarde de l’appareil est activée, Apple, Google ou le fournisseur de l’appareil peut sauvegarder les données éligibles selon vos réglages et ses règles. Une sauvegarde exportée est un fichier JSON lisible non chiffré par FastCore; vous choisissez son emplacement et devez le protéger. Seuls les fichiers sélectionnés sont importés. Avec autorisation, les notifications sont planifiées localement et leur texte peut apparaître sur l’écran verrouillé. Si vous activez la sauvegarde iCloud automatique sur iPhone, FastCore met à jour chaque jour un seul fichier JSON dans son dossier iCloud Drive et conserve une copie locale. iOS contrôle la synchronisation et l’exécution en arrière-plan. Sur Android, les sauvegardes automatiques restent sur l’appareil et ne sont pas envoyées automatiquement à Google Drive. Ces fichiers JSON sont lisibles et FastCore ne les chiffre pas séparément.</p></section>
