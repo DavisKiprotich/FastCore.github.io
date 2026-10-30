@@ -3,44 +3,59 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="last-updated" content="2026-10-17">
+  <meta name="last-updated" content="2026-10-30">
   <title>FastCore Legal</title>
   <style>
-    :root { color-scheme: dark; --bg: #08111f; --panel: #0e1a2b; --line: #203149; --text: #e8f5f7; --muted: #9db0c4; --accent: #22c3df; }
+    :root { color-scheme: dark; --bg: oklch(0.16 0.026 245); --surface: oklch(0.20 0.027 245); --line: oklch(0.31 0.028 245); --text: oklch(0.96 0.012 240); --muted: oklch(0.75 0.026 240); --accent: oklch(0.75 0.14 205); --accent-soft: oklch(0.26 0.055 215); }
     * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; background: var(--bg); color: var(--text); font-family: Inter, "Noto Sans", system-ui, sans-serif; line-height: 1.7; }
-    .top-bar { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 20px; background: rgba(8,17,31,.97); border-bottom: 1px solid var(--line); }
-    .brand { color: var(--text); font-weight: 800; text-decoration: none; letter-spacing: .2px; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; min-height: 100vh; background: radial-gradient(circle at 84% 4%, oklch(0.21 0.042 218), transparent 34rem), var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", system-ui, sans-serif; font-size: 16px; line-height: 1.7; }
+    a { color: var(--accent); text-underline-offset: 4px; }
+    a:hover { color: var(--text); }
+    .top-bar { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); }
+    .top-bar-inner { width: min(1120px, 100%); min-height: 72px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; color: var(--text); font-size: 19px; font-weight: 800; letter-spacing: -0.4px; text-decoration: none; }
+    .brand:hover { color: var(--text); }
+    .brand-mark { width: 29px; height: 29px; border: 3px solid var(--accent); border-inline-end-color: var(--line); border-radius: 50%; transform: rotate(-35deg); }
     .lang-switcher { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
-    .lang-btn { min-height: 36px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); color: var(--muted); font-weight: 700; cursor: pointer; }
-    .lang-btn.active { border-color: var(--accent); background: #123144; color: var(--text); }
-    main { width: min(780px, 100%); margin: 0 auto; padding: 36px 20px 72px; }
+    .lang-btn { min-height: 38px; padding: 6px 11px; border: 1px solid transparent; border-radius: 9px; background: transparent; color: var(--muted); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
+    .lang-btn:hover { color: var(--text); background: var(--surface); }
+    .lang-btn.active { border-color: var(--accent); background: var(--accent-soft); color: var(--text); }
+    main { width: min(780px, 100%); margin: 0 auto; padding: 40px 24px 88px; }
     .lang-content { display: none; }
     .lang-content.active { display: block; }
-    .page-header { padding-bottom: 28px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
-    .badge { display: inline-block; padding: 5px 10px; border: 1px solid #175a6c; border-radius: 999px; color: var(--accent); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .7px; }
-    h1 { margin: 14px 0 4px; font-size: clamp(32px, 7vw, 48px); line-height: 1.12; letter-spacing: -1.2px; }
+    .page-header { position: relative; isolation: isolate; overflow: hidden; padding: 28px 0 36px; border-bottom: 1px solid var(--line); }
+    .page-header > * { position: relative; z-index: 1; }
+    .page-header::after { content: ""; position: absolute; z-index: 0; top: 7px; right: 22px; width: 164px; height: 164px; border: 10px solid var(--line); border-top-color: var(--accent); border-right-color: var(--accent); border-radius: 50%; transform: rotate(-28deg); opacity: .52; }
+    .badge { display: inline-flex; align-items: center; min-height: 28px; padding: 4px 10px; border-radius: 7px; background: var(--accent-soft); color: var(--accent); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; }
+    h1 { max-width: 19ch; margin: 16px 0 8px; font-size: 2.75rem; line-height: 1.12; font-weight: 800; letter-spacing: -1.3px; }
     .updated { margin: 0; color: var(--muted); font-size: 13px; }
-    .intro { max-width: 68ch; margin: 18px 0 0; color: #bfd0dc; font-size: 16px; }
-    .legal-section { padding: 25px 0; border-bottom: 1px solid var(--line); }
-    .legal-section h2 { margin: 0 0 9px; color: var(--text); font-size: 19px; line-height: 1.35; }
-    .legal-section p { max-width: 72ch; margin: 0; color: #bdcad7; }
-    footer { display: flex; justify-content: space-between; gap: 20px; padding-top: 30px; color: var(--muted); font-size: 14px; }
+    .intro { max-width: 58ch; margin: 18px 0 0; color: var(--muted); font-size: 16px; line-height: 1.65; }
+    .document-nav { display: flex; gap: 22px; overflow-x: auto; border-bottom: 1px solid var(--line); margin-bottom: 6px; }
+    .document-nav a { display: inline-flex; align-items: center; flex: 0 0 auto; min-height: 52px; border-bottom: 2px solid transparent; color: var(--muted); font-size: 14px; font-weight: 700; text-decoration: none; }
+    .document-nav a:hover, .document-nav a[aria-current="page"] { border-bottom-color: var(--accent); color: var(--text); }
+    .legal-section { padding: 30px 0 32px; border-bottom: 1px solid var(--line); }
+    .legal-section h2 { max-width: 65ch; margin: 0 0 10px; color: var(--text); font-size: 1.25rem; line-height: 1.35; font-weight: 750; }
+    .legal-section p { max-width: 72ch; margin: 0; color: var(--muted); line-height: 1.75; }
+    .legal-section p + p { margin-top: 14px; }
+    footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
     footer p { margin: 0; }
-    footer a { color: var(--accent); font-weight: 700; text-decoration: none; }
+    footer a { font-weight: 700; }
     .footer-links { display: flex; flex-wrap: wrap; gap: 10px 22px; }
-    .app-store-links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 24px; }
-    .app-store-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent); font-weight: 700; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .app-store-links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 26px; }
+    .app-store-links a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; overflow-wrap: anywhere; }
     a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
     [dir="rtl"] { text-align: right; }
-    @media (max-width: 680px) { .top-bar { align-items: flex-start; flex-direction: column; width: 100%; overflow: hidden; } .lang-switcher { width: 100%; min-width: 0; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; } .lang-btn { flex: 0 0 auto; } main { padding-top: 28px; } footer { flex-direction: column; } }
+    [dir="rtl"] .page-header::after { right: auto; left: 22px; }
+    @media (max-width: 680px) { .top-bar { position: static; } .top-bar-inner { align-items: flex-start; flex-direction: column; gap: 8px; padding: 13px 18px 10px; } .lang-switcher { width: 100%; min-width: 0; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 2px; } .lang-btn { flex: 0 0 auto; } main { padding: 22px 20px 68px; } .page-header { padding: 20px 0 30px; } .page-header::after { width: 112px; height: 112px; top: 12px; right: -34px; border-width: 8px; opacity: .24; } h1 { max-width: 22ch; font-size: 2.1rem; letter-spacing: -0.8px; } .document-nav { gap: 18px; } .document-nav a { min-height: 50px; font-size: 13px; } .legal-section { padding: 26px 0 28px; } footer { flex-direction: column; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
    .legal-section a { color: var(--accent); font-weight: 800; }</style>
 </head>
 <body>
-  <nav class="top-bar"><span class="brand">FastCore</span><div class="lang-switcher"><button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button><button class="lang-btn" data-lang="zh" onclick="switchLang('zh')">中文</button><button class="lang-btn" data-lang="hi" onclick="switchLang('hi')">हिन्दी</button><button class="lang-btn" data-lang="es" onclick="switchLang('es')">ES</button><button class="lang-btn" data-lang="ar" onclick="switchLang('ar')">العربية</button><button class="lang-btn" data-lang="fr" onclick="switchLang('fr')">FR</button><button class="lang-btn" data-lang="de" onclick="switchLang('de')">DE</button><button class="lang-btn" data-lang="bn" onclick="switchLang('bn')">বাংলা</button></div></nav>
+  <nav class="top-bar" aria-label="FastCore"><div class="top-bar-inner"><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true"></span>FastCore</a><div class="lang-switcher"><button type="button" class="lang-btn active" data-lang="en" aria-label="English" aria-pressed="true" onclick="switchLang('en')">EN</button><button type="button" class="lang-btn" data-lang="zh" aria-label="中文" aria-pressed="false" onclick="switchLang('zh')">中文</button><button type="button" class="lang-btn" data-lang="hi" aria-label="हिन्दी" aria-pressed="false" onclick="switchLang('hi')">हिन्दी</button><button type="button" class="lang-btn" data-lang="es" aria-label="Español" aria-pressed="false" onclick="switchLang('es')">ES</button><button type="button" class="lang-btn" data-lang="ar" aria-label="العربية" aria-pressed="false" onclick="switchLang('ar')">العربية</button><button type="button" class="lang-btn" data-lang="fr" aria-label="Français" aria-pressed="false" onclick="switchLang('fr')">FR</button><button type="button" class="lang-btn" data-lang="de" aria-label="Deutsch" aria-pressed="false" onclick="switchLang('de')">DE</button><button type="button" class="lang-btn" data-lang="bn" aria-label="বাংলা" aria-pressed="false" onclick="switchLang('bn')">বাংলা</button></div></div></nav>
   <main>
     <article class="lang-content active" data-lang="en" dir="ltr">
-      <header class="page-header"><span class="badge">FastCore</span><h1>FastCore Legal</h1><p class="updated">Last updated: October 17, 2026</p><p class="intro">Current policies for the FastCore mobile app.</p></header>
+      <header class="page-header"><span class="badge">FastCore</span><h1>FastCore Legal</h1><p class="updated">Last updated: October 30, 2026</p><p class="intro">Current policies for the FastCore mobile app.</p></header>
       <section class="legal-section"><h2>Privacy Policy</h2><p>How FastCore handles local wellness data, backups, notifications, and subscription information.</p><p><a href="./privacy/index.html?lang=en">Open Privacy Policy</a></p></section>
       <section class="legal-section"><h2>Terms of Service</h2><p>Health disclaimer, subscription and billing rules, acceptable use, and service terms.</p><p><a href="./terms/index.html?lang=en">Open Terms of Service</a></p></section>
       <section class="legal-section"><h2>FastCore Support</h2><p>Help with the FastCore fasting tracker, subscriptions, and your local data.</p><p><a href="./support/index.html?lang=en">Email FastCore Support</a></p></section>
@@ -49,7 +64,7 @@
     </article>
 
     <article class="lang-content" data-lang="zh" dir="ltr">
-      <header class="page-header"><span class="badge">FastCore</span><h1>FastCore 法律信息</h1><p class="updated">最后更新：2026年10月17日</p><p class="intro">FastCore 移动应用的现行政策。</p></header>
+      <header class="page-header"><span class="badge">FastCore</span><h1>FastCore 法律信息</h1><p class="updated">最后更新：2026年10月30日</p><p class="intro">FastCore 移动应用的现行政策。</p></header>
       <section class="legal-section"><h2>隐私政策</h2><p>了解本地健康数据、备份、通知和订阅信息的处理方式。</p><p><a href="./privacy/index.html?lang=zh">打开隐私政策</a></p></section>
       <section class="legal-section"><h2>服务条款</h2><p>健康免责声明、订阅与计费规则、可接受使用及服务条款。</p><p><a href="./terms/index.html?lang=zh">打开服务条款</a></p></section>
       <section class="legal-section"><h2>FastCore 支持</h2><p>获取 FastCore 断食记录、订阅和本地数据方面的帮助。</p><p><a href="./support/index.html?lang=zh">发送邮件联系 FastCore 支持</a></p></section>
@@ -58,7 +73,7 @@
     </article>
 
     <article class="lang-content" data-lang="hi" dir="ltr">
-      <header class="page-header"><span class="badge">FastCore</span><h1>FastCore कानूनी</h1><p class="updated">अंतिम अपडेट: 17 अक्टूबर 2026</p><p class="intro">FastCore मोबाइल ऐप की वर्तमान नीतियाँ।</p></header>
+      <header class="page-header"><span class="badge">FastCore</span><h1>FastCore कानूनी</h1><p class="updated">अंतिम अपडेट: 30 अक्टूबर 2026</p><p class="intro">FastCore मोबाइल ऐप की वर्तमान नीतियाँ।</p></header>
       <section class="legal-section"><h2>गोपनीयता नीति</h2><p>स्थानीय स्वास्थ्य डेटा, बैकअप, सूचनाएँ और सदस्यता जानकारी कैसे संभाली जाती है।</p><p><a href="./privacy/index.html?lang=hi">गोपनीयता नीति खोलें</a></p></section>
       <section class="legal-section"><h2>सेवा की शर्तें</h2><p>स्वास्थ्य अस्वीकरण, सदस्यता व बिलिंग नियम, स्वीकार्य उपयोग और सेवा शर्तें।</p><p><a href="./terms/index.html?lang=hi">सेवा की शर्तें खोलें</a></p></section>
       <section class="legal-section"><h2>FastCore सहायता</h2><p>FastCore में उपवास ट्रैकिंग, सदस्यता और स्थानीय डेटा के लिए सहायता।</p><p><a href="./support/index.html?lang=hi">FastCore सहायता को ईमेल करें</a></p></section>
@@ -67,7 +82,7 @@
     </article>
 
     <article class="lang-content" data-lang="es" dir="ltr">
-      <header class="page-header"><span class="badge">FastCore</span><h1>Información legal de FastCore</h1><p class="updated">Última actualización: 17 de octubre de 2026</p><p class="intro">Políticas actuales de la aplicación móvil FastCore.</p></header>
+      <header class="page-header"><span class="badge">FastCore</span><h1>Información legal de FastCore</h1><p class="updated">Última actualización: 30 de octubre de 2026</p><p class="intro">Políticas actuales de la aplicación móvil FastCore.</p></header>
       <section class="legal-section"><h2>Política de Privacidad</h2><p>Tratamiento de datos locales de bienestar, copias, notificaciones y suscripciones.</p><p><a href="./privacy/index.html?lang=es">Abrir Política de Privacidad</a></p></section>
       <section class="legal-section"><h2>Términos de Servicio</h2><p>Aviso de salud, reglas de suscripción y cobro, uso aceptable y condiciones.</p><p><a href="./terms/index.html?lang=es">Abrir Términos de Servicio</a></p></section>
       <section class="legal-section"><h2>Ayuda de FastCore</h2><p>Ayuda con el seguimiento del ayuno, las suscripciones y los datos locales de FastCore.</p><p><a href="./support/index.html?lang=es">Enviar un correo a FastCore</a></p></section>
@@ -76,7 +91,7 @@
     </article>
 
     <article class="lang-content" data-lang="ar" dir="rtl">
-      <header class="page-header"><span class="badge">FastCore</span><h1>المعلومات القانونية لـ FastCore</h1><p class="updated">آخر تحديث: 17 أكتوبر 2026</p><p class="intro">السياسات الحالية لتطبيق FastCore.</p></header>
+      <header class="page-header"><span class="badge">FastCore</span><h1>المعلومات القانونية لـ FastCore</h1><p class="updated">آخر تحديث: 30 أكتوبر 2026</p><p class="intro">السياسات الحالية لتطبيق FastCore.</p></header>
       <section class="legal-section"><h2>سياسة الخصوصية</h2><p>كيفية معالجة بيانات العافية المحلية والنسخ والإشعارات والاشتراكات.</p><p><a href="./privacy/index.html?lang=ar">فتح سياسة الخصوصية</a></p></section>
       <section class="legal-section"><h2>شروط الخدمة</h2><p>إخلاء مسؤولية صحي وقواعد الاشتراك والفوترة والاستخدام وشروط الخدمة.</p><p><a href="./terms/index.html?lang=ar">فتح شروط الخدمة</a></p></section>
       <section class="legal-section"><h2>دعم FastCore</h2><p>مساعدة بشأن تتبع الصيام والاشتراكات والبيانات المحلية في FastCore.</p><p><a href="./support/index.html?lang=ar">راسل دعم FastCore</a></p></section>
@@ -85,7 +100,7 @@
     </article>
 
     <article class="lang-content" data-lang="fr" dir="ltr">
-      <header class="page-header"><span class="badge">FastCore</span><h1>Informations légales FastCore</h1><p class="updated">Dernière mise à jour : 17 octobre 2026</p><p class="intro">Politiques actuelles de l’application mobile FastCore.</p></header>
+      <header class="page-header"><span class="badge">FastCore</span><h1>Informations légales FastCore</h1><p class="updated">Dernière mise à jour : 30 octobre 2026</p><p class="intro">Politiques actuelles de l’application mobile FastCore.</p></header>
       <section class="legal-section"><h2>Politique de confidentialité</h2><p>Traitement des données locales de bien-être, sauvegardes, notifications et abonnements.</p><p><a href="./privacy/index.html?lang=fr">Ouvrir la politique de confidentialité</a></p></section>
       <section class="legal-section"><h2>Conditions d’utilisation</h2><p>Avertissement santé, règles d’abonnement et facturation, usage acceptable et conditions.</p><p><a href="./terms/index.html?lang=fr">Ouvrir les conditions d’utilisation</a></p></section>
       <section class="legal-section"><h2>Assistance FastCore</h2><p>Aide pour le suivi du jeûne, les abonnements et les données locales de FastCore.</p><p><a href="./support/index.html?lang=fr">Écrire à l’assistance FastCore</a></p></section>
@@ -94,7 +109,7 @@
     </article>
 
     <article class="lang-content" data-lang="de" dir="ltr">
-      <header class="page-header"><span class="badge">FastCore</span><h1>FastCore Rechtliches</h1><p class="updated">Zuletzt aktualisiert: 17. Oktober 2026</p><p class="intro">Aktuelle Richtlinien für die FastCore-App.</p></header>
+      <header class="page-header"><span class="badge">FastCore</span><h1>FastCore Rechtliches</h1><p class="updated">Zuletzt aktualisiert: 30. Oktober 2026</p><p class="intro">Aktuelle Richtlinien für die FastCore-App.</p></header>
       <section class="legal-section"><h2>Datenschutzerklärung</h2><p>Umgang mit lokalen Wellnessdaten, Backups, Hinweisen und Aboinformationen.</p><p><a href="./privacy/index.html?lang=de">Datenschutzerklärung öffnen</a></p></section>
       <section class="legal-section"><h2>Nutzungsbedingungen</h2><p>Gesundheitshinweis, Abo- und Abrechnungsregeln, zulässige Nutzung und Bedingungen.</p><p><a href="./terms/index.html?lang=de">Nutzungsbedingungen öffnen</a></p></section>
       <section class="legal-section"><h2>FastCore-Hilfe</h2><p>Hilfe zu FastCore, Abonnements und lokal gespeicherten Daten.</p><p><a href="./support/index.html?lang=de">FastCore-Support per E-Mail kontaktieren</a></p></section>
@@ -103,7 +118,7 @@
     </article>
 
     <article class="lang-content" data-lang="bn" dir="ltr">
-      <header class="page-header"><span class="badge">FastCore</span><h1>FastCore আইনি তথ্য</h1><p class="updated">সর্বশেষ হালনাগাদ: ১৭ অক্টোবর ২০২৬</p><p class="intro">FastCore মোবাইল অ্যাপের বর্তমান নীতিমালা।</p></header>
+      <header class="page-header"><span class="badge">FastCore</span><h1>FastCore আইনি তথ্য</h1><p class="updated">সর্বশেষ হালনাগাদ: ৩০ অক্টোবর ২০২৬</p><p class="intro">FastCore মোবাইল অ্যাপের বর্তমান নীতিমালা।</p></header>
       <section class="legal-section"><h2>গোপনীয়তা নীতি</h2><p>লোকাল সুস্থতা ডেটা, ব্যাকআপ, নোটিফিকেশন ও সাবস্ক্রিপশন তথ্যের ব্যবহার।</p><p><a href="./privacy/index.html?lang=bn">গোপনীয়তা নীতি খুলুন</a></p></section>
       <section class="legal-section"><h2>পরিষেবার শর্তাবলি</h2><p>স্বাস্থ্য অস্বীকৃতি, সাবস্ক্রিপশন ও বিলিং নিয়ম, গ্রহণযোগ্য ব্যবহার ও শর্তাবলি।</p><p><a href="./terms/index.html?lang=bn">পরিষেবার শর্তাবলি খুলুন</a></p></section>
       <section class="legal-section"><h2>FastCore সহায়তা</h2><p>FastCore-এ উপবাস ট্র্যাকিং, সাবস্ক্রিপশন ও স্থানীয় ডেটা সম্পর্কে সহায়তা।</p><p><a href="./support/index.html?lang=bn">FastCore সহায়তায় ইমেইল করুন</a></p></section>
@@ -115,7 +130,11 @@
       const supported = Array.from(document.querySelectorAll('.lang-content')).map((node) => node.dataset.lang)
       const next = supported.includes(code) ? code : 'en'
       document.querySelectorAll('.lang-content').forEach((node) => node.classList.toggle('active', node.dataset.lang === next))
-      document.querySelectorAll('.lang-btn').forEach((node) => node.classList.toggle('active', node.dataset.lang === next))
+      document.querySelectorAll('.lang-btn').forEach((node) => {
+        const active = node.dataset.lang === next
+        node.classList.toggle('active', active)
+        node.setAttribute('aria-pressed', active ? 'true' : 'false')
+      })
       document.documentElement.lang = next
       document.body.dir = document.querySelector('.lang-content.active').dir || 'ltr'
       const url = new URL(window.location.href)
